@@ -9,6 +9,12 @@ export const Route = createFileRoute("/checklist")({
     meta: [
       { title: "Your move plan — Borderless" },
       { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+      { property: "og:title", content: "Your move plan — Borderless" },
+      { property: "og:description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+      { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://crosspath.lovable.app/checklist" },
     ],
   }),
   component: ChecklistPage,
@@ -66,7 +72,7 @@ function ChecklistPage() {
 
       {/* Checklist */}
       <div className="mt-8 px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Documents & steps</p>
+        <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Documents & steps</h2>
         <ul className="mt-3 space-y-2.5">
           {trip.checklist.map((item) => {
             const isDone = !!checked[item.id];
@@ -124,7 +130,7 @@ function ChecklistPage() {
       <div className="mt-10 px-6">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.6} />
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</p>
+          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</h2>
         </div>
         <ul className="mt-3 space-y-2">
           {GLOSSARY.slice(0, 4).map((g) => (
