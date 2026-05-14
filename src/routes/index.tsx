@@ -10,6 +10,12 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Borderless — Move abroad without the bureaucracy" },
       { name: "description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      { property: "og:title", content: "Borderless — Move abroad without the bureaucracy" },
+      { property: "og:description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      { property: "og:url", content: "https://crosspath.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://crosspath.lovable.app/" },
     ],
   }),
   component: Index,
