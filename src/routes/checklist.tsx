@@ -1,0 +1,175 @@
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowLeft, Calendar, Check, ExternalLink, Sparkles } from "lucide-react";
+import { AppShell, PageHeader } from "@/components/borderless/AppShell";
+import { COUNTRIES, REASONS, GLOSSARY } from "@/lib/borderless-data";
+import { useTrip, useChecked } from "@/lib/trip-store";
+
+export const Route = createFileRoute("/checklist")({
+  head: () => ({
+    meta: [
+      { title: "Your move plan — Borderless" },
+      { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+    ],
+  }),
+  component: ChecklistPage,
+});
+
+function ChecklistPage() {
+  const [trip] = useTrip();
+  const { checked, toggle } = useChecked();
+
+  if (!trip) {
+    return (
+      <AppShell>
+        <PageHeader eyebrow="Checklist" title="No trip yet" subtitle="Create one from the home screen to see your personalized plan." />
+        <div className="px-6">
+          <Link to="/" className="inline-flex items-center gap-2 text-sm text-primary">
+            <ArrowLeft className="h-4 w-4" /> Back to start
+          </Link>
+        </div>
+      </AppShell>
+    );
+  }
+
+  const fromC = COUNTRIES.find((c) => c.code === trip.from)!;
+  const toC = COUNTRIES.find((c) => c.code === trip.to)!;
+  const reason = REASONS.find((r) => r.id === trip.reason)!;
+  const total = trip.checklist.length;
+  const done = trip.checklist.filter((c) => checked[c.id]).length;
+  const readiness = Math.round((done / total) * 100);
+
+  return (
+    <AppShell>
+      <div className="px-6 pt-10">
+        <Link to="/" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+          <ArrowLeft className="h-3 w-3" /> Edit trip
+        </Link>
+        <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+          {fromC.flag} {fromC.code} → {toC.flag} {toC.code} · {reason.label}
+        </p>
+        <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
+          Your move plan
+        </h1>
+      </div>
+
+      {/* Score cards */}
+      <div className="mt-6 grid grid-cols-2 gap-3 px-6">
+        <ScoreCard label="Move Score" value={trip.moveScore} suffix="/100" />
+        <ScoreCard label="Readiness" value={readiness} suffix="%" accent />
+      </div>
+
+      <div className="mx-6 mt-3 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2.5">
+        <Calendar className="h-4 w-4 text-primary" strokeWidth={1.6} />
+        <span className="text-xs text-muted-foreground">Estimated timeline</span>
+        <span className="ml-auto text-sm font-medium text-foreground">~{trip.timelineWeeks} weeks</span>
+      </div>
+
+      {/* Checklist */}
+      <div className="mt-8 px-6">
+        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Documents & steps</p>
+        <ul className="mt-3 space-y-2.5">
+          {trip.checklist.map((item) => {
+            const isDone = !!checked[item.id];
+            return (
+              <li
+                key={item.id}
+                className="rounded-2xl border p-4 transition-colors"
+                style={{
+                  borderColor: isDone ? "oklch(0.72 0.15 165 / 0.5)" : "var(--color-border)",
+                  background: isDone ? "oklch(0.72 0.15 165 / 0.06)" : "var(--color-card)",
+                }}
+              >
+                <div className="flex items-start gap-3">
+                  <button
+                    onClick={() => toggle(item.id)}
+                    aria-label={isDone ? "Mark incomplete" : "Mark done"}
+                    className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-md border transition-colors"
+                    style={{
+                      borderColor: isDone ? "var(--success)" : "var(--color-border)",
+                      background: isDone ? "var(--success)" : "transparent",
+                    }}
+                  >
+                    {isDone && <Check className="h-3.5 w-3.5 text-background" strokeWidth={3} />}
+                  </button>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-baseline justify-between gap-2">
+                      <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{item.category}</span>
+                    </div>
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.description}</p>
+                    <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
+                      <span className="font-mono">~{item.estimatedDays}d</span>
+                      <span className="text-border">·</span>
+                      <span>{item.copies} {item.copies === 1 ? "copy" : "copies"}</span>
+                      {item.officialUrl && item.officialUrl !== "#" && (
+                        <a
+                          href={item.officialUrl}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="ml-auto inline-flex items-center gap-1 text-primary"
+                        >
+                          Official <ExternalLink className="h-3 w-3" />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
+      {/* Glossary */}
+      <div className="mt-10 px-6">
+        <div className="flex items-center gap-2">
+          <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.6} />
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</p>
+        </div>
+        <ul className="mt-3 space-y-2">
+          {GLOSSARY.slice(0, 4).map((g) => (
+            <li key={g.term} className="rounded-xl border border-border bg-card p-3">
+              <p className="text-sm font-semibold text-foreground">{g.term}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.meaning}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </AppShell>
+  );
+}
+
+function ScoreCard({ label, value, suffix, accent }: { label: string; value: number; suffix: string; accent?: boolean }) {
+  return (
+    <div
+      className="relative overflow-hidden rounded-2xl border border-border p-4"
+      style={{ background: accent ? "var(--gradient-primary)" : "var(--gradient-card)" }}
+    >
+      <p
+        className="font-mono text-[10px] uppercase tracking-[0.3em]"
+        style={{ color: accent ? "oklch(0.14 0.03 260 / 0.7)" : "var(--color-muted-foreground)" }}
+      >
+        {label}
+      </p>
+      <p
+        className="mt-2 text-3xl font-semibold tracking-tight"
+        style={{ color: accent ? "var(--color-primary-foreground)" : "var(--color-foreground)" }}
+      >
+        {value}
+        <span className="text-base font-normal opacity-70">{suffix}</span>
+      </p>
+      <div
+        className="mt-3 h-1.5 w-full overflow-hidden rounded-full"
+        style={{ background: accent ? "oklch(0.14 0.03 260 / 0.25)" : "var(--color-muted)" }}
+      >
+        <div
+          className="h-full rounded-full"
+          style={{
+            width: `${value}%`,
+            background: accent ? "oklch(0.14 0.03 260)" : "var(--gradient-primary)",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
