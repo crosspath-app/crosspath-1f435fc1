@@ -7,6 +7,12 @@ export const Route = createFileRoute("/compare")({
     meta: [
       { title: "Compare countries — Borderless" },
       { name: "description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
+      { property: "og:title", content: "Compare countries — Borderless" },
+      { property: "og:description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
+      { property: "og:url", content: "https://crosspath.lovable.app/compare" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://crosspath.lovable.app/compare" },
     ],
   }),
   component: ComparePage,
@@ -17,7 +23,7 @@ function ComparePage() {
     <AppShell>
       <PageHeader
         eyebrow="Compare"
-        title="Side by side."
+        title="Compare relocation destinations"
         subtitle="Visa times, work rights, and rules — a quick glance to help you decide."
       />
       <div className="px-6">
