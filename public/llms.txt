@@ -1,0 +1,10 @@
+# Borderless
+
+> Borderless helps people move, study, work, or travel abroad without getting lost in bureaucracy. Pick a nationality, destination, and reason — get a personalized checklist, deadlines, and plain-language guides.
+
+## Pages
+
+- [Home](/): Build your move plan from nationality, destination, and reason.
+- [Checklist](/checklist): Personalized documents, deadlines, Move Score, and readiness progress.
+- [Compare](/compare): Side-by-side comparison of visa difficulty, work rights, and processing times.
+- [Help](/help): Emergency contacts, lost-passport steps, and official portals.
