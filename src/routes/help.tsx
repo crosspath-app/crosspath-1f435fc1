@@ -7,6 +7,28 @@ export const Route = createFileRoute("/help")({
     meta: [
       { title: "Emergency help — Borderless" },
       { name: "description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
+      { property: "og:title", content: "Emergency help — Borderless" },
+      { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
+      { property: "og:url", content: "https://crosspath.lovable.app/help" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://crosspath.lovable.app/help" },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          name: "What to do if you lose your passport abroad",
+          step: [
+            { "@type": "HowToStep", name: "Stay calm", text: "Stay calm. Note the time and place where you last had your passport." },
+            { "@type": "HowToStep", name: "Report to police", text: "Report the loss to the local police and ask for a written report." },
+            { "@type": "HowToStep", name: "Contact embassy", text: "Contact your country's embassy or consulate to start an emergency travel document." },
+            { "@type": "HowToStep", name: "Notify insurance", text: "If you have travel insurance, notify them — many cover replacement fees." },
+          ],
+        }),
+      },
     ],
   }),
   component: HelpPage,
@@ -29,7 +51,7 @@ const STEPS = [
 function HelpPage() {
   return (
     <AppShell>
-      <PageHeader eyebrow="Help" title="When things go sideways." subtitle="Quick contacts and clear steps for the moments that matter." />
+      <PageHeader eyebrow="Help" title="Emergency help and resources" subtitle="Quick contacts and clear steps for the moments that matter." />
 
       <div className="px-6 grid grid-cols-2 gap-3">
         {QUICK.map((q) => {
@@ -46,7 +68,7 @@ function HelpPage() {
       </div>
 
       <div className="mt-8 px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Lost passport — what to do</p>
+        <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Lost passport — what to do</h2>
         <ol className="mt-3 space-y-2">
           {STEPS.map((s, i) => (
             <li key={i} className="flex gap-3 rounded-xl border border-border bg-card p-3">
