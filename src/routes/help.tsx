@@ -53,7 +53,8 @@ function HelpPage() {
     <AppShell>
       <PageHeader eyebrow="Help" title="Emergency help and resources" subtitle="Quick contacts and clear steps for the moments that matter." />
 
-      <div className="px-6 grid grid-cols-2 gap-3">
+      <h2 className="px-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Quick contacts</h2>
+      <div className="mt-3 px-6 grid grid-cols-2 gap-3">
         {QUICK.map((q) => {
           const Icon = q.icon;
           return (
