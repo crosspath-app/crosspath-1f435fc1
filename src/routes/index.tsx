@@ -10,6 +10,12 @@ export const Route = createFileRoute("/")({
     meta: [
       { title: "Borderless — Move abroad without the bureaucracy" },
       { name: "description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      { property: "og:title", content: "Borderless — Move abroad without the bureaucracy" },
+      { property: "og:description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      { property: "og:url", content: "https://crosspath.lovable.app/" },
+    ],
+    links: [
+      { rel: "canonical", href: "https://crosspath.lovable.app/" },
     ],
   }),
   component: Index,
@@ -135,11 +141,14 @@ function Selector({
   value: string;
   onChange: (v: string) => void;
 }) {
+  const id = `selector-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <div>
-      <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-2">{label}</p>
+      <label htmlFor={id} className="mb-2 block font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{label}</label>
       <div className="relative rounded-2xl border border-border bg-card">
         <select
+          id={id}
+          aria-label={label}
           value={value}
           onChange={(e) => onChange(e.target.value)}
           className="w-full appearance-none bg-transparent px-4 py-4 pr-12 text-base font-medium text-foreground outline-none"
