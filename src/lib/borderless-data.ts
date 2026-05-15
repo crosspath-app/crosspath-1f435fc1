@@ -5,24 +5,72 @@ export type Country = {
 };
 
 export const COUNTRIES: Country[] = [
-  { code: "PL", name: "Poland", flag: "🇵🇱" },
-  { code: "DE", name: "Germany", flag: "🇩🇪" },
+  { code: "AR", name: "Argentina", flag: "🇦🇷" },
+  { code: "AU", name: "Australia", flag: "🇦🇺" },
+  { code: "AT", name: "Austria", flag: "🇦🇹" },
+  { code: "BE", name: "Belgium", flag: "🇧🇪" },
+  { code: "BR", name: "Brazil", flag: "🇧🇷" },
+  { code: "BG", name: "Bulgaria", flag: "🇧🇬" },
+  { code: "CA", name: "Canada", flag: "🇨🇦" },
+  { code: "CL", name: "Chile", flag: "🇨🇱" },
+  { code: "CN", name: "China", flag: "🇨🇳" },
+  { code: "CO", name: "Colombia", flag: "🇨🇴" },
+  { code: "HR", name: "Croatia", flag: "🇭🇷" },
+  { code: "CZ", name: "Czechia", flag: "🇨🇿" },
+  { code: "DK", name: "Denmark", flag: "🇩🇰" },
+  { code: "EG", name: "Egypt", flag: "🇪🇬" },
+  { code: "EE", name: "Estonia", flag: "🇪🇪" },
+  { code: "FI", name: "Finland", flag: "🇫🇮" },
   { code: "FR", name: "France", flag: "🇫🇷" },
-  { code: "ES", name: "Spain", flag: "🇪🇸" },
-  { code: "NL", name: "Netherlands", flag: "🇳🇱" },
-  { code: "PT", name: "Portugal", flag: "🇵🇹" },
+  { code: "DE", name: "Germany", flag: "🇩🇪" },
+  { code: "GR", name: "Greece", flag: "🇬🇷" },
+  { code: "HK", name: "Hong Kong", flag: "🇭🇰" },
+  { code: "HU", name: "Hungary", flag: "🇭🇺" },
+  { code: "IS", name: "Iceland", flag: "🇮🇸" },
+  { code: "IN", name: "India", flag: "🇮🇳" },
+  { code: "ID", name: "Indonesia", flag: "🇮🇩" },
+  { code: "IE", name: "Ireland", flag: "🇮🇪" },
+  { code: "IL", name: "Israel", flag: "🇮🇱" },
   { code: "IT", name: "Italy", flag: "🇮🇹" },
+  { code: "JP", name: "Japan", flag: "🇯🇵" },
+  { code: "KE", name: "Kenya", flag: "🇰🇪" },
+  { code: "LV", name: "Latvia", flag: "🇱🇻" },
+  { code: "LT", name: "Lithuania", flag: "🇱🇹" },
+  { code: "LU", name: "Luxembourg", flag: "🇱🇺" },
+  { code: "MY", name: "Malaysia", flag: "🇲🇾" },
+  { code: "MT", name: "Malta", flag: "🇲🇹" },
+  { code: "MX", name: "Mexico", flag: "🇲🇽" },
+  { code: "MA", name: "Morocco", flag: "🇲🇦" },
+  { code: "NL", name: "Netherlands", flag: "🇳🇱" },
+  { code: "NZ", name: "New Zealand", flag: "🇳🇿" },
+  { code: "NG", name: "Nigeria", flag: "🇳🇬" },
+  { code: "NO", name: "Norway", flag: "🇳🇴" },
+  { code: "PK", name: "Pakistan", flag: "🇵🇰" },
+  { code: "PE", name: "Peru", flag: "🇵🇪" },
+  { code: "PH", name: "Philippines", flag: "🇵🇭" },
+  { code: "PL", name: "Poland", flag: "🇵🇱" },
+  { code: "PT", name: "Portugal", flag: "🇵🇹" },
+  { code: "QA", name: "Qatar", flag: "🇶🇦" },
+  { code: "RO", name: "Romania", flag: "🇷🇴" },
+  { code: "SA", name: "Saudi Arabia", flag: "🇸🇦" },
+  { code: "RS", name: "Serbia", flag: "🇷🇸" },
+  { code: "SG", name: "Singapore", flag: "🇸🇬" },
+  { code: "SK", name: "Slovakia", flag: "🇸🇰" },
+  { code: "SI", name: "Slovenia", flag: "🇸🇮" },
+  { code: "ZA", name: "South Africa", flag: "🇿🇦" },
+  { code: "KR", name: "South Korea", flag: "🇰🇷" },
+  { code: "ES", name: "Spain", flag: "🇪🇸" },
   { code: "SE", name: "Sweden", flag: "🇸🇪" },
+  { code: "CH", name: "Switzerland", flag: "🇨🇭" },
+  { code: "TW", name: "Taiwan", flag: "🇹🇼" },
+  { code: "TH", name: "Thailand", flag: "🇹🇭" },
+  { code: "TR", name: "Türkiye", flag: "🇹🇷" },
+  { code: "UA", name: "Ukraine", flag: "🇺🇦" },
+  { code: "AE", name: "United Arab Emirates", flag: "🇦🇪" },
   { code: "GB", name: "United Kingdom", flag: "🇬🇧" },
   { code: "US", name: "United States", flag: "🇺🇸" },
-  { code: "CA", name: "Canada", flag: "🇨🇦" },
-  { code: "AU", name: "Australia", flag: "🇦🇺" },
-  { code: "JP", name: "Japan", flag: "🇯🇵" },
-  { code: "BR", name: "Brazil", flag: "🇧🇷" },
-  { code: "MX", name: "Mexico", flag: "🇲🇽" },
-  { code: "IN", name: "India", flag: "🇮🇳" },
-  { code: "AE", name: "United Arab Emirates", flag: "🇦🇪" },
-  { code: "SG", name: "Singapore", flag: "🇸🇬" },
+  { code: "UY", name: "Uruguay", flag: "🇺🇾" },
+  { code: "VN", name: "Vietnam", flag: "🇻🇳" },
 ];
 
 export type Reason = {
@@ -112,15 +160,20 @@ const BASE_BY_REASON: Record<string, ChecklistItem[]> = {
 };
 
 const COUNTRY_DIFFICULTY: Record<string, number> = {
-  DE: 35, FR: 40, ES: 30, NL: 45, PT: 25, IT: 35, SE: 40, PL: 30,
-  GB: 60, US: 75, CA: 55, AU: 65, JP: 70, BR: 45, MX: 35, IN: 55, AE: 50, SG: 60,
+  AT: 40, BE: 40, BG: 30, HR: 30, CZ: 30, DK: 45, EE: 30, FI: 40, FR: 40, DE: 35,
+  GR: 30, HU: 30, IS: 45, IE: 50, IT: 35, LV: 30, LT: 30, LU: 45, MT: 35, NL: 45,
+  NO: 50, PL: 30, PT: 25, RO: 30, SK: 30, SI: 30, ES: 30, SE: 40, CH: 55,
+  GB: 60, US: 75, CA: 55, AU: 65, NZ: 60, JP: 70, KR: 60, CN: 80, HK: 55, TW: 50,
+  SG: 60, MY: 45, TH: 40, ID: 50, PH: 45, VN: 50, IN: 55, PK: 60,
+  AE: 50, SA: 70, QA: 55, IL: 65, TR: 45, EG: 55, MA: 45, ZA: 55, NG: 65, KE: 50,
+  BR: 45, MX: 35, AR: 35, CL: 40, CO: 40, PE: 40, UY: 35, UA: 40, RS: 35,
 };
 
 export function buildTrip(from: string, to: string, reason: string): Trip {
   const checklist = BASE_BY_REASON[reason] ?? BASE_BY_REASON.study;
   const difficulty = COUNTRY_DIFFICULTY[to] ?? 50;
   // Same-region (rough EU heuristic) gets a bonus
-  const EU = ["PL","DE","FR","ES","NL","PT","IT","SE"];
+  const EU = ["AT","BE","BG","HR","CZ","DK","EE","FI","FR","DE","GR","HU","IE","IT","LV","LT","LU","MT","NL","PL","PT","RO","SK","SI","ES","SE"];
   const sameRegion = EU.includes(from) && EU.includes(to);
   const moveScore = Math.max(15, Math.min(95, 100 - difficulty + (sameRegion ? 20 : 0)));
   const timelineWeeks = Math.ceil(checklist.reduce((m, c) => Math.max(m, c.estimatedDays), 0) / 7) + 2;
