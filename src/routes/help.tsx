@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, FileWarning, Globe2, Building2 } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
+import { useTrip } from "@/lib/trip-store";
+import { COUNTRIES } from "@/lib/borderless-data";
 
 export const Route = createFileRoute("/help")({
   head: () => ({
@@ -34,13 +36,6 @@ export const Route = createFileRoute("/help")({
   component: HelpPage,
 });
 
-const QUICK = [
-  { icon: Phone, title: "Emergency", value: "112", note: "EU-wide emergency line" },
-  { icon: FileWarning, title: "Lost passport", value: "Step-by-step", note: "Report, file, request emergency travel doc" },
-  { icon: Building2, title: "Find embassy", value: "Locator", note: "Nearest consulate based on your nationality" },
-  { icon: Globe2, title: "EU Immigration Portal", value: "immigration.europa.eu", note: "Official guidance" },
-];
-
 const STEPS = [
   "Stay calm. Note the time and place where you last had your passport.",
   "Report the loss to the local police and ask for a written report.",
@@ -49,6 +44,32 @@ const STEPS = [
 ];
 
 function HelpPage() {
+  const [trip] = useTrip();
+  const fromCountry = COUNTRIES.find((c) => c.code === trip?.from);
+  const toCountry = COUNTRIES.find((c) => c.code === trip?.to);
+
+  const locatorQuery = fromCountry && toCountry
+    ? `embassy of ${fromCountry.name} in ${toCountry.name}`
+    : "find my embassy";
+  const locatorUrl = `https://www.google.com/maps/search/${encodeURIComponent(locatorQuery)}`;
+  const locatorNote = fromCountry && toCountry
+    ? `Nearest ${fromCountry.name} consulate in ${toCountry.name}`
+    : "Set your trip on the home screen to personalize";
+
+  const QUICK: Array<{
+    icon: typeof Phone;
+    title: string;
+    value: string;
+    note: string;
+    href: string;
+    external?: boolean;
+  }> = [
+    { icon: Phone, title: "Emergency", value: "112", note: "EU-wide emergency line", href: "tel:112" },
+    { icon: FileWarning, title: "Lost passport", value: "Step-by-step", note: "Report, file, request emergency travel doc", href: "#lost-passport" },
+    { icon: Building2, title: "Find embassy", value: "Locator", note: locatorNote, href: locatorUrl, external: true },
+    { icon: Globe2, title: "EU Immigration Portal", value: "immigration.europa.eu", note: "Official guidance", href: "https://immigration-portal.ec.europa.eu/", external: true },
+  ];
+
   return (
     <AppShell>
       <PageHeader eyebrow="Help" title="Emergency help and resources" subtitle="Quick contacts and clear steps for the moments that matter." />
@@ -58,17 +79,23 @@ function HelpPage() {
         {QUICK.map((q) => {
           const Icon = q.icon;
           return (
-            <div key={q.title} className="rounded-2xl border border-border bg-card p-4">
+            <a
+              key={q.title}
+              href={q.href}
+              target={q.external ? "_blank" : undefined}
+              rel={q.external ? "noopener noreferrer" : undefined}
+              className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary focus:border-primary focus:outline-none"
+            >
               <Icon className="h-5 w-5 text-primary" strokeWidth={1.6} />
               <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">{q.title}</p>
               <p className="mt-1 text-base font-semibold text-foreground">{q.value}</p>
               <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{q.note}</p>
-            </div>
+            </a>
           );
         })}
       </div>
 
-      <div className="mt-8 px-6">
+      <div id="lost-passport" className="mt-8 px-6 scroll-mt-6">
         <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Lost passport — what to do</h2>
         <ol className="mt-3 space-y-2">
           {STEPS.map((s, i) => (
