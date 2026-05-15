@@ -36,13 +36,6 @@ export const Route = createFileRoute("/help")({
   component: HelpPage,
 });
 
-const QUICK = [
-  { icon: Phone, title: "Emergency", value: "112", note: "EU-wide emergency line" },
-  { icon: FileWarning, title: "Lost passport", value: "Step-by-step", note: "Report, file, request emergency travel doc" },
-  { icon: Building2, title: "Find embassy", value: "Locator", note: "Nearest consulate based on your nationality" },
-  { icon: Globe2, title: "EU Immigration Portal", value: "immigration.europa.eu", note: "Official guidance" },
-];
-
 const STEPS = [
   "Stay calm. Note the time and place where you last had your passport.",
   "Report the loss to the local police and ask for a written report.",
