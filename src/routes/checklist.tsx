@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, Check, ExternalLink, Sparkles } from "lucide-react";
+import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins } from "lucide-react";
+import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { COUNTRIES, REASONS, GLOSSARY } from "@/lib/borderless-data";
+import { COUNTRIES, REASONS, GLOSSARY, HOW_TO } from "@/lib/borderless-data";
 import { useTrip, useChecked } from "@/lib/trip-store";
 
 export const Route = createFileRoute("/checklist")({
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/checklist")({
 function ChecklistPage() {
   const [trip] = useTrip();
   const { checked, toggle } = useChecked();
+  const [openId, setOpenId] = useState<string | null>(null);
 
   if (!trip) {
     return (
@@ -76,6 +78,8 @@ function ChecklistPage() {
         <ul className="mt-3 space-y-2.5">
           {trip.checklist.map((item) => {
             const isDone = !!checked[item.id];
+            const isOpen = openId === item.id;
+            const how = HOW_TO[item.id];
             return (
               <li
                 key={item.id}
@@ -97,16 +101,84 @@ function ChecklistPage() {
                   >
                     {isDone && <Check className="h-3.5 w-3.5 text-background" strokeWidth={3} />}
                   </button>
-                  <div className="min-w-0 flex-1">
+                  <button
+                    type="button"
+                    onClick={() => setOpenId(isOpen ? null : item.id)}
+                    aria-expanded={isOpen}
+                    className="min-w-0 flex-1 text-left"
+                  >
                     <div className="flex items-baseline justify-between gap-2">
                       <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
-                      <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{item.category}</span>
+                      <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+                        {item.category}
+                        <ChevronDown
+                          className="h-3.5 w-3.5 transition-transform"
+                          style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+                        />
+                      </span>
                     </div>
                     <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.description}</p>
                     <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
                       <span className="font-mono">~{item.estimatedDays}d</span>
                       <span className="text-border">·</span>
                       <span>{item.copies} {item.copies === 1 ? "copy" : "copies"}</span>
+                      {how?.cost && (
+                        <>
+                          <span className="text-border">·</span>
+                          <span className="font-mono">{how.cost}</span>
+                        </>
+                      )}
+                    </div>
+                  </button>
+                </div>
+
+                {isOpen && how && (
+                  <div className="mt-4 ml-9 space-y-4 border-t border-border pt-4">
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
+                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Where to get it</p>
+                      </div>
+                      <p className="mt-1.5 text-xs leading-relaxed text-foreground">{how.where}</p>
+                    </div>
+
+                    <div>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">How to do it</p>
+                      <ol className="mt-2 space-y-1.5">
+                        {how.steps.map((s, i) => (
+                          <li key={i} className="flex gap-2.5 text-xs leading-relaxed text-foreground">
+                            <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-[10px] text-muted-foreground">
+                              {i + 1}
+                            </span>
+                            <span>{s}</span>
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+
+                    <div className="rounded-xl border border-border bg-background/50 p-3">
+                      <div className="flex items-center gap-2">
+                        <AlertCircle className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
+                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">What people forget</p>
+                      </div>
+                      <ul className="mt-2 space-y-1">
+                        {how.forgotten.map((f, i) => (
+                          <li key={i} className="text-xs leading-relaxed text-foreground">· {f}</li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    {how.tip && (
+                      <div className="flex gap-2 rounded-xl p-3" style={{ background: "oklch(0.74 0.13 235 / 0.08)" }}>
+                        <Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
+                        <p className="text-xs leading-relaxed text-foreground">{how.tip}</p>
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-3 text-[11px]">
+                      <span className="inline-flex items-center gap-1.5 text-muted-foreground">
+                        <Coins className="h-3 w-3" /> {how.cost}
+                      </span>
                       {item.officialUrl && item.officialUrl !== "#" && (
                         <a
                           href={item.officialUrl}
@@ -114,12 +186,18 @@ function ChecklistPage() {
                           rel="noreferrer"
                           className="ml-auto inline-flex items-center gap-1 text-primary"
                         >
-                          Official <ExternalLink className="h-3 w-3" />
+                          Official site <ExternalLink className="h-3 w-3" />
                         </a>
                       )}
                     </div>
                   </div>
-                </div>
+                )}
+
+                {isOpen && !how && (
+                  <div className="mt-4 ml-9 border-t border-border pt-4 text-xs text-muted-foreground">
+                    Detailed guidance for this step is coming soon. Check the official site for the latest requirements.
+                  </div>
+                )}
               </li>
             );
           })}
