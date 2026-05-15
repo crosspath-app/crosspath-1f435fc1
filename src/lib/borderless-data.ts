@@ -189,6 +189,233 @@ export const GLOSSARY: { term: string; meaning: string }[] = [
   { term: "Tax residency", meaning: "The country that has the right to tax your worldwide income, usually based on the 183-day rule." },
 ];
 
+export type HowTo = {
+  where: string;
+  steps: string[];
+  forgotten: string[];
+  cost: string;
+  tip?: string;
+};
+
+export const HOW_TO: Record<string, HowTo> = {
+  passport: {
+    where: "Your home country's passport office, embassy, or consulate.",
+    steps: [
+      "Book an appointment online (slots fill weeks in advance).",
+      "Gather: birth certificate, ID, biometric photo, old passport.",
+      "Pay the issuance fee and submit fingerprints in person.",
+      "Pick up or receive by mail in 2–6 weeks (rush options exist).",
+    ],
+    forgotten: ["Photo size rules differ per country", "Validity must extend 6+ months past your stay"],
+    cost: "€50–€150",
+    tip: "Scan every page and store an encrypted copy in cloud and on your phone.",
+  },
+  acceptance: {
+    where: "Your host university's international office.",
+    steps: [
+      "Confirm enrollment and pay any deposit required.",
+      "Request the official admission letter — original signed and stamped.",
+      "Ask for an extra copy in English for visa purposes.",
+      "Have it shipped or download a verifiable PDF.",
+    ],
+    forgotten: ["Some embassies require the original on paper, not a scan"],
+    cost: "Free (deposit may apply)",
+  },
+  visa: {
+    where: "The destination country's embassy or consulate in your home country.",
+    steps: [
+      "Check the exact visa category on the embassy's official site.",
+      "Book the appointment — slots can be 4–8 weeks out.",
+      "Prepare: passport, photos, acceptance/contract, funds proof, insurance, application form.",
+      "Attend the interview, submit biometrics, pay the fee.",
+      "Track your application; collect the visa sticker when ready.",
+    ],
+    forgotten: ["Apostille on diplomas", "Certified translations", "Extra passport photos"],
+    cost: "€60–€200",
+    tip: "Apply as early as legally allowed — usually 3 months before travel.",
+  },
+  workpermit: {
+    where: "Sponsored by your employer through the destination's labor authority.",
+    steps: [
+      "Receive the signed employment contract.",
+      "Employer files the work permit / sponsorship application.",
+      "You apply for the matching work visa at the embassy.",
+      "Enter the country and convert to a residence permit on arrival.",
+    ],
+    forgotten: ["Recognition of foreign qualifications", "Apostilled diplomas"],
+    cost: "€100–€400 (often paid by employer)",
+  },
+  contract: {
+    where: "From your employer's HR department.",
+    steps: [
+      "Negotiate salary, role, start date, and relocation support.",
+      "Request the signed contract in writing — PDF and original.",
+      "Have it translated if not in an official language of the destination.",
+    ],
+    forgotten: ["Probation clause", "Notice period", "Relocation allowance"],
+    cost: "Free",
+  },
+  qualifications: {
+    where: "Your home university plus the destination's recognition authority.",
+    steps: [
+      "Order official transcripts and diploma copies.",
+      "Get an apostille from your country's foreign affairs ministry.",
+      "Order certified translations into the destination's language.",
+      "Submit to the recognition body (e.g. ZAB in Germany, ENIC-NARIC in EU).",
+    ],
+    forgotten: ["Apostille must be on the original, not a copy"],
+    cost: "€50–€300",
+  },
+  nomadvisa: {
+    where: "Destination's consulate or online portal (varies by country).",
+    steps: [
+      "Verify income threshold (often €2,500–€3,500/month).",
+      "Gather contracts, invoices, and 6 months of bank statements.",
+      "Get international health insurance covering the full stay.",
+      "Submit application online or at the consulate; pay the fee.",
+    ],
+    forgotten: ["Background check from home country", "Tax residency implications"],
+    cost: "€60–€300",
+    tip: "Portugal, Spain, Estonia, and UAE have the most established schemes.",
+  },
+  income: {
+    where: "Your bank, accountant, or client portals.",
+    steps: [
+      "Download 6 months of bank statements (stamped if possible).",
+      "Gather active client contracts or employer letter.",
+      "Get an accountant's letter confirming average monthly income.",
+    ],
+    forgotten: ["Statements may need to be translated and stamped"],
+    cost: "Free–€100",
+  },
+  funds: {
+    where: "Your bank — sometimes a special blocked account in the destination.",
+    steps: [
+      "Confirm the required amount (e.g. ~€11,900/year for Germany).",
+      "Open a blocked account (Sperrkonto) with Expatrio, Fintiba, or Coracle.",
+      "Transfer the full sum and receive the confirmation letter.",
+      "Submit the letter with your visa application.",
+    ],
+    forgotten: ["Transfer can take 1–2 weeks to clear"],
+    cost: "€50–€150 setup",
+  },
+  insurance: {
+    where: "Public scheme on arrival or a recognized private insurer.",
+    steps: [
+      "Pick a provider accepted by the destination's authorities.",
+      "Buy minimum coverage required (Schengen: €30,000+).",
+      "Download the policy certificate in English.",
+      "Switch to local public insurance once registered.",
+    ],
+    forgotten: ["Coverage must start the day you enter the country"],
+    cost: "€30–€120 / month",
+  },
+  housing: {
+    where: "Local town hall, Bürgeramt, or municipal office.",
+    steps: [
+      "Sign a lease or get a landlord confirmation (Wohnungsgeberbestätigung).",
+      "Book an appointment at the registration office.",
+      "Bring passport, lease, and the landlord confirmation.",
+      "Receive your registration certificate (Meldebescheinigung).",
+    ],
+    forgotten: ["Most countries require registration within 14 days"],
+    cost: "Free or €10–€30",
+    tip: "Without registration you can't get a tax ID, bank account, or contract.",
+  },
+  tax: {
+    where: "Issued automatically by the tax office after registration.",
+    steps: [
+      "Complete your address registration first.",
+      "Wait 2–3 weeks for the tax ID letter by post.",
+      "Give the number to your employer or university.",
+    ],
+    forgotten: ["Check if your home country has a double-tax treaty"],
+    cost: "Free",
+  },
+  bank: {
+    where: "A local bank branch or a digital bank (N26, Revolut, Wise).",
+    steps: [
+      "Pick a bank — digital banks open in minutes, traditional ones need an appointment.",
+      "Provide passport, address registration, and tax ID.",
+      "Wait for the card by post (5–10 days).",
+    ],
+    forgotten: ["Some landlords only accept transfers from local IBANs"],
+    cost: "Free–€10/month",
+  },
+  marriage: {
+    where: "Civil registry of the country that issued the document.",
+    steps: [
+      "Order a recent original (issued in the last 6 months).",
+      "Get an apostille from the foreign affairs ministry.",
+      "Order a certified translation into the destination's language.",
+    ],
+    forgotten: ["Some countries require legalization, not apostille"],
+    cost: "€20–€80 per document",
+  },
+  familyvisa: {
+    where: "Destination's embassy in your home country.",
+    steps: [
+      "Sponsor proves income, housing size, and insurance coverage.",
+      "Applicant gathers passport, marriage/birth certificates, photos.",
+      "Book the embassy appointment and submit biometrics.",
+      "Wait 2–6 months for processing.",
+    ],
+    forgotten: ["Language test (A1/A2) is required in some countries"],
+    cost: "€75–€200",
+  },
+  return: {
+    where: "Any airline website or booking platform.",
+    steps: [
+      "Book a refundable or onward ticket within the allowed stay.",
+      "Print or save the e-ticket and full itinerary.",
+      "Carry it at the border — agents may ask.",
+    ],
+    forgotten: ["Onward ticket services exist if you don't want to commit"],
+    cost: "Varies",
+  },
+  id: {
+    where: "Bring whatever official document you have.",
+    steps: [
+      "Gather any ID — passport, national ID, birth certificate, driver's licence.",
+      "Keep originals safe; carry copies day-to-day.",
+      "If you have nothing, authorities will still register you.",
+    ],
+    forgotten: ["Photos of documents in cloud can substitute when originals are lost"],
+    cost: "Free",
+  },
+  asylum: {
+    where: "Border police or first government office you reach.",
+    steps: [
+      "State clearly that you are seeking asylum.",
+      "You'll be fingerprinted and registered.",
+      "Receive a temporary protection certificate while your case is reviewed.",
+      "You can request free legal aid — UNHCR and local NGOs help.",
+    ],
+    forgotten: ["You have the right to an interpreter at every step"],
+    cost: "Free",
+  },
+  register: {
+    where: "Local immigration or reception office.",
+    steps: [
+      "Present yourself within the legal window.",
+      "Provide biometrics and a brief statement.",
+      "Receive your protection certificate and case number.",
+    ],
+    forgotten: ["Keep the case number — it unlocks healthcare and housing"],
+    cost: "Free",
+  },
+  health: {
+    where: "Designated reception centers or partner clinics.",
+    steps: [
+      "Attend the basic health screening (free).",
+      "Receive vaccinations as needed.",
+      "Get your health card linked to your case number.",
+    ],
+    forgotten: ["Bring any medical records you have"],
+    cost: "Free",
+  },
+};
+
 export const COMPARE_ROWS = [
   { country: "Germany", flag: "🇩🇪", studentHours: "20h/week", visaTime: "1–3 mo", workRights: "Open" },
   { country: "France", flag: "🇫🇷", studentHours: "20h/week", visaTime: "~1 mo", workRights: "Open" },
