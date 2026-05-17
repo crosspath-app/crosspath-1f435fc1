@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as CostRouteImport } from './routes/cost'
 import { Route as CompareRouteImport } from './routes/compare'
@@ -31,6 +32,11 @@ const TermsRoute = TermsRouteImport.update({
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRoute = LegalRouteImport.update({
+  id: '/legal',
+  path: '/legal',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HelpRoute = HelpRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
+  '/legal': typeof LegalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
+  '/legal': typeof LegalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
+  '/legal': typeof LegalRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cost'
     | '/help'
+    | '/legal'
     | '/sitemap.xml'
     | '/terms'
     | '/tools'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cost'
     | '/help'
+    | '/legal'
     | '/sitemap.xml'
     | '/terms'
     | '/tools'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/compare'
     | '/cost'
     | '/help'
+    | '/legal'
     | '/sitemap.xml'
     | '/terms'
     | '/tools'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   CostRoute: typeof CostRoute
   HelpRoute: typeof HelpRoute
+  LegalRoute: typeof LegalRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal': {
+      id: '/legal'
+      path: '/legal'
+      fullPath: '/legal'
+      preLoaderRoute: typeof LegalRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/help': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   CostRoute: CostRoute,
   HelpRoute: HelpRoute,
+  LegalRoute: LegalRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,
