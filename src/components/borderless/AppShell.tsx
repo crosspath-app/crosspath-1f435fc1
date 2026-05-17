@@ -13,7 +13,6 @@ const tabs = [
 
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
-  const t = useT();
   return (
     <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col bg-background">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
