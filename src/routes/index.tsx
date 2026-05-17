@@ -4,6 +4,7 @@ import { ArrowRight, Globe2, Plane } from "lucide-react";
 import { AppShell } from "@/components/borderless/AppShell";
 import { COUNTRIES, REASONS } from "@/lib/borderless-data";
 import { saveTrip, loadTrip } from "@/lib/trip-store";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   const navigate = useNavigate();
+  const t = useT();
   const existing = typeof window !== "undefined" ? loadTrip() : null;
   const [from, setFrom] = useState(existing?.from ?? "PL");
   const [to, setTo] = useState(existing?.to ?? "DE");
@@ -51,10 +53,10 @@ function Index() {
         </div>
 
         <div className="mt-10">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-primary">Boarding pass</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-primary">{t("home.boarding")}</p>
           <h1 className="mt-3 text-[34px] font-semibold leading-[1.05] tracking-tight text-foreground">
-            Move anywhere.<br />
-            <span className="text-muted-foreground">Skip the paperwork maze.</span>
+            {t("home.title.l1")}<br />
+            <span className="text-muted-foreground">{t("home.title.l2")}</span>
           </h1>
         </div>
 
@@ -62,7 +64,7 @@ function Index() {
         <div className="mt-8 overflow-hidden rounded-3xl border border-border" style={{ background: "var(--gradient-card)", boxShadow: "var(--shadow-card)" }}>
           <div className="flex items-stretch">
             <div className="flex-1 p-5">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">From</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.from")}</p>
               <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{fromCountry.code}</p>
               <p className="text-xs text-muted-foreground">{fromCountry.name}</p>
             </div>
@@ -72,13 +74,13 @@ function Index() {
               <div className="h-px w-8 bg-border" />
             </div>
             <div className="flex-1 p-5 text-right">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">To</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.to")}</p>
               <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{toCountry.code}</p>
               <p className="text-xs text-muted-foreground">{toCountry.name}</p>
             </div>
           </div>
           <div className="border-t border-dashed border-border px-5 py-3 flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Purpose</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.purpose")}</span>
             <span className="text-sm text-foreground">{REASONS.find((r) => r.id === reason)?.label}</span>
           </div>
         </div>
@@ -86,11 +88,11 @@ function Index() {
 
       {/* Selectors */}
       <section className="mt-10 px-6 space-y-6">
-        <Selector label="From" value={from} onChange={setFrom} />
-        <Selector label="To" value={to} onChange={setTo} />
+        <Selector label={t("home.from")} value={from} onChange={setFrom} />
+        <Selector label={t("home.to")} value={to} onChange={setTo} />
 
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">Reason</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">{t("home.reason")}</p>
           <div className="grid grid-cols-2 gap-2">
             {REASONS.map((r) => {
               const active = reason === r.id;
@@ -120,13 +122,11 @@ function Index() {
           className="group mt-2 flex w-full items-center justify-between rounded-2xl px-5 py-4 text-sm font-semibold tracking-tight text-primary-foreground transition-transform active:scale-[0.98]"
           style={{ background: "var(--gradient-primary)", boxShadow: "var(--shadow-glow)" }}
         >
-          <span>Generate my move plan</span>
+          <span>{t("home.cta")}</span>
           <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
         </button>
 
-        <p className="text-center text-[11px] text-muted-foreground">
-          Personalized in seconds · Works offline · No account needed
-        </p>
+        <p className="text-center text-[11px] text-muted-foreground">{t("home.footnote")}</p>
       </section>
     </AppShell>
   );
