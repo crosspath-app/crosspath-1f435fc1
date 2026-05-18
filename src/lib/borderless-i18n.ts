@@ -400,3 +400,32 @@ Object.assign(HOWTO_L, {
     cost: { en: "Free", es: "Gratis", fr: "Gratuit", de: "Kostenlos", it: "Gratis", pt: "Grátis", pl: "Bezpłatnie", uk: "Безкоштовно" },
   },
 });
+
+// ------- Public helpers -------
+export function useLocalized() {
+  const [lang] = useLang();
+  return useMemo(() => ({
+    lang,
+    reasons: REASONS_L.map((r) => ({ id: r.id, emoji: r.emoji, label: pick(r.label, lang), description: pick(r.description, lang) })),
+    category: (c: string) => pick(CATEGORIES_L[c], lang) || c,
+    item: (id: string) => {
+      const it = ITEMS_L[id];
+      return it ? { title: pick(it.title, lang), description: pick(it.description, lang) } : null;
+    },
+    glossary: GLOSSARY_L.map((g) => ({ term: pick(g.term, lang), meaning: pick(g.meaning, lang) })),
+    howto: (id: string) => {
+      const h = HOWTO_L[id];
+      if (!h) return null;
+      return {
+        where: pick(h.where, lang),
+        steps: pickArr(h.steps, lang),
+        forgotten: pickArr(h.forgotten, lang),
+        cost: pick(h.cost, lang),
+        tip: h.tip ? pick(h.tip, lang) : undefined,
+      };
+    },
+    countryName: (code: string) => {
+      try { return new Intl.DisplayNames([lang], { type: "region" }).of(code) ?? code; } catch { return code; }
+    },
+  }), [lang]);
+}
