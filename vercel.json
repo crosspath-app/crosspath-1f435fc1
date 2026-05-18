@@ -1,11 +1,10 @@
 {
   "buildCommand": "npm run build",
-  "outputDirectory": "dist",
+  "outputDirectory": "dist/public",
   "framework": "vite",
-  "rewrites": [
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
+  "functions": {
+    "dist/server.js": {
+      "runtime": "nodejs20.x"
     }
-  ]
+  }
 }
