@@ -2,9 +2,10 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, Globe2, Plane } from "lucide-react";
 import { AppShell } from "@/components/borderless/AppShell";
-import { COUNTRIES, REASONS } from "@/lib/borderless-data";
+import { COUNTRIES } from "@/lib/borderless-data";
 import { saveTrip, loadTrip } from "@/lib/trip-store";
 import { useT } from "@/lib/i18n";
+import { useLocalized } from "@/lib/borderless-i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +26,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const navigate = useNavigate();
   const t = useT();
+  const L = useLocalized();
   const existing = typeof window !== "undefined" ? loadTrip() : null;
   const [from, setFrom] = useState(existing?.from ?? "PL");
   const [to, setTo] = useState(existing?.to ?? "DE");
@@ -66,7 +68,7 @@ function Index() {
             <div className="flex-1 p-5">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.from")}</p>
               <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{fromCountry.code}</p>
-              <p className="text-xs text-muted-foreground">{fromCountry.name}</p>
+              <p className="text-xs text-muted-foreground">{L.countryName(fromCountry.code)}</p>
             </div>
             <div className="flex flex-col items-center justify-center px-2">
               <div className="h-px w-8 bg-border" />
@@ -76,12 +78,12 @@ function Index() {
             <div className="flex-1 p-5 text-right">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.to")}</p>
               <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{toCountry.code}</p>
-              <p className="text-xs text-muted-foreground">{toCountry.name}</p>
+              <p className="text-xs text-muted-foreground">{L.countryName(toCountry.code)}</p>
             </div>
           </div>
           <div className="border-t border-dashed border-border px-5 py-3 flex items-center justify-between">
             <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.purpose")}</span>
-            <span className="text-sm text-foreground">{REASONS.find((r) => r.id === reason)?.label}</span>
+            <span className="text-sm text-foreground">{L.reasons.find((r) => r.id === reason)?.label}</span>
           </div>
         </div>
       </section>
@@ -94,7 +96,7 @@ function Index() {
         <div>
           <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">{t("home.reason")}</p>
           <div className="grid grid-cols-2 gap-2">
-            {REASONS.map((r) => {
+            {L.reasons.map((r) => {
               const active = reason === r.id;
               return (
                 <button
