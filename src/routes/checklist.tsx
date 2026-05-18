@@ -2,8 +2,9 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins } from "lucide-react";
 import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { COUNTRIES, REASONS, GLOSSARY, HOW_TO } from "@/lib/borderless-data";
+import { COUNTRIES } from "@/lib/borderless-data";
 import { useTrip, useChecked } from "@/lib/trip-store";
+import { useLocalized } from "@/lib/borderless-i18n";
 
 export const Route = createFileRoute("/checklist")({
   head: () => ({
@@ -25,6 +26,7 @@ function ChecklistPage() {
   const [trip] = useTrip();
   const { checked, toggle } = useChecked();
   const [openId, setOpenId] = useState<string | null>(null);
+  const L = useLocalized();
 
   if (!trip) {
     return (
@@ -41,7 +43,7 @@ function ChecklistPage() {
 
   const fromC = COUNTRIES.find((c) => c.code === trip.from)!;
   const toC = COUNTRIES.find((c) => c.code === trip.to)!;
-  const reason = REASONS.find((r) => r.id === trip.reason)!;
+  const reason = L.reasons.find((r) => r.id === trip.reason)!;
   const total = trip.checklist.length;
   const done = trip.checklist.filter((c) => checked[c.id]).length;
   const readiness = Math.round((done / total) * 100);
@@ -79,7 +81,11 @@ function ChecklistPage() {
           {trip.checklist.map((item) => {
             const isDone = !!checked[item.id];
             const isOpen = openId === item.id;
-            const how = HOW_TO[item.id];
+            const how = L.howto(item.id);
+            const loc = L.item(item.id);
+            const title = loc?.title ?? item.title;
+            const description = loc?.description ?? item.description;
+            const categoryLabel = L.category(item.category);
             return (
               <li
                 key={item.id}
@@ -108,16 +114,16 @@ function ChecklistPage() {
                     className="min-w-0 flex-1 text-left"
                   >
                     <div className="flex items-baseline justify-between gap-2">
-                      <h3 className="text-sm font-semibold text-foreground">{item.title}</h3>
+                      <h3 className="text-sm font-semibold text-foreground">{title}</h3>
                       <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                        {item.category}
+                        {categoryLabel}
                         <ChevronDown
                           className="h-3.5 w-3.5 transition-transform"
                           style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)" }}
                         />
                       </span>
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{item.description}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{description}</p>
                     <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
                       <span className="font-mono">~{item.estimatedDays}d</span>
                       <span className="text-border">·</span>
@@ -211,7 +217,7 @@ function ChecklistPage() {
           <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</h2>
         </div>
         <ul className="mt-3 space-y-2">
-          {GLOSSARY.slice(0, 4).map((g) => (
+          {L.glossary.slice(0, 4).map((g) => (
             <li key={g.term} className="rounded-xl border border-border bg-card p-3">
               <p className="text-sm font-semibold text-foreground">{g.term}</p>
               <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{g.meaning}</p>
