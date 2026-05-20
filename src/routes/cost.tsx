@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowLeft, Coins } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { COST_PRESETS } from "@/lib/borderless-extras";
 import { useT } from "@/lib/i18n";
+import { useLocalizedExtras } from "@/lib/borderless-i18n-extras";
 
 export const Route = createFileRoute("/cost")({
   head: () => ({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/cost")({
 
 function CostPage() {
   const t = useT();
+  const { costPresets: COST_PRESETS, costRows: COST_ROW_DEFS, costDisclaimer } = useLocalizedExtras();
   const [preset, setPreset] = useState(COST_PRESETS[0].id);
   const base = COST_PRESETS.find((p) => p.id === preset) ?? COST_PRESETS[0];
 
@@ -49,16 +50,17 @@ function CostPage() {
   const buffer = Math.round(subtotal * 0.15);
   const total = subtotal + buffer;
 
-  const rows: { label: string; value: number; set: (n: number) => void; max: number }[] = [
-    { label: "Visa fees", value: visa, set: setVisa, max: 600 },
-    { label: "Flight / transport to country", value: flight, set: setFlight, max: 2000 },
-    { label: "Housing deposit", value: deposit, set: setDeposit, max: 5000 },
-    { label: "First month rent", value: rent, set: setRent, max: 3000 },
-    { label: "Insurance (1 month)", value: insurance, set: setInsurance, max: 400 },
-    { label: "Translations & apostilles", value: translations, set: setTranslations, max: 400 },
-    { label: "Local transport setup", value: transport, set: setTransport, max: 300 },
-    { label: "Emergency savings to land with", value: savings, set: setSavings, max: 6000 },
-  ];
+  const valByKey: Record<string, { value: number; set: (n: number) => void }> = {
+    visa: { value: visa, set: setVisa },
+    flight: { value: flight, set: setFlight },
+    housingDeposit: { value: deposit, set: setDeposit },
+    monthlyRent: { value: rent, set: setRent },
+    insurance: { value: insurance, set: setInsurance },
+    translations: { value: translations, set: setTranslations },
+    transport: { value: transport, set: setTransport },
+    initialSavings: { value: savings, set: setSavings },
+  };
+  const rows = COST_ROW_DEFS.map((d) => ({ label: d.label, max: d.max, ...valByKey[d.id] }));
 
   return (
     <AppShell>
@@ -127,9 +129,7 @@ function CostPage() {
 
       <div className="mx-6 mt-6 flex items-start gap-2 rounded-2xl border border-border bg-card p-4">
         <Coins className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.8} />
-        <p className="text-xs leading-relaxed text-muted-foreground">
-          Estimates in EUR. Real costs vary by city and personal choices — use this as a starting point, not a quote.
-        </p>
+          <p className="text-xs leading-relaxed text-muted-foreground">{costDisclaimer}</p>
       </div>
     </AppShell>
   );
