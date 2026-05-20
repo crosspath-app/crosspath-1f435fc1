@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { ArrowLeft, Search, Sparkles } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { TERMS } from "@/lib/borderless-extras";
 import { useT } from "@/lib/i18n";
+import { useLocalizedExtras } from "@/lib/borderless-i18n-extras";
 
 export const Route = createFileRoute("/terms")({
   head: () => ({
@@ -21,6 +21,7 @@ export const Route = createFileRoute("/terms")({
 
 function TermsPage() {
   const t = useT();
+  const { terms: TERMS } = useLocalizedExtras();
   const [q, setQ] = useState("");
   const filtered = useMemo(() => {
     const needle = q.trim().toLowerCase();
@@ -29,7 +30,7 @@ function TermsPage() {
       const hay = [e.term, e.bureaucratic, e.plain, ...(e.aliases ?? [])].join(" ").toLowerCase();
       return hay.includes(needle);
     });
-  }, [q]);
+  }, [q, TERMS]);
 
   return (
     <AppShell>
@@ -58,19 +59,19 @@ function TermsPage() {
         )}
         <ul className="space-y-3">
           {filtered.map((entry) => (
-            <li key={entry.term} className="rounded-2xl border border-border bg-card p-4">
+            <li key={entry.id} className="rounded-2xl border border-border bg-card p-4">
               <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">{entry.term}</p>
               <div className="mt-2.5 rounded-xl bg-muted/40 p-3">
-                <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">Bureaucratic</p>
+                <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">{t("terms.bureaucratic")}</p>
                 <p className="mt-1 text-xs leading-relaxed text-foreground/80 italic">"{entry.bureaucratic}"</p>
               </div>
               <div className="mt-2 flex gap-2 rounded-xl p-3" style={{ background: "oklch(0.74 0.13 235 / 0.08)" }}>
                 <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
                 <div>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">Plain</p>
+                  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">{t("terms.plain")}</p>
                   <p className="mt-1 text-sm leading-relaxed text-foreground">{entry.plain}</p>
                   {entry.example && (
-                    <p className="mt-1.5 text-[11px] text-muted-foreground">e.g. {entry.example}</p>
+                    <p className="mt-1.5 text-[11px] text-muted-foreground">{t("terms.egPrefix")} {entry.example}</p>
                   )}
                 </div>
               </div>

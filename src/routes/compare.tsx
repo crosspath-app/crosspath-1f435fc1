@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { COMPARE_ROWS } from "@/lib/borderless-data";
+import { useT } from "@/lib/i18n";
+import { useLocalizedExtras } from "@/lib/borderless-i18n-extras";
 
 export const Route = createFileRoute("/compare")({
   head: () => ({
@@ -19,20 +20,22 @@ export const Route = createFileRoute("/compare")({
 });
 
 function ComparePage() {
+  const t = useT();
+  const { compareRows: COMPARE_ROWS, compareHead, compareNote } = useLocalizedExtras();
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Compare"
-        title="Compare relocation destinations"
-        subtitle="Visa times, work rights, and rules — a quick glance to help you decide."
+        eyebrow={t("nav.compare")}
+        title={t("compare.title")}
+        subtitle={t("compare.subtitle")}
       />
       <div className="px-6">
         <div className="overflow-hidden rounded-2xl border border-border bg-card">
           <div className="grid grid-cols-[1.4fr_1fr_1fr_0.8fr] gap-2 border-b border-border bg-muted/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-            <span>Country</span>
-            <span>Student hrs</span>
-            <span>Visa time</span>
-            <span>Work</span>
+            <span>{compareHead.country}</span>
+            <span>{compareHead.studentHours}</span>
+            <span>{compareHead.visaTime}</span>
+            <span>{compareHead.workRights}</span>
           </div>
           {COMPARE_ROWS.map((row, i) => (
             <div
@@ -51,9 +54,7 @@ function ComparePage() {
           ))}
         </div>
 
-        <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
-          Data is indicative and updated periodically. Always verify with the official embassy or consulate before making decisions.
-        </p>
+        <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">{compareNote}</p>
       </div>
     </AppShell>
   );

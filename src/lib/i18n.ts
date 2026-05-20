@@ -66,6 +66,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Common questions, plain answers. Always confirm with the official source for your case.",
     "legal.disclaimer": "Informational only — not legal advice.",
     "lang.label": "Language",
+    "terms.bureaucratic": "Bureaucratic",
+    "terms.plain": "Plain",
+    "terms.egPrefix": "e.g.",
   },
   es: {
     "nav.home": "Inicio",
@@ -117,6 +120,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Preguntas comunes, respuestas claras. Confirma siempre con la fuente oficial.",
     "legal.disclaimer": "Solo informativo — no es asesoría legal.",
     "lang.label": "Idioma",
+    "terms.bureaucratic": "Burocrático",
+    "terms.plain": "Sencillo",
+    "terms.egPrefix": "ej.",
   },
   fr: {
     "nav.home": "Accueil",
@@ -168,6 +174,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Questions fréquentes, réponses claires. Vérifiez toujours la source officielle.",
     "legal.disclaimer": "Informatif seulement — pas un avis juridique.",
     "lang.label": "Langue",
+    "terms.bureaucratic": "Administratif",
+    "terms.plain": "Simple",
+    "terms.egPrefix": "ex.",
   },
   de: {
     "nav.home": "Start",
@@ -219,6 +228,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Häufige Fragen, klare Antworten. Immer offizielle Quelle prüfen.",
     "legal.disclaimer": "Nur Information — keine Rechtsberatung.",
     "lang.label": "Sprache",
+    "terms.bureaucratic": "Behördlich",
+    "terms.plain": "Klartext",
+    "terms.egPrefix": "z. B.",
   },
   it: {
     "nav.home": "Home",
@@ -270,6 +282,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Domande comuni, risposte chiare. Conferma sempre con la fonte ufficiale.",
     "legal.disclaimer": "Solo informativo — non è consulenza legale.",
     "lang.label": "Lingua",
+    "terms.bureaucratic": "Burocratico",
+    "terms.plain": "Semplice",
+    "terms.egPrefix": "es.",
   },
   pt: {
     "nav.home": "Início",
@@ -321,6 +336,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Perguntas comuns, respostas claras. Confirme com a fonte oficial.",
     "legal.disclaimer": "Apenas informativo — não é aconselhamento jurídico.",
     "lang.label": "Idioma",
+    "terms.bureaucratic": "Burocrático",
+    "terms.plain": "Simples",
+    "terms.egPrefix": "p. ex.",
   },
   pl: {
     "nav.home": "Start",
@@ -372,6 +390,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Typowe pytania, jasne odpowiedzi. Zawsze sprawdź źródło oficjalne.",
     "legal.disclaimer": "Tylko informacja — to nie porada prawna.",
     "lang.label": "Język",
+    "terms.bureaucratic": "Urzędowo",
+    "terms.plain": "Po ludzku",
+    "terms.egPrefix": "np.",
   },
   uk: {
     "nav.home": "Головна",
@@ -423,6 +444,9 @@ const STRINGS: Record<Lang, Dict> = {
     "legal.subtitle": "Часті питання, прості відповіді. Завжди звіряйте з офіційним джерелом.",
     "legal.disclaimer": "Лише інформація — це не юридична консультація.",
     "lang.label": "Мова",
+    "terms.bureaucratic": "Бюрократично",
+    "terms.plain": "Простими словами",
+    "terms.egPrefix": "напр.",
   },
 };
 

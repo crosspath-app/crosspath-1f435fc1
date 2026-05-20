@@ -2,8 +2,8 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowLeft, ChevronDown, ExternalLink, ShieldAlert } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { LEGAL_QA } from "@/lib/borderless-extras";
 import { useT } from "@/lib/i18n";
+import { useLocalizedExtras } from "@/lib/borderless-i18n-extras";
 
 export const Route = createFileRoute("/legal")({
   head: () => ({
@@ -15,20 +15,6 @@ export const Route = createFileRoute("/legal")({
       { property: "og:url", content: "https://crosspath.lovable.app/legal" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/legal" }],
-    scripts: [
-      {
-        type: "application/ld+json",
-        children: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: LEGAL_QA.map((qa) => ({
-            "@type": "Question",
-            name: qa.q,
-            acceptedAnswer: { "@type": "Answer", text: qa.answer },
-          })),
-        }),
-      },
-    ],
   }),
   component: LegalPage,
 });
@@ -41,6 +27,7 @@ function badgeColor(short: string) {
 
 function LegalPage() {
   const t = useT();
+  const { legal: LEGAL_QA } = useLocalizedExtras();
   const [openId, setOpenId] = useState<string | null>(null);
 
   return (
