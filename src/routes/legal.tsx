@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "Can I legally…? — Borderless" },
+      { title: "Can I legally…? — Crosspath" },
       { name: "description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
-      { property: "og:title", content: "Can I legally…? — Borderless" },
+      { property: "og:title", content: "Can I legally…? — Crosspath" },
       { property: "og:description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/legal" },
     ],
@@ -46,7 +46,7 @@ function LegalPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/tools" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        <Link to="/tools" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
           <ArrowLeft className="h-3 w-3" /> {t("nav.tools")}
         </Link>
       </div>
@@ -66,7 +66,7 @@ function LegalPage() {
                 <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold text-foreground">{qa.q}</p>
                   <span
-                    className="mt-2 inline-block rounded-full px-2.5 py-0.5 font-mono text-[10px] uppercase tracking-[0.18em] text-foreground"
+                    className="mt-2 inline-block rounded-full px-2.5 py-0.5 text-[10px] uppercase tracking-[0.18em] text-foreground font-mono"
                     style={{ background: badgeColor(qa.short) }}
                   >
                     {qa.short}
@@ -81,7 +81,7 @@ function LegalPage() {
                 <div className="space-y-2 border-t border-border px-4 pb-4 pt-3">
                   <p className="text-xs leading-relaxed text-foreground">{qa.answer}</p>
                   {qa.region && (
-                    <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">{qa.region}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-mono">{qa.region}</p>
                   )}
                   {qa.source && (
                     <a

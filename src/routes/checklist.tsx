@@ -9,9 +9,9 @@ import { useLocalized } from "@/lib/borderless-i18n";
 export const Route = createFileRoute("/checklist")({
   head: () => ({
     meta: [
-      { title: "Your move plan — Borderless" },
+      { title: "Your move plan — Crosspath" },
       { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
-      { property: "og:title", content: "Your move plan — Borderless" },
+      { property: "og:title", content: "Your move plan — Crosspath" },
       { property: "og:description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
       { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
     ],
@@ -51,10 +51,10 @@ function ChecklistPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        <Link to="/" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
           <ArrowLeft className="h-3 w-3" /> Edit trip
         </Link>
-        <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.3em] text-primary">
+        <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-primary font-mono">
           {fromC.flag} {fromC.code} → {toC.flag} {toC.code} · {reason.label}
         </p>
         <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
@@ -76,7 +76,7 @@ function ChecklistPage() {
 
       {/* Checklist */}
       <div className="mt-8 px-6">
-        <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Documents & steps</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">Documents & steps</h2>
         <ul className="mt-3 space-y-2.5">
           {trip.checklist.map((item) => {
             const isDone = !!checked[item.id];

@@ -7,9 +7,9 @@ import { COUNTRIES } from "@/lib/borderless-data";
 export const Route = createFileRoute("/help")({
   head: () => ({
     meta: [
-      { title: "Emergency help — Borderless" },
+      { title: "Emergency help — Crosspath" },
       { name: "description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
-      { property: "og:title", content: "Emergency help — Borderless" },
+      { property: "og:title", content: "Emergency help — Crosspath" },
       { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
       { property: "og:url", content: "https://crosspath.lovable.app/help" },
     ],
@@ -74,7 +74,7 @@ function HelpPage() {
     <AppShell>
       <PageHeader eyebrow="Help" title="Emergency help and resources" subtitle="Quick contacts and clear steps for the moments that matter." />
 
-      <h2 className="px-6 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Quick contacts</h2>
+      <h2 className="px-6 text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">Quick contacts</h2>
       <div className="mt-3 px-6 grid grid-cols-2 gap-3">
         {QUICK.map((q) => {
           const Icon = q.icon;
@@ -87,7 +87,7 @@ function HelpPage() {
               className="block rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary focus:border-primary focus:outline-none"
             >
               <Icon className="h-5 w-5 text-primary" strokeWidth={1.6} />
-              <p className="mt-3 text-[11px] font-mono uppercase tracking-[0.2em] text-muted-foreground">{q.title}</p>
+              <p className="mt-3 text-[11px] uppercase tracking-[0.2em] text-muted-foreground font-mono">{q.title}</p>
               <p className="mt-1 text-base font-semibold text-foreground">{q.value}</p>
               <p className="mt-1 text-[11px] leading-snug text-muted-foreground">{q.note}</p>
             </a>
@@ -96,11 +96,11 @@ function HelpPage() {
       </div>
 
       <div id="lost-passport" className="mt-8 px-6 scroll-mt-6">
-        <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Lost passport — what to do</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">Lost passport — what to do</h2>
         <ol className="mt-3 space-y-2">
           {STEPS.map((s, i) => (
             <li key={i} className="flex gap-3 rounded-xl border border-border bg-card p-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md font-mono text-xs text-primary-foreground"
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-xs text-primary-foreground font-mono"
                     style={{ background: "var(--gradient-primary)" }}>
                 {i + 1}
               </span>
@@ -112,9 +112,9 @@ function HelpPage() {
 
       <div className="mt-8 px-6">
         <div className="rounded-2xl border border-border p-5" style={{ background: "var(--gradient-card)" }}>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Tip</p>
+          <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-mono">Tip</p>
           <p className="mt-2 text-sm leading-relaxed text-foreground">
-            Keep a digital copy of your passport, visa, and insurance card in your phone — Borderless will soon let you store them encrypted.
+            Keep a digital copy of your passport, visa, and insurance card in your phone — Crosspath will soon let you store them encrypted.
           </p>
         </div>
       </div>

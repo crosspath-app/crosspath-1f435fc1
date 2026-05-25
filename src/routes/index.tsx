@@ -10,9 +10,9 @@ import { useLocalized } from "@/lib/borderless-i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Borderless — Move abroad without the bureaucracy" },
+      { title: "Crosspath — Move abroad without the bureaucracy" },
       { name: "description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
-      { property: "og:title", content: "Borderless — Move abroad without the bureaucracy" },
+      { property: "og:title", content: "Crosspath — Move abroad without the bureaucracy" },
       { property: "og:description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
       { property: "og:url", content: "https://crosspath.lovable.app/" },
     ],
@@ -49,7 +49,7 @@ function Index() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ background: "var(--gradient-primary)" }}>
               <Globe2 className="h-4 w-4 text-primary-foreground" strokeWidth={2.2} />
             </div>
-            <span className="font-mono text-xs uppercase tracking-[0.3em] text-foreground">Borderless</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-foreground font-mono">Crosspath</span>
           </div>
           <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">v0.1</span>
         </div>

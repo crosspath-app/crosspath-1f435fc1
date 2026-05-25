@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Bureaucratic terms translator — Borderless" },
+      { title: "Bureaucratic terms translator — Crosspath" },
       { name: "description", content: "Plain-language meaning for confusing immigration and visa phrases." },
-      { property: "og:title", content: "Bureaucratic terms translator — Borderless" },
+      { property: "og:title", content: "Bureaucratic terms translator — Crosspath" },
       { property: "og:description", content: "Plain-language meaning for confusing immigration and visa phrases." },
       { property: "og:url", content: "https://crosspath.lovable.app/terms" },
     ],
@@ -34,7 +34,7 @@ function TermsPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/tools" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        <Link to="/tools" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
           <ArrowLeft className="h-3 w-3" /> {t("nav.tools")}
         </Link>
       </div>
@@ -59,15 +59,15 @@ function TermsPage() {
         <ul className="space-y-3">
           {filtered.map((entry) => (
             <li key={entry.term} className="rounded-2xl border border-border bg-card p-4">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">{entry.term}</p>
+              <p className="text-[10px] uppercase tracking-[0.25em] text-primary font-mono">{entry.term}</p>
               <div className="mt-2.5 rounded-xl bg-muted/40 p-3">
-                <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">Bureaucratic</p>
+                <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground font-mono">Bureaucratic</p>
                 <p className="mt-1 text-xs leading-relaxed text-foreground/80 italic">"{entry.bureaucratic}"</p>
               </div>
               <div className="mt-2 flex gap-2 rounded-xl p-3" style={{ background: "oklch(0.74 0.13 235 / 0.08)" }}>
                 <Sparkles className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
                 <div>
-                  <p className="font-mono text-[9px] uppercase tracking-[0.25em] text-muted-foreground">Plain</p>
+                  <p className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground font-mono">Plain</p>
                   <p className="mt-1 text-sm leading-relaxed text-foreground">{entry.plain}</p>
                   {entry.example && (
                     <p className="mt-1.5 text-[11px] text-muted-foreground">e.g. {entry.example}</p>
