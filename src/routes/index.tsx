@@ -1,6 +1,6 @@
-import { createFileRoute, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
-import { ArrowRight, Globe2, Plane } from "lucide-react";
+import { ArrowRight, Globe2, Heart, Plane } from "lucide-react";
 import { AppShell } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
 import { saveTrip, loadTrip } from "@/lib/trip-store";
@@ -129,6 +129,17 @@ function Index() {
         </button>
 
         <p className="text-center text-[11px] text-muted-foreground">{t("home.footnote")}</p>
+
+        <Link
+          to="/support"
+          className="group mt-2 flex items-center justify-between rounded-2xl border border-border bg-card px-4 py-3 transition-colors hover:border-primary"
+        >
+          <span className="flex items-center gap-2.5">
+            <Heart className="h-4 w-4 text-primary" strokeWidth={2} />
+            <span className="text-xs font-medium text-foreground">{t("home.supportBanner")}</span>
+          </span>
+          <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
+        </Link>
       </section>
     </AppShell>
   );
