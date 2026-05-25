@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/cost")({
   head: () => ({
     meta: [
-      { title: "Relocation cost calculator — Borderless" },
+      { title: "Relocation cost calculator — Crosspath" },
       { name: "description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
-      { property: "og:title", content: "Relocation cost calculator — Borderless" },
+      { property: "og:title", content: "Relocation cost calculator — Crosspath" },
       { property: "og:description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
       { property: "og:url", content: "https://crosspath.lovable.app/cost" },
     ],
@@ -63,14 +63,14 @@ function CostPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/tools" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+        <Link to="/tools" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
           <ArrowLeft className="h-3 w-3" /> {t("nav.tools")}
         </Link>
       </div>
       <PageHeader eyebrow={t("nav.tools")} title={t("cost.title")} subtitle={t("cost.subtitle")} />
 
       <div className="px-6">
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{t("cost.preset")}</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">{t("cost.preset")}</p>
         <div className="mt-2 flex flex-wrap gap-2">
           {COST_PRESETS.map((p) => {
             const active = p.id === preset;
@@ -93,7 +93,7 @@ function CostPage() {
       </div>
 
       <div className="mx-6 mt-6 overflow-hidden rounded-2xl border border-border p-5" style={{ background: "var(--gradient-primary)" }}>
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em]" style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}>{t("cost.total")}</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] font-mono" style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}>{t("cost.total")}</p>
         <p className="mt-2 text-4xl font-semibold tracking-tight text-primary-foreground">€{total.toLocaleString()}</p>
         <p className="mt-1 text-[11px]" style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}>
           €{subtotal.toLocaleString()} + €{buffer.toLocaleString()} buffer · {t("cost.buffer")}

@@ -5,9 +5,9 @@ import { COMPARE_ROWS } from "@/lib/borderless-data";
 export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
-      { title: "Compare countries — Borderless" },
+      { title: "Compare countries — Crosspath" },
       { name: "description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
-      { property: "og:title", content: "Compare countries — Borderless" },
+      { property: "og:title", content: "Compare countries — Crosspath" },
       { property: "og:description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
       { property: "og:url", content: "https://crosspath.lovable.app/compare" },
     ],
@@ -28,7 +28,7 @@ function ComparePage() {
       />
       <div className="px-6">
         <div className="overflow-hidden rounded-2xl border border-border bg-card">
-          <div className="grid grid-cols-[1.4fr_1fr_1fr_0.8fr] gap-2 border-b border-border bg-muted/40 px-4 py-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="grid grid-cols-[1.4fr_1fr_1fr_0.8fr] gap-2 border-b border-border bg-muted/40 px-4 py-3 text-[10px] uppercase tracking-[0.18em] text-muted-foreground font-mono">
             <span>Country</span>
             <span>Student hrs</span>
             <span>Visa time</span>

@@ -89,7 +89,7 @@ export function PageHeader({
   return (
     <div className="px-6 pt-10 pb-6">
       {eyebrow && (
-        <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">{eyebrow}</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-mono">{eyebrow}</p>
       )}
       <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
         {title}
