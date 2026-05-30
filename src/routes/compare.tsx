@@ -6,14 +6,18 @@ export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
       { title: "Compare countries — Crosspath" },
-      { name: "description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
+      {
+        name: "description",
+        content: "Side-by-side comparison of visa difficulty, work rights, and processing times.",
+      },
       { property: "og:title", content: "Compare countries — Crosspath" },
-      { property: "og:description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
+      {
+        property: "og:description",
+        content: "Side-by-side comparison of visa difficulty, work rights, and processing times.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/compare" },
     ],
-    links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/compare" },
-    ],
+    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/compare" }],
   }),
   component: ComparePage,
 });
@@ -52,7 +56,8 @@ function ComparePage() {
         </div>
 
         <p className="mt-4 text-[11px] leading-relaxed text-muted-foreground">
-          Data is indicative and updated periodically. Always verify with the official embassy or consulate before making decisions.
+          Data is indicative and updated periodically. Always verify with the official embassy or
+          consulate before making decisions.
         </p>
       </div>
     </AppShell>

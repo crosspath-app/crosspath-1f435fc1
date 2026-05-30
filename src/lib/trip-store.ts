@@ -38,7 +38,11 @@ export function useChecked() {
     if (typeof window === "undefined") return;
     const raw = localStorage.getItem(CHECK_KEY);
     if (raw) {
-      try { setChecked(JSON.parse(raw)); } catch { /* ignore */ }
+      try {
+        setChecked(JSON.parse(raw));
+      } catch {
+        /* ignore */
+      }
     }
   }, []);
   function toggle(id: string) {

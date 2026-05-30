@@ -16,8 +16,12 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col bg-background">
       <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
-           style={{ background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)" }} />
+      <div
+        className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
+        style={{
+          background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)",
+        }}
+      />
       <LanguageSwitcher />
       <main className="relative flex-1 pb-24">{children}</main>
       <nav className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border bg-background/80 backdrop-blur-xl">
@@ -30,7 +34,9 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <Link
                   to={t.to}
                   className="flex flex-col items-center gap-1 py-3 text-[9px] font-medium uppercase tracking-[0.12em] transition-colors"
-                  style={{ color: active ? "var(--color-primary)" : "var(--color-muted-foreground)" }}
+                  style={{
+                    color: active ? "var(--color-primary)" : "var(--color-muted-foreground)",
+                  }}
                 >
                   <Icon className="h-5 w-5" strokeWidth={1.6} />
                   <span>{useTLabel(t.key)}</span>
@@ -55,7 +61,9 @@ function LanguageSwitcher() {
   const current = LANGS.find((l) => l.code === lang) ?? LANGS[0];
   return (
     <div className="absolute right-4 top-4 z-20">
-      <label className="sr-only" htmlFor="lang-switcher">{t("lang.label")}</label>
+      <label className="sr-only" htmlFor="lang-switcher">
+        {t("lang.label")}
+      </label>
       <div className="relative flex items-center gap-1.5 rounded-full border border-border bg-card/80 px-2.5 py-1.5 backdrop-blur">
         <Languages className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
         <span className="text-xs">{current.flag}</span>
@@ -94,9 +102,7 @@ export function PageHeader({
       <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
         {title}
       </h1>
-      {subtitle && (
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{subtitle}</p>
-      )}
+      {subtitle && <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{subtitle}</p>}
     </div>
   );
 }

@@ -9,9 +9,17 @@ export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
       { title: "Can I legally…? — Crosspath" },
-      { name: "description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
+      {
+        name: "description",
+        content:
+          "Quick legal answers about visas, work, freelancing, family and travel rights abroad.",
+      },
       { property: "og:title", content: "Can I legally…? — Crosspath" },
-      { property: "og:description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
+      {
+        property: "og:description",
+        content:
+          "Quick legal answers about visas, work, freelancing, family and travel rights abroad.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/legal" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/legal" }],
@@ -46,11 +54,18 @@ function LegalPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/tools" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
+        <Link
+          to="/tools"
+          className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono"
+        >
           <ArrowLeft className="h-3 w-3" /> {t("nav.tools")}
         </Link>
       </div>
-      <PageHeader eyebrow={t("nav.tools")} title={t("legal.title")} subtitle={t("legal.subtitle")} />
+      <PageHeader
+        eyebrow={t("nav.tools")}
+        title={t("legal.title")}
+        subtitle={t("legal.subtitle")}
+      />
 
       <ul className="space-y-3 px-6">
         {LEGAL_QA.map((qa) => {
@@ -81,7 +96,9 @@ function LegalPage() {
                 <div className="space-y-2 border-t border-border px-4 pb-4 pt-3">
                   <p className="text-xs leading-relaxed text-foreground">{qa.answer}</p>
                   {qa.region && (
-                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-mono">{qa.region}</p>
+                    <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground font-mono">
+                      {qa.region}
+                    </p>
                   )}
                   {qa.source && (
                     <a

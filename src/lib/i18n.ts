@@ -43,10 +43,12 @@ const STRINGS: Record<Lang, Dict> = {
     "checklist.how": "How to do it",
     "checklist.forget": "What people forget",
     "compare.title": "Compare destinations",
-    "compare.subtitle": "Side-by-side rules for students and workers, sourced from official portals.",
+    "compare.subtitle":
+      "Side-by-side rules for students and workers, sourced from official portals.",
     "help.title": "Emergency help and resources",
     "tools.title": "Tools",
-    "tools.subtitle": "Translate bureaucratic terms, budget your move, and check what you can legally do.",
+    "tools.subtitle":
+      "Translate bureaucratic terms, budget your move, and check what you can legally do.",
     "tools.terms.title": "Bureaucratic terms translator",
     "tools.terms.desc": "Plain-language meaning for confusing legal phrases.",
     "tools.cost.title": "Relocation cost calculator",
@@ -54,7 +56,8 @@ const STRINGS: Record<Lang, Dict> = {
     "tools.legal.title": "Can I legally…?",
     "tools.legal.desc": "Quick answers about visas, work and travel rights.",
     "terms.title": "Bureaucratic terms",
-    "terms.subtitle": "Type any phrase you don't understand — we'll explain it like a friend would.",
+    "terms.subtitle":
+      "Type any phrase you don't understand — we'll explain it like a friend would.",
     "terms.search": "Search a term (e.g. apostille, Anmeldung)",
     "terms.empty": "No matches. Try a shorter word.",
     "cost.title": "Relocation cost calculator",
@@ -63,12 +66,14 @@ const STRINGS: Record<Lang, Dict> = {
     "cost.total": "Estimated total",
     "cost.buffer": "We add a 15% emergency buffer.",
     "legal.title": "Can I legally…?",
-    "legal.subtitle": "Common questions, plain answers. Always confirm with the official source for your case.",
+    "legal.subtitle":
+      "Common questions, plain answers. Always confirm with the official source for your case.",
     "legal.disclaimer": "Informational only — not legal advice.",
     "lang.label": "Language",
     "support.eyebrow": "Support",
     "support.title": "Keep Crosspath free for everyone",
-    "support.subtitle": "We're independent and ad-free. Tip the project or unlock Premium to fund new countries, languages and updates.",
+    "support.subtitle":
+      "We're independent and ad-free. Tip the project or unlock Premium to fund new countries, languages and updates.",
     "support.tipJar": "Tip jar",
     "support.tip.coffee": "Buy us a coffee",
     "support.tip.fuel": "Fuel a new country guide",
@@ -137,7 +142,8 @@ const STRINGS: Record<Lang, Dict> = {
     "cost.total": "Total estimado",
     "cost.buffer": "Añadimos un 15% de margen.",
     "legal.title": "¿Puedo legalmente…?",
-    "legal.subtitle": "Preguntas comunes, respuestas claras. Confirma siempre con la fuente oficial.",
+    "legal.subtitle":
+      "Preguntas comunes, respuestas claras. Confirma siempre con la fuente oficial.",
     "legal.disclaimer": "Solo informativo — no es asesoría legal.",
     "lang.label": "Idioma",
   },
@@ -188,7 +194,8 @@ const STRINGS: Record<Lang, Dict> = {
     "cost.total": "Total estimé",
     "cost.buffer": "On ajoute 15% de marge d'urgence.",
     "legal.title": "Ai-je le droit de…?",
-    "legal.subtitle": "Questions fréquentes, réponses claires. Vérifiez toujours la source officielle.",
+    "legal.subtitle":
+      "Questions fréquentes, réponses claires. Vérifiez toujours la source officielle.",
     "legal.disclaimer": "Informatif seulement — pas un avis juridique.",
     "lang.label": "Langue",
   },
@@ -476,7 +483,9 @@ export function useLang() {
     setLangState(initial);
     const cb = () => setLangState(currentLang);
     listeners.add(cb);
-    return () => { listeners.delete(cb); };
+    return () => {
+      listeners.delete(cb);
+    };
   }, []);
   return [lang, setLang] as const;
 }

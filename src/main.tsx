@@ -1,8 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "@tanstack/react-router";
+import { inject } from "@vercel/analytics";
 import { getRouter } from "./router";
 import "./styles.css";
+
+inject();
 
 const router = getRouter();
 
