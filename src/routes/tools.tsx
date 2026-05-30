@@ -7,9 +7,17 @@ export const Route = createFileRoute("/tools")({
   head: () => ({
     meta: [
       { title: "Tools — Crosspath" },
-      { name: "description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
+      {
+        name: "description",
+        content:
+          "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad.",
+      },
       { property: "og:title", content: "Tools — Crosspath" },
-      { property: "og:description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
+      {
+        property: "og:description",
+        content:
+          "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/tools" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/tools" }],
@@ -20,13 +28,22 @@ export const Route = createFileRoute("/tools")({
 function ToolsPage() {
   const t = useT();
   const tiles = [
-    { to: "/terms", icon: BookOpenText, title: t("tools.terms.title"), desc: t("tools.terms.desc") },
+    {
+      to: "/terms",
+      icon: BookOpenText,
+      title: t("tools.terms.title"),
+      desc: t("tools.terms.desc"),
+    },
     { to: "/cost", icon: Calculator, title: t("tools.cost.title"), desc: t("tools.cost.desc") },
     { to: "/legal", icon: Scale, title: t("tools.legal.title"), desc: t("tools.legal.desc") },
   ] as const;
   return (
     <AppShell>
-      <PageHeader eyebrow={t("nav.tools")} title={t("tools.title")} subtitle={t("tools.subtitle")} />
+      <PageHeader
+        eyebrow={t("nav.tools")}
+        title={t("tools.title")}
+        subtitle={t("tools.subtitle")}
+      />
       <div className="px-6 space-y-3">
         {tiles.map((tile) => {
           const Icon = tile.icon;
@@ -36,7 +53,10 @@ function ToolsPage() {
               to={tile.to}
               className="group flex items-start gap-4 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-primary"
             >
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl" style={{ background: "var(--gradient-primary)" }}>
+              <div
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl"
+                style={{ background: "var(--gradient-primary)" }}
+              >
                 <Icon className="h-5 w-5 text-primary-foreground" strokeWidth={1.8} />
               </div>
               <div className="min-w-0 flex-1">

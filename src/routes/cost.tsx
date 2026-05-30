@@ -9,9 +9,17 @@ export const Route = createFileRoute("/cost")({
   head: () => ({
     meta: [
       { title: "Relocation cost calculator — Crosspath" },
-      { name: "description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
+      {
+        name: "description",
+        content:
+          "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings.",
+      },
       { property: "og:title", content: "Relocation cost calculator — Crosspath" },
-      { property: "og:description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
+      {
+        property: "og:description",
+        content:
+          "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/cost" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/cost" }],
@@ -37,9 +45,14 @@ function CostPage() {
     const p = COST_PRESETS.find((x) => x.id === id);
     if (!p) return;
     setPreset(id);
-    setVisa(p.visa); setFlight(p.flight); setDeposit(p.housingDeposit);
-    setRent(p.monthlyRent); setInsurance(p.insurance); setTranslations(p.translations);
-    setTransport(p.transport); setSavings(p.initialSavings);
+    setVisa(p.visa);
+    setFlight(p.flight);
+    setDeposit(p.housingDeposit);
+    setRent(p.monthlyRent);
+    setInsurance(p.insurance);
+    setTranslations(p.translations);
+    setTransport(p.transport);
+    setSavings(p.initialSavings);
   }
 
   const subtotal = useMemo(
@@ -63,14 +76,19 @@ function CostPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/tools" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
+        <Link
+          to="/tools"
+          className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono"
+        >
           <ArrowLeft className="h-3 w-3" /> {t("nav.tools")}
         </Link>
       </div>
       <PageHeader eyebrow={t("nav.tools")} title={t("cost.title")} subtitle={t("cost.subtitle")} />
 
       <div className="px-6">
-        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">{t("cost.preset")}</p>
+        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">
+          {t("cost.preset")}
+        </p>
         <div className="mt-2 flex flex-wrap gap-2">
           {COST_PRESETS.map((p) => {
             const active = p.id === preset;
@@ -92,9 +110,19 @@ function CostPage() {
         </div>
       </div>
 
-      <div className="mx-6 mt-6 overflow-hidden rounded-2xl border border-border p-5" style={{ background: "var(--gradient-primary)" }}>
-        <p className="text-[10px] uppercase tracking-[0.3em] font-mono" style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}>{t("cost.total")}</p>
-        <p className="mt-2 text-4xl font-semibold tracking-tight text-primary-foreground">€{total.toLocaleString()}</p>
+      <div
+        className="mx-6 mt-6 overflow-hidden rounded-2xl border border-border p-5"
+        style={{ background: "var(--gradient-primary)" }}
+      >
+        <p
+          className="text-[10px] uppercase tracking-[0.3em] font-mono"
+          style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}
+        >
+          {t("cost.total")}
+        </p>
+        <p className="mt-2 text-4xl font-semibold tracking-tight text-primary-foreground">
+          €{total.toLocaleString()}
+        </p>
         <p className="mt-1 text-[11px]" style={{ color: "oklch(0.14 0.03 260 / 0.7)" }}>
           €{subtotal.toLocaleString()} + €{buffer.toLocaleString()} buffer · {t("cost.buffer")}
         </p>
@@ -128,7 +156,8 @@ function CostPage() {
       <div className="mx-6 mt-6 flex items-start gap-2 rounded-2xl border border-border bg-card p-4">
         <Coins className="mt-0.5 h-4 w-4 shrink-0 text-primary" strokeWidth={1.8} />
         <p className="text-xs leading-relaxed text-muted-foreground">
-          Estimates in EUR. Real costs vary by city and personal choices — use this as a starting point, not a quote.
+          Estimates in EUR. Real costs vary by city and personal choices — use this as a starting
+          point, not a quote.
         </p>
       </div>
     </AppShell>

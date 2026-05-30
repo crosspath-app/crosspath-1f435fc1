@@ -11,14 +11,18 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Crosspath — Move abroad without the bureaucracy" },
-      { name: "description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      {
+        name: "description",
+        content: "Tell us where you're going. We'll generate the documents, deadlines and steps.",
+      },
       { property: "og:title", content: "Crosspath — Move abroad without the bureaucracy" },
-      { property: "og:description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      {
+        property: "og:description",
+        content: "Tell us where you're going. We'll generate the documents, deadlines and steps.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/" },
     ],
-    links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/" },
-    ],
+    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/" }],
   }),
   component: Index,
 });
@@ -46,28 +50,45 @@ function Index() {
       <section className="relative px-6 pt-12">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg" style={{ background: "var(--gradient-primary)" }}>
+            <div
+              className="flex h-8 w-8 items-center justify-center rounded-lg"
+              style={{ background: "var(--gradient-primary)" }}
+            >
               <Globe2 className="h-4 w-4 text-primary-foreground" strokeWidth={2.2} />
             </div>
-            <span className="text-xs uppercase tracking-[0.3em] text-foreground font-mono">Crosspath</span>
+            <span className="text-xs uppercase tracking-[0.3em] text-foreground font-mono">
+              Crosspath
+            </span>
           </div>
-          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">v0.1</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+            v0.1
+          </span>
         </div>
 
         <div className="mt-10">
-          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-primary">{t("home.boarding")}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.32em] text-primary">
+            {t("home.boarding")}
+          </p>
           <h1 className="mt-3 text-[34px] font-semibold leading-[1.05] tracking-tight text-foreground">
-            {t("home.title.l1")}<br />
+            {t("home.title.l1")}
+            <br />
             <span className="text-muted-foreground">{t("home.title.l2")}</span>
           </h1>
         </div>
 
         {/* Boarding-pass card */}
-        <div className="mt-8 overflow-hidden rounded-3xl border border-border" style={{ background: "var(--gradient-card)", boxShadow: "var(--shadow-card)" }}>
+        <div
+          className="mt-8 overflow-hidden rounded-3xl border border-border"
+          style={{ background: "var(--gradient-card)", boxShadow: "var(--shadow-card)" }}
+        >
           <div className="flex items-stretch">
             <div className="flex-1 p-5">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.from")}</p>
-              <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{fromCountry.code}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                {t("home.from")}
+              </p>
+              <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">
+                {fromCountry.code}
+              </p>
               <p className="text-xs text-muted-foreground">{L.countryName(fromCountry.code)}</p>
             </div>
             <div className="flex flex-col items-center justify-center px-2">
@@ -76,14 +97,22 @@ function Index() {
               <div className="h-px w-8 bg-border" />
             </div>
             <div className="flex-1 p-5 text-right">
-              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.to")}</p>
-              <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">{toCountry.code}</p>
+              <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                {t("home.to")}
+              </p>
+              <p className="mt-1 text-3xl font-semibold tracking-tight text-foreground">
+                {toCountry.code}
+              </p>
               <p className="text-xs text-muted-foreground">{L.countryName(toCountry.code)}</p>
             </div>
           </div>
           <div className="border-t border-dashed border-border px-5 py-3 flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{t("home.purpose")}</span>
-            <span className="text-sm text-foreground">{L.reasons.find((r) => r.id === reason)?.label}</span>
+            <span className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+              {t("home.purpose")}
+            </span>
+            <span className="text-sm text-foreground">
+              {L.reasons.find((r) => r.id === reason)?.label}
+            </span>
           </div>
         </div>
       </section>
@@ -94,7 +123,9 @@ function Index() {
         <Selector label={t("home.to")} value={to} onChange={setTo} />
 
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">{t("home.reason")}</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-3">
+            {t("home.reason")}
+          </p>
           <div className="grid grid-cols-2 gap-2">
             {L.reasons.map((r) => {
               const active = reason === r.id;
@@ -111,7 +142,9 @@ function Index() {
                   <span className="text-xl leading-none">{r.emoji}</span>
                   <span>
                     <span className="block text-sm font-medium text-foreground">{r.label}</span>
-                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">{r.description}</span>
+                    <span className="mt-0.5 block text-[11px] leading-snug text-muted-foreground">
+                      {r.description}
+                    </span>
                   </span>
                 </button>
               );
@@ -157,7 +190,12 @@ function Selector({
   const id = `selector-${label.toLowerCase().replace(/\s+/g, "-")}`;
   return (
     <div>
-      <label htmlFor={id} className="mb-2 block font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{label}</label>
+      <label
+        htmlFor={id}
+        className="mb-2 block font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+      >
+        {label}
+      </label>
       <div className="relative rounded-2xl border border-border bg-card">
         <select
           id={id}
@@ -168,11 +206,13 @@ function Selector({
         >
           {COUNTRIES.map((c) => (
             <option key={c.code} value={c.code} className="bg-card text-foreground">
-              {c.flag}  {c.name}
+              {c.flag} {c.name}
             </option>
           ))}
         </select>
-        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-mono text-xs text-muted-foreground">▾</span>
+        <span className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 font-mono text-xs text-muted-foreground">
+          ▾
+        </span>
       </div>
     </div>
   );

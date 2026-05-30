@@ -1,5 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  Check,
+  ChevronDown,
+  ExternalLink,
+  Sparkles,
+  MapPin,
+  AlertCircle,
+  Lightbulb,
+  Coins,
+} from "lucide-react";
 import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
@@ -10,14 +21,18 @@ export const Route = createFileRoute("/checklist")({
   head: () => ({
     meta: [
       { title: "Your move plan — Crosspath" },
-      { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+      {
+        name: "description",
+        content: "Personalized checklist, deadlines, and Move Score for your relocation.",
+      },
       { property: "og:title", content: "Your move plan — Crosspath" },
-      { property: "og:description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+      {
+        property: "og:description",
+        content: "Personalized checklist, deadlines, and Move Score for your relocation.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
     ],
-    links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/checklist" },
-    ],
+    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/checklist" }],
   }),
   component: ChecklistPage,
 });
@@ -31,7 +46,11 @@ function ChecklistPage() {
   if (!trip) {
     return (
       <AppShell>
-        <PageHeader eyebrow="Checklist" title="No trip yet" subtitle="Create one from the home screen to see your personalized plan." />
+        <PageHeader
+          eyebrow="Checklist"
+          title="No trip yet"
+          subtitle="Create one from the home screen to see your personalized plan."
+        />
         <div className="px-6">
           <Link to="/" className="inline-flex items-center gap-2 text-sm text-primary">
             <ArrowLeft className="h-4 w-4" /> Back to start
@@ -51,7 +70,10 @@ function ChecklistPage() {
   return (
     <AppShell>
       <div className="px-6 pt-10">
-        <Link to="/" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono"
+        >
           <ArrowLeft className="h-3 w-3" /> Edit trip
         </Link>
         <p className="mt-4 text-[10px] uppercase tracking-[0.3em] text-primary font-mono">
@@ -71,12 +93,16 @@ function ChecklistPage() {
       <div className="mx-6 mt-3 flex items-center gap-2 rounded-xl border border-border bg-card px-3 py-2.5">
         <Calendar className="h-4 w-4 text-primary" strokeWidth={1.6} />
         <span className="text-xs text-muted-foreground">Estimated timeline</span>
-        <span className="ml-auto text-sm font-medium text-foreground">~{trip.timelineWeeks} weeks</span>
+        <span className="ml-auto text-sm font-medium text-foreground">
+          ~{trip.timelineWeeks} weeks
+        </span>
       </div>
 
       {/* Checklist */}
       <div className="mt-8 px-6">
-        <h2 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">Documents & steps</h2>
+        <h2 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">
+          Documents & steps
+        </h2>
         <ul className="mt-3 space-y-2.5">
           {trip.checklist.map((item) => {
             const isDone = !!checked[item.id];
@@ -123,11 +149,15 @@ function ChecklistPage() {
                         />
                       </span>
                     </div>
-                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">{description}</p>
+                    <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                      {description}
+                    </p>
                     <div className="mt-3 flex items-center gap-3 text-[11px] text-muted-foreground">
                       <span className="font-mono">~{item.estimatedDays}d</span>
                       <span className="text-border">·</span>
-                      <span>{item.copies} {item.copies === 1 ? "copy" : "copies"}</span>
+                      <span>
+                        {item.copies} {item.copies === 1 ? "copy" : "copies"}
+                      </span>
                       {how?.cost && (
                         <>
                           <span className="text-border">·</span>
@@ -143,16 +173,23 @@ function ChecklistPage() {
                     <div>
                       <div className="flex items-center gap-2">
                         <MapPin className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
-                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">Where to get it</p>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                          Where to get it
+                        </p>
                       </div>
                       <p className="mt-1.5 text-xs leading-relaxed text-foreground">{how.where}</p>
                     </div>
 
                     <div>
-                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">How to do it</p>
+                      <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                        How to do it
+                      </p>
                       <ol className="mt-2 space-y-1.5">
                         {how.steps.map((s, i) => (
-                          <li key={i} className="flex gap-2.5 text-xs leading-relaxed text-foreground">
+                          <li
+                            key={i}
+                            className="flex gap-2.5 text-xs leading-relaxed text-foreground"
+                          >
                             <span className="mt-0.5 flex h-4 w-4 shrink-0 items-center justify-center rounded-sm bg-muted font-mono text-[10px] text-muted-foreground">
                               {i + 1}
                             </span>
@@ -165,18 +202,28 @@ function ChecklistPage() {
                     <div className="rounded-xl border border-border bg-background/50 p-3">
                       <div className="flex items-center gap-2">
                         <AlertCircle className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
-                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">What people forget</p>
+                        <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
+                          What people forget
+                        </p>
                       </div>
                       <ul className="mt-2 space-y-1">
                         {how.forgotten.map((f, i) => (
-                          <li key={i} className="text-xs leading-relaxed text-foreground">· {f}</li>
+                          <li key={i} className="text-xs leading-relaxed text-foreground">
+                            · {f}
+                          </li>
                         ))}
                       </ul>
                     </div>
 
                     {how.tip && (
-                      <div className="flex gap-2 rounded-xl p-3" style={{ background: "oklch(0.74 0.13 235 / 0.08)" }}>
-                        <Lightbulb className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary" strokeWidth={1.8} />
+                      <div
+                        className="flex gap-2 rounded-xl p-3"
+                        style={{ background: "oklch(0.74 0.13 235 / 0.08)" }}
+                      >
+                        <Lightbulb
+                          className="mt-0.5 h-3.5 w-3.5 shrink-0 text-primary"
+                          strokeWidth={1.8}
+                        />
                         <p className="text-xs leading-relaxed text-foreground">{how.tip}</p>
                       </div>
                     )}
@@ -201,7 +248,8 @@ function ChecklistPage() {
 
                 {isOpen && !how && (
                   <div className="mt-4 ml-9 border-t border-border pt-4 text-xs text-muted-foreground">
-                    Detailed guidance for this step is coming soon. Check the official site for the latest requirements.
+                    Detailed guidance for this step is coming soon. Check the official site for the
+                    latest requirements.
                   </div>
                 )}
               </li>
@@ -214,7 +262,9 @@ function ChecklistPage() {
       <div className="mt-10 px-6">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.6} />
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</h2>
+          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+            Plain-language glossary
+          </h2>
         </div>
         <ul className="mt-3 space-y-2">
           {L.glossary.slice(0, 4).map((g) => (
@@ -229,7 +279,17 @@ function ChecklistPage() {
   );
 }
 
-function ScoreCard({ label, value, suffix, accent }: { label: string; value: number; suffix: string; accent?: boolean }) {
+function ScoreCard({
+  label,
+  value,
+  suffix,
+  accent,
+}: {
+  label: string;
+  value: number;
+  suffix: string;
+  accent?: boolean;
+}) {
   return (
     <div
       className="relative overflow-hidden rounded-2xl border border-border p-4"

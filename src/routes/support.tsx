@@ -7,9 +7,16 @@ export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
       { title: "Support Crosspath — Donate or go Premium" },
-      { name: "description", content: "Keep Crosspath free and ad-free. Tip the project or unlock Premium for unlimited plans, offline export and priority updates." },
+      {
+        name: "description",
+        content:
+          "Keep Crosspath free and ad-free. Tip the project or unlock Premium for unlimited plans, offline export and priority updates.",
+      },
       { property: "og:title", content: "Support Crosspath — Donate or go Premium" },
-      { property: "og:description", content: "Keep Crosspath free and ad-free. Tip the project or unlock Premium." },
+      {
+        property: "og:description",
+        content: "Keep Crosspath free and ad-free. Tip the project or unlock Premium.",
+      },
       { property: "og:url", content: "https://crosspath.lovable.app/support" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/support" }],
@@ -73,9 +80,7 @@ function SupportPage() {
                 <p className="text-sm font-semibold text-foreground">
                   {tip.amount} · {tip.label}
                 </p>
-                <p className="mt-0.5 text-[11px] text-muted-foreground">
-                  {t("support.oneTime")}
-                </p>
+                <p className="mt-0.5 text-[11px] text-muted-foreground">{t("support.oneTime")}</p>
               </div>
               <ArrowRight className="h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
             </a>
@@ -100,9 +105,7 @@ function SupportPage() {
                   {t("support.premium.title")}
                 </h2>
               </div>
-              <p className="mt-1 text-xs text-muted-foreground">
-                {t("support.premium.subtitle")}
-              </p>
+              <p className="mt-1 text-xs text-muted-foreground">{t("support.premium.subtitle")}</p>
             </div>
             <div className="text-right">
               <p className="text-2xl font-semibold tracking-tight text-foreground">$4</p>
@@ -137,7 +140,10 @@ function SupportPage() {
 
       <section className="mt-10 px-6 pb-6 text-center">
         <p className="text-[11px] text-muted-foreground">{t("support.thanks")}</p>
-        <Link to="/" className="mt-2 inline-block text-xs text-primary underline-offset-4 hover:underline">
+        <Link
+          to="/"
+          className="mt-2 inline-block text-xs text-primary underline-offset-4 hover:underline"
+        >
           {t("support.back")}
         </Link>
       </section>
