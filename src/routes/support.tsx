@@ -19,18 +19,18 @@ export const Route = createFileRoute("/support")({
 
 // Replace these with your real donation / checkout URLs.
 const DONATE_URLS = {
-  coffee: "https://www.buymeacoffee.com/crosspath",
-  kofi: "https://ko-fi.com/crosspath",
-  paypal: "https://www.paypal.com/donate",
+
+  kofi: "ko-fi.com/crosspathsupport",
+
 };
 const PREMIUM_URL = "mailto:hello@crosspath.app?subject=Crosspath%20Premium";
 
 function SupportPage() {
   const t = useT();
   const tips = [
-    { amount: "$3", label: t("support.tip.coffee"), url: DONATE_URLS.coffee, icon: Coffee },
+   
     { amount: "$10", label: t("support.tip.fuel"), url: DONATE_URLS.kofi, icon: Heart },
-    { amount: "$25", label: t("support.tip.sponsor"), url: DONATE_URLS.paypal, icon: Sparkles },
+  
   ];
   const premiumPerks = [
     t("support.perk.unlimited"),
