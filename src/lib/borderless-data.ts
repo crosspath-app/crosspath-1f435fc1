@@ -416,10 +416,117 @@ export const HOW_TO: Record<string, HowTo> = {
   },
 };
 
-export const COMPARE_ROWS = [
-  { country: "Germany", flag: "🇩🇪", studentHours: "20h/week", visaTime: "1–3 mo", workRights: "Open" },
-  { country: "France", flag: "🇫🇷", studentHours: "20h/week", visaTime: "~1 mo", workRights: "Open" },
-  { country: "Netherlands", flag: "🇳🇱", studentHours: "16h/week", visaTime: "2–4 wk", workRights: "Open" },
-  { country: "Spain", flag: "🇪🇸", studentHours: "30h/week", visaTime: "1–2 mo", workRights: "Open" },
-  { country: "Sweden", flag: "🇸🇪", studentHours: "Unlimited", visaTime: "1–3 mo", workRights: "Open" },
+export type CompareCountry = {
+  code: string;
+  country: string;
+  flag: string;
+  region: "EU" | "Europe" | "Americas" | "Asia" | "Oceania" | "MENA" | "Africa";
+  language: string;
+  currency: string;
+  // Headline metrics
+  visaTime: string;          // typical processing for the main long-stay visa
+  studentHours: string;      // legal student work hours/week
+  workRights: "Open" | "Restricted" | "Sponsored" | "Limited";
+  nomadVisa: "Yes" | "No" | "Pilot";
+  // 0–100 indices (higher = better for movers)
+  englishScore: number;      // how easy to live in English
+  healthcareScore: number;   // public/affordable healthcare quality
+  safetyScore: number;       // general public safety
+  // Money
+  costIndex: number;         // monthly cost of living index (NYC = 100)
+  taxRate: string;           // typical personal income tax band
+  // Narrative
+  goodFor: string;
+  watchOut: string;
+};
+
+// Indicative data compiled from public sources (embassies, OECD, Numbeo, EF EPI).
+// Used for at-a-glance comparison only — verify before making decisions.
+export const COMPARE_COUNTRIES: CompareCountry[] = [
+  { code: "DE", country: "Germany", flag: "🇩🇪", region: "EU", language: "German", currency: "EUR",
+    visaTime: "1–3 months", studentHours: "20 h/week", workRights: "Open", nomadVisa: "Yes",
+    englishScore: 78, healthcareScore: 88, safetyScore: 82, costIndex: 62, taxRate: "14–45%",
+    goodFor: "Free public universities, strong job market, EU mobility.",
+    watchOut: "Heavy paperwork (Anmeldung, Sperrkonto) and long bank wait times." },
+  { code: "FR", country: "France", flag: "🇫🇷", region: "EU", language: "French", currency: "EUR",
+    visaTime: "~1 month", studentHours: "20 h/week", workRights: "Open", nomadVisa: "No",
+    englishScore: 62, healthcareScore: 90, safetyScore: 74, costIndex: 65, taxRate: "0–45%",
+    goodFor: "Cheap tuition, world-class healthcare, fast student visa.",
+    watchOut: "French is essentially required for admin and most jobs." },
+  { code: "NL", country: "Netherlands", flag: "🇳🇱", region: "EU", language: "Dutch", currency: "EUR",
+    visaTime: "2–4 weeks", studentHours: "16 h/week", workRights: "Open", nomadVisa: "No",
+    englishScore: 92, healthcareScore: 85, safetyScore: 84, costIndex: 70, taxRate: "37–50%",
+    goodFor: "Almost everyone speaks English, quick visa, 30% ruling for skilled hires.",
+    watchOut: "Severe housing shortage — start searching months early." },
+  { code: "ES", country: "Spain", flag: "🇪🇸", region: "EU", language: "Spanish", currency: "EUR",
+    visaTime: "1–2 months", studentHours: "30 h/week", workRights: "Open", nomadVisa: "Yes",
+    englishScore: 58, healthcareScore: 86, safetyScore: 80, costIndex: 55, taxRate: "19–47%",
+    goodFor: "Affordable, great climate, top digital-nomad visa (Beckham law).",
+    watchOut: "Bureaucracy is slow; NIE and padrón can take weeks." },
+  { code: "PT", country: "Portugal", flag: "🇵🇹", region: "EU", language: "Portuguese", currency: "EUR",
+    visaTime: "2–4 months", studentHours: "20 h/week", workRights: "Open", nomadVisa: "Yes",
+    englishScore: 76, healthcareScore: 78, safetyScore: 87, costIndex: 52, taxRate: "14.5–48%",
+    goodFor: "D7 and digital-nomad visas, low cost, very safe.",
+    watchOut: "AIMA appointment backlogs; rents rising fast in Lisbon/Porto." },
+  { code: "SE", country: "Sweden", flag: "🇸🇪", region: "EU", language: "Swedish", currency: "SEK",
+    visaTime: "1–3 months", studentHours: "Unlimited", workRights: "Open", nomadVisa: "No",
+    englishScore: 94, healthcareScore: 88, safetyScore: 80, costIndex: 75, taxRate: "32–52%",
+    goodFor: "English-friendly, generous student rights, great work-life balance.",
+    watchOut: "Tuition fees for non-EU students; high taxes and cost." },
+  { code: "IE", country: "Ireland", flag: "🇮🇪", region: "EU", language: "English", currency: "EUR",
+    visaTime: "4–8 weeks", studentHours: "20 h/week", workRights: "Sponsored", nomadVisa: "No",
+    englishScore: 100, healthcareScore: 72, safetyScore: 80, costIndex: 80, taxRate: "20–40%",
+    goodFor: "English-speaking, EU access, tech jobs in Dublin.",
+    watchOut: "Rents in Dublin are brutal; non-EU work needs employer sponsorship." },
+  { code: "GB", country: "United Kingdom", flag: "🇬🇧", region: "Europe", language: "English", currency: "GBP",
+    visaTime: "3 weeks", studentHours: "20 h/week", workRights: "Sponsored", nomadVisa: "No",
+    englishScore: 100, healthcareScore: 80, safetyScore: 76, costIndex: 85, taxRate: "20–45%",
+    goodFor: "Fast student visa, 2-year Graduate route, English-native.",
+    watchOut: "Skilled Worker visa needs licensed sponsor; high IHS health surcharge." },
+  { code: "CH", country: "Switzerland", flag: "🇨🇭", region: "Europe", language: "DE/FR/IT", currency: "CHF",
+    visaTime: "2–3 months", studentHours: "15 h/week", workRights: "Restricted", nomadVisa: "No",
+    englishScore: 80, healthcareScore: 92, safetyScore: 92, costIndex: 110, taxRate: "0–40%",
+    goodFor: "Top salaries, world-class healthcare and safety.",
+    watchOut: "Strict non-EU quotas; cost of living is the highest in Europe." },
+  { code: "CA", country: "Canada", flag: "🇨🇦", region: "Americas", language: "English/French", currency: "CAD",
+    visaTime: "8–12 weeks", studentHours: "24 h/week", workRights: "Open", nomadVisa: "Pilot",
+    englishScore: 95, healthcareScore: 82, safetyScore: 86, costIndex: 78, taxRate: "15–33%",
+    goodFor: "PGWP after studies, clear PR pathway via Express Entry.",
+    watchOut: "PAL/GIC rules tightened in 2024; housing very expensive." },
+  { code: "US", country: "United States", flag: "🇺🇸", region: "Americas", language: "English", currency: "USD",
+    visaTime: "2–6 months", studentHours: "20 h/week", workRights: "Restricted", nomadVisa: "No",
+    englishScore: 100, healthcareScore: 60, safetyScore: 65, costIndex: 100, taxRate: "10–37%",
+    goodFor: "F-1 + OPT, huge job market, top universities.",
+    watchOut: "H-1B lottery; healthcare costs; visa interview backlogs." },
+  { code: "AU", country: "Australia", flag: "🇦🇺", region: "Oceania", language: "English", currency: "AUD",
+    visaTime: "4–8 weeks", studentHours: "48 h/fortnight", workRights: "Open", nomadVisa: "No",
+    englishScore: 100, healthcareScore: 86, safetyScore: 84, costIndex: 82, taxRate: "0–45%",
+    goodFor: "Post-study work visa, high wages, English-native.",
+    watchOut: "High tuition and visa financial-proof requirements." },
+  { code: "JP", country: "Japan", flag: "🇯🇵", region: "Asia", language: "Japanese", currency: "JPY",
+    visaTime: "1–3 months", studentHours: "28 h/week", workRights: "Sponsored", nomadVisa: "Yes",
+    englishScore: 55, healthcareScore: 90, safetyScore: 96, costIndex: 70, taxRate: "5–45%",
+    goodFor: "Very safe, excellent healthcare, new digital-nomad visa (2024).",
+    watchOut: "Japanese is needed for most jobs and housing." },
+  { code: "SG", country: "Singapore", flag: "🇸🇬", region: "Asia", language: "English", currency: "SGD",
+    visaTime: "3–8 weeks", studentHours: "16 h/week", workRights: "Sponsored", nomadVisa: "No",
+    englishScore: 96, healthcareScore: 90, safetyScore: 95, costIndex: 95, taxRate: "0–24%",
+    goodFor: "English-first, low taxes, very safe, regional hub.",
+    watchOut: "Employment Pass salary floor is steep; rents soaring." },
+  { code: "AE", country: "UAE", flag: "🇦🇪", region: "MENA", language: "Arabic/English", currency: "AED",
+    visaTime: "2–4 weeks", studentHours: "Allowed", workRights: "Sponsored", nomadVisa: "Yes",
+    englishScore: 85, healthcareScore: 78, safetyScore: 90, costIndex: 75, taxRate: "0%",
+    goodFor: "No income tax, fast visas, English widely used.",
+    watchOut: "Work tied to employer/sponsor; conservative legal code." },
+  { code: "MX", country: "Mexico", flag: "🇲🇽", region: "Americas", language: "Spanish", currency: "MXN",
+    visaTime: "2–4 weeks", studentHours: "Allowed", workRights: "Limited", nomadVisa: "Yes",
+    englishScore: 50, healthcareScore: 70, safetyScore: 55, costIndex: 45, taxRate: "1.92–35%",
+    goodFor: "Low cost, easy temporary-resident visa, near North America.",
+    watchOut: "Safety varies sharply by region; bring some Spanish." },
 ];
+
+// Legacy alias kept for any external imports.
+export const COMPARE_ROWS = COMPARE_COUNTRIES.map((c) => ({
+  country: c.country, flag: c.flag, studentHours: c.studentHours,
+  visaTime: c.visaTime, workRights: c.workRights,
+}));
