@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Heart, Sparkles, Coffee, Crown, Check, ArrowRight } from "lucide-react";
+import { Heart, ArrowRight } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
-      { title: "Support Crosspath — Donate or go Premium" },
-      { name: "description", content: "Keep Crosspath free and ad-free. Tip the project or unlock Premium for unlimited plans, offline export and priority updates." },
-      { property: "og:title", content: "Support Crosspath — Donate or go Premium" },
-      { property: "og:description", content: "Keep Crosspath free and ad-free. Tip the project or unlock Premium." },
+      { title: "Support Crosspath — Donate" },
+      { name: "description", content: "Keep Crosspath free and ad-free. Tip the project to fund new countries, languages and updates." },
+      { property: "og:title", content: "Support Crosspath — Donate" },
+      { property: "og:description", content: "Keep Crosspath free and ad-free." },
       { property: "og:url", content: "https://crosspath.lovable.app/support" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/support" }],
