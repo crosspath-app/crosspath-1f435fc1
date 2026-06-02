@@ -78,11 +78,17 @@ function ChecklistPage() {
       <div className="mt-8 px-6">
         <h2 className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground font-mono">Documents & steps</h2>
         <ul className="mt-3 space-y-2.5">
-          {trip.checklist.map((item) => {
+          {trip.checklist
+            .filter((item) => {
+              // Skip items that don't apply in the destination country.
+              if (item.id === "housing" && ["GB","IE","US","CA","AU","NZ","SG"].includes(trip.to)) return false;
+              return true;
+            })
+            .map((item) => {
             const isDone = !!checked[item.id];
             const isOpen = openId === item.id;
             const how = L.howto(item.id);
-            const loc = L.item(item.id);
+            const loc = L.item(item.id, trip.to);
             const title = loc?.title ?? item.title;
             const description = loc?.description ?? item.description;
             const categoryLabel = L.category(item.category);
