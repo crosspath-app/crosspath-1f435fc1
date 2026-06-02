@@ -44,8 +44,10 @@ function ChecklistPage() {
   const fromC = COUNTRIES.find((c) => c.code === trip.from)!;
   const toC = COUNTRIES.find((c) => c.code === trip.to)!;
   const reason = L.reasons.find((r) => r.id === trip.reason)!;
-  const total = trip.checklist.length;
-  const done = trip.checklist.filter((c) => checked[c.id]).length;
+  const skipHousing = ["GB","IE","US","CA","AU","NZ","SG"].includes(trip.to);
+  const visibleChecklist = trip.checklist.filter((i) => !(i.id === "housing" && skipHousing));
+  const total = visibleChecklist.length;
+  const done = visibleChecklist.filter((c) => checked[c.id]).length;
   const readiness = Math.round((done / total) * 100);
 
   return (
