@@ -67,7 +67,7 @@ function HelpPage() {
     { icon: Phone, title: "Emergency", value: "112", note: "EU-wide emergency line", href: "tel:112" },
     { icon: FileWarning, title: "Lost passport", value: "Step-by-step", note: "Report, file, request emergency travel doc", href: "#lost-passport" },
     { icon: Building2, title: "Find embassy", value: "Locator", note: locatorNote, href: locatorUrl, external: true },
-    { icon: Globe2, title: "EU Immigration Portal", value: "immigration.europa.eu", note: "Official guidance", href: "https://immigration-portal.ec.europa.eu/", external: true },
+    { icon: Globe2, title: "EU Immigration Portal", value: "home-affairs.ec.europa.eu", note: "Official guidance", href: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en", external: true },
   ];
 
   return (

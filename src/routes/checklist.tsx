@@ -5,6 +5,7 @@ import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
 import { useTrip, useChecked } from "@/lib/trip-store";
 import { useLocalized } from "@/lib/borderless-i18n";
+import { useT } from "@/lib/i18n";
 
 export const Route = createFileRoute("/checklist")({
   head: () => ({
@@ -27,6 +28,7 @@ function ChecklistPage() {
   const { checked, toggle } = useChecked();
   const [openId, setOpenId] = useState<string | null>(null);
   const L = useLocalized();
+  const t = useT();
 
   if (!trip) {
     return (
@@ -222,7 +224,7 @@ function ChecklistPage() {
       <div className="mt-10 px-6">
         <div className="flex items-center gap-2">
           <Sparkles className="h-4 w-4 text-primary" strokeWidth={1.6} />
-          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Plain-language glossary</h2>
+          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">{t("checklist.glossary")}</h2>
         </div>
         <ul className="mt-3 space-y-2">
           {L.glossary.slice(0, 4).map((g) => (
