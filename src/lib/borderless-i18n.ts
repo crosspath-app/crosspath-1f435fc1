@@ -402,15 +402,56 @@ Object.assign(HOWTO_L, {
 });
 
 // ------- Public helpers -------
+
+// Country-specific local names for generic items (appended in parentheses).
+const COUNTRY_LOCAL_NAME: Record<string, Record<string, string>> = {
+  housing: {
+    DE: "Anmeldung",
+    AT: "Meldezettel",
+    CH: "Anmeldung",
+    NL: "BRP-inschrijving",
+    FR: "Justificatif de domicile",
+    ES: "Empadronamiento",
+    IT: "Residenza",
+    PT: "Atestado de residência",
+    PL: "Meldunek",
+    BE: "Inschrijving",
+    SE: "Folkbokföring",
+    DK: "Folkeregister",
+    NO: "Folkeregister",
+    FI: "Maistraatti",
+    CZ: "Cizinecká policie",
+    SK: "Cudzinecká polícia",
+    JP: "住民票",
+    KR: "외국인등록",
+    SG: "—",
+    GB: "—",
+    IE: "—",
+    US: "—",
+    CA: "—",
+    AU: "—",
+  },
+};
+
+function localizeForCountry(id: string, country: string | undefined, title: string): string {
+  if (!country) return title;
+  const local = COUNTRY_LOCAL_NAME[id]?.[country];
+  if (!local) return title;
+  if (local === "—") return title; // no specific local term — keep generic
+  return `${title} (${local})`;
+}
+
 export function useLocalized() {
   const [lang] = useLang();
   return useMemo(() => ({
     lang,
     reasons: REASONS_L.map((r) => ({ id: r.id, emoji: r.emoji, label: pick(r.label, lang), description: pick(r.description, lang) })),
     category: (c: string) => pick(CATEGORIES_L[c], lang) || c,
-    item: (id: string) => {
+    item: (id: string, country?: string) => {
       const it = ITEMS_L[id];
-      return it ? { title: pick(it.title, lang), description: pick(it.description, lang) } : null;
+      if (!it) return null;
+      const baseTitle = pick(it.title, lang);
+      return { title: localizeForCountry(id, country, baseTitle), description: pick(it.description, lang) };
     },
     glossary: GLOSSARY_L.map((g) => ({ term: pick(g.term, lang), meaning: pick(g.meaning, lang) })),
     howto: (id: string) => {
