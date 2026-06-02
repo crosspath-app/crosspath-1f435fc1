@@ -49,7 +49,7 @@ export function AppShell({ children }: { children: ReactNode }) {
 
       {/* Phone-frame container (desktop) / fullscreen (mobile) */}
       <div
-        className="relative mx-auto flex w-full max-w-md flex-col bg-background lg:my-0 lg:h-[860px] lg:max-h-[calc(100vh-6rem)] lg:w-[400px] lg:overflow-hidden lg:rounded-[42px] lg:border lg:border-border lg:shadow-2xl"
+        className="relative mx-auto flex min-h-screen w-full max-w-md flex-col bg-background lg:my-0 lg:h-[860px] lg:min-h-0 lg:max-h-[calc(100vh-6rem)] lg:w-[400px] lg:overflow-hidden lg:rounded-[42px] lg:border lg:border-border lg:shadow-2xl"
       >
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
         <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
