@@ -148,7 +148,7 @@ export const LEGAL_QA: LegalQA[] = [
     q: "Can I work on a student visa?",
     short: "Usually yes",
     answer: "Most countries allow students to work part-time — typically 15–20 hours per week during term and full-time in holidays. Germany allows 140 full days / 280 half days a year, France 964 hours/year, the Netherlands 16 hours/week, the UK up to 20 hours/week.",
-    source: { label: "EU Immigration Portal", url: "https://immigration-portal.ec.europa.eu/" },
+    source: { label: "EU Immigration Portal", url: "https://home-affairs.ec.europa.eu/policies/migration-and-asylum/eu-immigration-portal_en" },
   },
   {
     id: "freelance",
