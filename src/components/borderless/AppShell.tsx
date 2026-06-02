@@ -14,13 +14,49 @@ const tabs = [
 export function AppShell({ children }: { children: ReactNode }) {
   const location = useLocation();
   return (
-    <div className="relative mx-auto flex min-h-screen w-full max-w-md flex-col bg-background">
-      <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
-      <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
-           style={{ background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)" }} />
-      <LanguageSwitcher />
-      <main className="relative flex-1 pb-24">{children}</main>
-      <nav className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border bg-background/80 backdrop-blur-xl">
+    <div className="relative min-h-screen w-full bg-background lg:flex lg:items-stretch lg:justify-center lg:gap-12 lg:px-12 lg:py-12">
+      {/* Desktop side panel */}
+      <aside className="hidden lg:flex lg:w-[420px] lg:flex-col lg:justify-between lg:py-8">
+        <div>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Crosspath</p>
+          <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-foreground">
+            Move abroad,<br />skip the paperwork.
+          </h2>
+          <p className="mt-6 max-w-sm text-sm leading-relaxed text-muted-foreground">
+            Personalized relocation checklists, deadlines and plain‑language guides for anywhere in the world.
+            Designed mobile‑first — preview it the way millions of people will use it.
+          </p>
+        </div>
+        <div className="mt-8 grid grid-cols-2 gap-3 text-xs text-muted-foreground">
+          <div className="rounded-xl border border-border bg-card/60 p-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">65+</p>
+            <p className="mt-1">destinations</p>
+          </div>
+          <div className="rounded-xl border border-border bg-card/60 p-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">8</p>
+            <p className="mt-1">languages</p>
+          </div>
+          <div className="rounded-xl border border-border bg-card/60 p-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">6</p>
+            <p className="mt-1">move purposes</p>
+          </div>
+          <div className="rounded-xl border border-border bg-card/60 p-3">
+            <p className="font-mono text-[10px] uppercase tracking-[0.25em] text-primary">0€</p>
+            <p className="mt-1">always free</p>
+          </div>
+        </div>
+      </aside>
+
+      {/* Phone-frame container (desktop) / fullscreen (mobile) */}
+      <div
+        className="relative mx-auto flex w-full max-w-md flex-col bg-background lg:my-0 lg:h-[860px] lg:max-h-[calc(100vh-6rem)] lg:w-[400px] lg:overflow-hidden lg:rounded-[42px] lg:border lg:border-border lg:shadow-2xl"
+      >
+        <div className="pointer-events-none absolute inset-0 bg-grid opacity-[0.07]" />
+        <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
+             style={{ background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)" }} />
+        <LanguageSwitcher />
+        <main className="relative flex-1 overflow-y-auto pb-24">{children}</main>
+        <nav className="absolute bottom-0 left-0 right-0 z-30 border-t border-border bg-background/80 backdrop-blur-xl">
         <ul className="grid grid-cols-5">
           {tabs.map((t) => {
             const active = location.pathname === t.to;
@@ -40,6 +76,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           })}
         </ul>
       </nav>
+      </div>
     </div>
   );
 }
