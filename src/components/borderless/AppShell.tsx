@@ -55,8 +55,8 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
              style={{ background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)" }} />
         <LanguageSwitcher />
-        <main className="relative flex-1 overflow-y-auto pb-24">{children}</main>
-        <nav className="absolute bottom-0 left-0 right-0 z-30 border-t border-border bg-background/80 backdrop-blur-xl">
+        <main className="relative flex-1 pb-24 lg:overflow-y-auto">{children}</main>
+        <nav className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border bg-background/80 backdrop-blur-xl lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:w-auto lg:max-w-none lg:translate-x-0">
         <ul className="grid grid-cols-5">
           {tabs.map((t) => {
             const active = location.pathname === t.to;
