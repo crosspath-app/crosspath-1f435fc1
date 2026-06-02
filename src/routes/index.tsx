@@ -168,7 +168,7 @@ function Selector({
         >
           {COUNTRIES.map((c) => (
             <option key={c.code} value={c.code} className="bg-card text-foreground">
-              {c.flag}  {c.name}
+              {c.name}  {c.flag}
             </option>
           ))}
         </select>
