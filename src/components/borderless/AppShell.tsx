@@ -1,7 +1,8 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, Languages } from "lucide-react";
+import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, Languages, UserCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { LANGS, useLang, useT, type Lang } from "@/lib/i18n";
+import { useAuth } from "@/hooks/use-auth";
 
 const tabs = [
   { to: "/", key: "nav.home", icon: Home },
@@ -55,6 +56,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <div className="pointer-events-none absolute -top-24 left-1/2 h-72 w-72 -translate-x-1/2 rounded-full blur-3xl"
              style={{ background: "radial-gradient(circle, oklch(0.62 0.14 230 / 0.35), transparent 70%)" }} />
         <LanguageSwitcher />
+        <AccountButton />
         <main className="relative flex-1 pb-24 lg:overflow-y-auto">{children}</main>
         <nav className="fixed bottom-0 left-1/2 z-30 w-full max-w-md -translate-x-1/2 border-t border-border bg-background/80 backdrop-blur-xl lg:absolute lg:bottom-0 lg:left-0 lg:right-0 lg:w-auto lg:max-w-none lg:translate-x-0">
         <ul className="grid grid-cols-5">
@@ -110,6 +112,25 @@ function LanguageSwitcher() {
           ))}
         </select>
       </div>
+    </div>
+  );
+}
+
+function AccountButton() {
+  const { user, loading } = useAuth();
+  if (loading) return null;
+  return (
+    <div className="absolute left-4 top-4 z-20">
+      <Link
+        to={user ? "/account" : "/auth"}
+        className="flex items-center gap-1.5 rounded-full border border-border bg-card/80 px-2.5 py-1.5 backdrop-blur transition hover:bg-accent"
+        aria-label={user ? "Account" : "Sign in"}
+      >
+        <UserCircle2 className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
+        <span className="text-[11px] font-medium uppercase tracking-[0.15em] text-foreground">
+          {user ? "Account" : "Sign in"}
+        </span>
+      </Link>
     </div>
   );
 }
