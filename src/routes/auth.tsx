@@ -29,7 +29,7 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (!loading && user) navigate({ to: "/account" });
+    if (!loading && user) navigate({ to: "/onboarding" });
   }, [loading, user, navigate]);
 
   async function handleEmail(e: React.FormEvent) {
@@ -41,7 +41,7 @@ function AuthPage() {
           email,
           password,
           options: {
-            emailRedirectTo: `${window.location.origin}/account`,
+            emailRedirectTo: `${window.location.origin}/onboarding`,
             data: { display_name: displayName || email.split("@")[0] },
           },
         });
@@ -51,7 +51,7 @@ function AuthPage() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         toast.success("Welcome back!");
-        navigate({ to: "/account" });
+        navigate({ to: "/onboarding" });
       }
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
@@ -64,11 +64,11 @@ function AuthPage() {
     setBusy(true);
     try {
       const result = await lovable.auth.signInWithOAuth(provider, {
-        redirect_uri: `${window.location.origin}/account`,
+        redirect_uri: `${window.location.origin}/onboarding`,
       });
       if (result.error) throw result.error;
       if (result.redirected) return;
-      navigate({ to: "/account" });
+      navigate({ to: "/onboarding" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Sign-in failed");
       setBusy(false);
