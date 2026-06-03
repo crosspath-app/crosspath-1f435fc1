@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as CostRouteImport } from './routes/cost'
@@ -34,6 +35,11 @@ const TermsRoute = TermsRouteImport.update({
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OnboardingRoute = OnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/onboarding': typeof OnboardingRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/onboarding': typeof OnboardingRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/onboarding': typeof OnboardingRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/onboarding'
     | '/support'
     | '/terms'
     | '/tools'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/onboarding'
     | '/support'
     | '/terms'
     | '/tools'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/onboarding'
     | '/support'
     | '/terms'
     | '/tools'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   CostRoute: typeof CostRoute
   HelpRoute: typeof HelpRoute
   LegalRoute: typeof LegalRoute
+  OnboardingRoute: typeof OnboardingRoute
   SupportRoute: typeof SupportRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
@@ -194,6 +207,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/onboarding': {
+      id: '/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof OnboardingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   CostRoute: CostRoute,
   HelpRoute: HelpRoute,
   LegalRoute: LegalRoute,
+  OnboardingRoute: OnboardingRoute,
   SupportRoute: SupportRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,
