@@ -1,0 +1,5 @@
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS nationality TEXT,
+  ADD COLUMN IF NOT EXISTS destination_country TEXT,
+  ADD COLUMN IF NOT EXISTS move_reason TEXT,
+  ADD COLUMN IF NOT EXISTS onboarded_at TIMESTAMPTZ;

@@ -18,25 +18,37 @@ export type Database = {
         Row: {
           avatar_url: string | null
           created_at: string
+          destination_country: string | null
           display_name: string | null
           home_country: string | null
           id: string
+          move_reason: string | null
+          nationality: string | null
+          onboarded_at: string | null
           updated_at: string
         }
         Insert: {
           avatar_url?: string | null
           created_at?: string
+          destination_country?: string | null
           display_name?: string | null
           home_country?: string | null
           id: string
+          move_reason?: string | null
+          nationality?: string | null
+          onboarded_at?: string | null
           updated_at?: string
         }
         Update: {
           avatar_url?: string | null
           created_at?: string
+          destination_country?: string | null
           display_name?: string | null
           home_country?: string | null
           id?: string
+          move_reason?: string | null
+          nationality?: string | null
+          onboarded_at?: string | null
           updated_at?: string
         }
         Relationships: []
