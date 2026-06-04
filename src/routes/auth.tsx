@@ -69,7 +69,6 @@ function AuthPage() {
     }
   }
 
-
   return (
     <AppShell>
       <div className="flex flex-col gap-6 px-6 pt-6">
