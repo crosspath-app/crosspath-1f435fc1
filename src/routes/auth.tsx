@@ -29,7 +29,15 @@ function AuthPage() {
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
-    if (!loading && user) navigate({ to: "/onboarding" });
+    if (loading || !user) return;
+    (async () => {
+      const { data } = await supabase
+        .from("profiles")
+        .select("onboarded_at")
+        .eq("id", user.id)
+        .maybeSingle();
+      navigate({ to: data?.onboarded_at ? "/checklist" : "/onboarding" });
+    })();
   }, [loading, user, navigate]);
 
   async function handleEmail(e: React.FormEvent) {
@@ -51,7 +59,9 @@ function AuthPage() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         toast.success("Welcome back!");
-        navigate({ to: "/onboarding" });
+        const { data: prof } = await supabase
+          .from("profiles").select("onboarded_at").eq("id", (await supabase.auth.getUser()).data.user!.id).maybeSingle();
+        navigate({ to: prof?.onboarded_at ? "/checklist" : "/onboarding" });
       }
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
@@ -64,11 +74,11 @@ function AuthPage() {
     setBusy(true);
     try {
       const result = await lovable.auth.signInWithOAuth(provider, {
-        redirect_uri: `${window.location.origin}/onboarding`,
+        redirect_uri: `${window.location.origin}/checklist`,
       });
       if (result.error) throw result.error;
       if (result.redirected) return;
-      navigate({ to: "/onboarding" });
+      navigate({ to: "/checklist" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Sign-in failed");
       setBusy(false);
