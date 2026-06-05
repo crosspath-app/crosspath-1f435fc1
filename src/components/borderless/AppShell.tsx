@@ -76,8 +76,17 @@ export function AppShell({ children }: { children: ReactNode }) {
               </li>
             );
           })}
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+
+        {/* Footer links */}
+        <div className="absolute bottom-16 left-0 right-0 z-20 flex items-center justify-center gap-3 px-4 py-2 text-[9px] text-muted-foreground uppercase tracking-[0.15em] font-mono lg:hidden">
+          <Link to="/privacy" className="hover:text-foreground transition">Privacy</Link>
+          <span>·</span>
+          <Link to="/about" className="hover:text-foreground transition">About</Link>
+          <span>·</span>
+          <Link to="/support" className="hover:text-foreground transition">Support</Link>
+        </div>
       </div>
     </div>
   );

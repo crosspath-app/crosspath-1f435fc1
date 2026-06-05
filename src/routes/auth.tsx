@@ -25,6 +25,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -41,10 +42,14 @@ function AuthPage() {
 
   async function handleEmail(e: React.FormEvent) {
     e.preventDefault();
+    if (mode === "signup" && !privacyConsent) {
+      toast.error("You must agree to the Privacy Policy to create an account.");
+      return;
+    }
     setBusy(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data: signUpData, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -53,6 +58,14 @@ function AuthPage() {
           },
         });
         if (error) throw error;
+        // Record privacy consent timestamp on the profile
+        if (signUpData.user) {
+          await supabase.from("profiles").upsert({
+            id: signUpData.user.id,
+            display_name: displayName || email.split("@")[0],
+            privacy_consent_at: new Date().toISOString(),
+          });
+        }
         toast.success("Check your email to confirm your account.");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -119,6 +132,25 @@ function AuthPage() {
               className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
             />
           </Field>
+
+          {mode === "signup" && (
+            <label className="flex items-start gap-2.5 rounded-xl border border-border bg-card/60 p-3">
+              <input
+                type="checkbox"
+                checked={privacyConsent}
+                onChange={(e) => setPrivacyConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 accent-primary"
+              />
+              <span className="text-xs text-muted-foreground leading-relaxed">
+                I agree to the{" "}
+                <Link to="/privacy" className="text-primary underline underline-offset-2 hover:text-foreground">
+                  Privacy Policy
+                </Link>
+                . I understand Crosspath will store my email, display name, and move preferences to generate personalized checklists (GDPR/RODO compliant).
+              </span>
+            </label>
+          )}
+
           <button
             type="submit"
             disabled={busy}
@@ -136,6 +168,12 @@ function AuthPage() {
         >
           {mode === "signin" ? "No account yet? Create one" : "Already have an account? Sign in"}
         </button>
+
+        <div className="flex items-center justify-center gap-3 text-[10px] text-muted-foreground uppercase tracking-[0.15em] font-mono">
+          <Link to="/privacy" className="hover:text-foreground transition">Privacy</Link>
+          <span>·</span>
+          <Link to="/about" className="hover:text-foreground transition">About</Link>
+        </div>
       </div>
     </AppShell>
   );
