@@ -25,6 +25,7 @@ export type Database = {
           move_reason: string | null
           nationality: string | null
           onboarded_at: string | null
+          privacy_consent_at: string | null
           updated_at: string
         }
         Insert: {
@@ -37,6 +38,7 @@ export type Database = {
           move_reason?: string | null
           nationality?: string | null
           onboarded_at?: string | null
+          privacy_consent_at?: string | null
           updated_at?: string
         }
         Update: {
@@ -49,6 +51,7 @@ export type Database = {
           move_reason?: string | null
           nationality?: string | null
           onboarded_at?: string | null
+          privacy_consent_at?: string | null
           updated_at?: string
         }
         Relationships: []

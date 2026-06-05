@@ -1,0 +1,1 @@
+ALTER TABLE public.profiles ADD COLUMN privacy_consent_at TIMESTAMP WITH TIME ZONE;
