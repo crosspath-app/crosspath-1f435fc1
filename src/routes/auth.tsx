@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { AppShell } from "@/components/borderless/AppShell";
-import { Loader2, Mail, ArrowLeft, ShieldCheck } from "lucide-react";
+import { Loader2, Mail, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth")({
