@@ -132,6 +132,25 @@ function AuthPage() {
               className="w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
             />
           </Field>
+
+          {mode === "signup" && (
+            <label className="flex items-start gap-2.5 rounded-xl border border-border bg-card/60 p-3">
+              <input
+                type="checkbox"
+                checked={privacyConsent}
+                onChange={(e) => setPrivacyConsent(e.target.checked)}
+                className="mt-0.5 h-4 w-4 accent-primary"
+              />
+              <span className="text-xs text-muted-foreground leading-relaxed">
+                I agree to the{" "}
+                <Link to="/privacy" className="text-primary underline underline-offset-2 hover:text-foreground">
+                  Privacy Policy
+                </Link>
+                . I understand Crosspath will store my email, display name, and move preferences to generate personalized checklists (GDPR/RODO compliant).
+              </span>
+            </label>
+          )}
+
           <button
             type="submit"
             disabled={busy}
