@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
 import { AppShell } from "@/components/borderless/AppShell";
-import { Loader2, Mail, ArrowLeft } from "lucide-react";
+import { Loader2, Mail, ArrowLeft, ShieldCheck } from "lucide-react";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/auth")({
@@ -25,6 +25,7 @@ function AuthPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
+  const [privacyConsent, setPrivacyConsent] = useState(false);
   const [busy, setBusy] = useState(false);
 
   useEffect(() => {
@@ -41,10 +42,14 @@ function AuthPage() {
 
   async function handleEmail(e: React.FormEvent) {
     e.preventDefault();
+    if (mode === "signup" && !privacyConsent) {
+      toast.error("You must agree to the Privacy Policy to create an account.");
+      return;
+    }
     setBusy(true);
     try {
       if (mode === "signup") {
-        const { error } = await supabase.auth.signUp({
+        const { data: signUpData, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -53,6 +58,14 @@ function AuthPage() {
           },
         });
         if (error) throw error;
+        // Record privacy consent timestamp on the profile
+        if (signUpData.user) {
+          await supabase.from("profiles").upsert({
+            id: signUpData.user.id,
+            display_name: displayName || email.split("@")[0],
+            privacy_consent_at: new Date().toISOString(),
+          });
+        }
         toast.success("Check your email to confirm your account.");
       } else {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -136,6 +149,12 @@ function AuthPage() {
         >
           {mode === "signin" ? "No account yet? Create one" : "Already have an account? Sign in"}
         </button>
+
+        <div className="flex items-center justify-center gap-3 text-[10px] text-muted-foreground uppercase tracking-[0.15em] font-mono">
+          <Link to="/privacy" className="hover:text-foreground transition">Privacy</Link>
+          <span>·</span>
+          <Link to="/about" className="hover:text-foreground transition">About</Link>
+        </div>
       </div>
     </AppShell>
   );
