@@ -125,11 +125,11 @@ function AboutPage() {
           </p>
           <div className="mt-4 flex flex-col gap-2">
             <a
-              href="mailto:hello@crosspath.lovable.app"
+              href="mailto:crosspath.support@gmail.com"
               className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-foreground hover:bg-accent transition"
             >
               <Mail className="h-4 w-4 text-primary" strokeWidth={1.8} />
-              hello@crosspath.lovable.app
+              crosspath.support@gmail.com
             </a>
             <span className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground">
               <Instagram className="h-4 w-4 text-primary" strokeWidth={1.8} />
