@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, Globe, UserCircle2 } from "lucide-react";
+import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, UserCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { LANGS, useLang, useT, type Lang } from "@/lib/i18n";
 import { useAuth } from "@/hooks/use-auth";
@@ -105,7 +105,6 @@ function LanguageSwitcher() {
     <div className="absolute right-4 top-4 z-20">
       <label className="sr-only" htmlFor="lang-switcher">{t("lang.label")}</label>
       <div className="relative flex items-center gap-1.5 rounded-full border border-border bg-card/80 px-2.5 py-1.5 backdrop-blur">
-        <Globe className="h-3.5 w-3.5 text-primary" strokeWidth={1.8} />
         <span className="text-xs">{current.flag}</span>
         <select
           id="lang-switcher"
