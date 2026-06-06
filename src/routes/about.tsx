@@ -59,17 +59,9 @@ function AboutPage() {
       <div className="px-6 pb-12 space-y-5">
         {/* Founder card */}
         <div className="rounded-2xl border border-border bg-card p-5">
-          <div className="flex items-center gap-4">
-            <div
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-2xl font-bold text-primary-foreground"
-              style={{ background: "var(--gradient-primary)" }}
-            >
-              [FN]
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold text-foreground">[Founder Name]</h2>
-              <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath</p>
-            </div>
+          <div>
+            <h2 className="text-lg font-semibold text-foreground">Maria Banyś</h2>
+            <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath</p>
           </div>
 
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-foreground">
@@ -83,13 +75,10 @@ function AboutPage() {
 
           <div className="mt-4 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
-              <MapPin className="h-3 w-3" /> Based in Europe
+              <MapPin className="h-3 w-3" /> Based in Poland
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
               <Briefcase className="h-3 w-3" /> Full-stack developer
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
-              <GraduationCap className="h-3 w-3" /> Relocated 3+ times
             </span>
           </div>
         </div>
