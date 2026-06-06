@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Globe2, MapPin, Briefcase, GraduationCap, Heart, Mail, Twitter } from "lucide-react";
+import { ArrowLeft, Globe2, MapPin, Briefcase, GraduationCap, Heart, Mail, Instagram } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 
 export const Route = createFileRoute("/about")({
