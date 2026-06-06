@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, Globe, UserCircle2 } from "lucide-react";
+import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, UserCircle2 } from "lucide-react";
 import type { ReactNode } from "react";
 import { LANGS, useLang, useT, type Lang } from "@/lib/i18n";
 import { useAuth } from "@/hooks/use-auth";
