@@ -23,7 +23,7 @@ export const Route = createFileRoute("/about")({
           "@type": "ProfilePage",
           mainEntity: {
             "@type": "Person",
-            name: "[Founder Name]",
+            name: "Maria Banyś",
             jobTitle: "Founder, Crosspath",
             url: "https://crosspath.lovable.app/about",
             worksFor: {
