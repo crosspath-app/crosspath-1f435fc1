@@ -94,7 +94,6 @@ function AboutPage() {
           </p>
           <ul className="mt-3 space-y-2">
             {[
-              "No corporate nonsense — built by one person who actually cares.",
               "No ads, no tracking, no selling your data.",
               "Open to feedback: every country guide can be improved by the community.",
               "Designed for the real world: students, remote workers, families, and refugees.",
@@ -133,18 +132,12 @@ function AboutPage() {
               hello@crosspath.lovable.app
             </a>
             <span className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground">
-              <Twitter className="h-4 w-4 text-primary" strokeWidth={1.8} />
-              @crosspathapp (coming soon)
+              <Instagram className="h-4 w-4 text-primary" strokeWidth={1.8} />
+              @joincrosspath
             </span>
           </div>
         </div>
 
-        {/* Edit note */}
-        <div className="rounded-2xl border border-dashed border-border bg-card/40 p-4">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Note:</strong> This is a personal project page. Replace <code className="text-primary">[Founder Name]</code> and <code className="text-primary">[FN]</code> above with your real name and initials. Update the bio, location, and contact details to match your story.
-          </p>
-        </div>
       </div>
     </AppShell>
   );
