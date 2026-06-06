@@ -161,7 +161,7 @@ function PrivacyPage() {
           </p>
           <div className="mt-3 rounded-2xl border border-border bg-card/60 p-4">
             <p className="text-sm text-foreground font-medium">Crosspath Privacy</p>
-            <p className="mt-1 text-sm text-muted-foreground">Email: privacy@crosspath.lovable.app</p>
+            <p className="mt-1 text-sm text-muted-foreground">Email: crosspath.support@gmail.com</p>
             <p className="text-sm text-muted-foreground">Response time: within 30 days</p>
           </div>
           <p className="mt-3 text-xs text-muted-foreground leading-relaxed">

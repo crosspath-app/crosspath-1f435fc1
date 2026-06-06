@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Globe2, MapPin, Briefcase, GraduationCap, Heart, Mail, Twitter } from "lucide-react";
+import { ArrowLeft, Globe2, MapPin, Briefcase, GraduationCap, Heart, Mail, Instagram } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 
 export const Route = createFileRoute("/about")({
@@ -23,7 +23,7 @@ export const Route = createFileRoute("/about")({
           "@type": "ProfilePage",
           mainEntity: {
             "@type": "Person",
-            name: "[Founder Name]",
+            name: "Maria Banyś",
             jobTitle: "Founder, Crosspath",
             url: "https://crosspath.lovable.app/about",
             worksFor: {
@@ -59,17 +59,9 @@ function AboutPage() {
       <div className="px-6 pb-12 space-y-5">
         {/* Founder card */}
         <div className="rounded-2xl border border-border bg-card p-5">
-          <div className="flex items-center gap-4">
-            <div
-              className="flex h-16 w-16 shrink-0 items-center justify-center rounded-full text-2xl font-bold text-primary-foreground"
-              style={{ background: "var(--gradient-primary)" }}
-            >
-              [FN]
-            </div>
-            <div>
-              <h2 className="text-lg font-semibold text-foreground">[Founder Name]</h2>
-              <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath</p>
-            </div>
+          <div>
+            <h2 className="text-lg font-semibold text-foreground">Maria Banyś</h2>
+            <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath</p>
           </div>
 
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-foreground">
@@ -83,13 +75,10 @@ function AboutPage() {
 
           <div className="mt-4 flex flex-wrap gap-2">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
-              <MapPin className="h-3 w-3" /> Based in Europe
+              <MapPin className="h-3 w-3" /> Based in Poland
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
               <Briefcase className="h-3 w-3" /> Full-stack developer
-            </span>
-            <span className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background px-3 py-1.5 text-[11px] text-muted-foreground">
-              <GraduationCap className="h-3 w-3" /> Relocated 3+ times
             </span>
           </div>
         </div>
@@ -105,7 +94,6 @@ function AboutPage() {
           </p>
           <ul className="mt-3 space-y-2">
             {[
-              "No corporate nonsense — built by one person who actually cares.",
               "No ads, no tracking, no selling your data.",
               "Open to feedback: every country guide can be improved by the community.",
               "Designed for the real world: students, remote workers, families, and refugees.",
@@ -144,18 +132,12 @@ function AboutPage() {
               hello@crosspath.lovable.app
             </a>
             <span className="inline-flex items-center gap-2 rounded-xl border border-border bg-background px-4 py-2.5 text-sm text-muted-foreground">
-              <Twitter className="h-4 w-4 text-primary" strokeWidth={1.8} />
-              @crosspathapp (coming soon)
+              <Instagram className="h-4 w-4 text-primary" strokeWidth={1.8} />
+              @joincrosspath
             </span>
           </div>
         </div>
 
-        {/* Edit note */}
-        <div className="rounded-2xl border border-dashed border-border bg-card/40 p-4">
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            <strong className="text-foreground">Note:</strong> This is a personal project page. Replace <code className="text-primary">[Founder Name]</code> and <code className="text-primary">[FN]</code> above with your real name and initials. Update the bio, location, and contact details to match your story.
-          </p>
-        </div>
       </div>
     </AppShell>
   );
