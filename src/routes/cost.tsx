@@ -8,11 +8,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/cost")({
   head: () => ({
     meta: [
-      { title: "Relocation cost calculator — Crosspath.move" },
-      { name: "description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
-      { property: "og:title", content: "Relocation cost calculator — Crosspath.move" },
-      { property: "og:description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
+      { title: "Relocation Cost Calculator — Visa, Rent & Insurance" },
+      { name: "description", content: "Estimate the true cost of moving abroad: visa fees, housing deposit, health insurance, transport, document translations and emergency savings." },
+      { property: "og:title", content: "Relocation Cost Calculator — Visa, Rent & Insurance" },
+      { property: "og:description", content: "Estimate the true cost of moving abroad: visa fees, housing deposit, health insurance, transport, translations and emergency savings." },
       { property: "og:url", content: "https://crosspath.lovable.app/cost" },
+      { name: "twitter:title", content: "Relocation Cost Calculator — Crosspath.move" },
+      { name: "twitter:description", content: "Estimate visa fees, housing deposit, health insurance and moving costs before you relocate abroad." },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/cost" }],
   }),
