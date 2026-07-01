@@ -6,11 +6,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
-      { title: "Support Crosspath.move — Donate" },
-      { name: "description", content: "Keep Crosspath.move free and ad-free. Tip the project to fund new countries, languages and updates." },
-      { property: "og:title", content: "Support Crosspath.move — Donate" },
-      { property: "og:description", content: "Keep Crosspath.move free and ad-free." },
+      { title: "Support Crosspath.move — Fund Free Visa Guides" },
+      { name: "description", content: "Keep Crosspath.move free and ad-free. Donate to fund new country visa guides, translations and immigration updates for relocators worldwide." },
+      { property: "og:title", content: "Support Crosspath.move — Fund Free Visa Guides" },
+      { property: "og:description", content: "Donate to keep visa checklists and relocation guides free, ad-free and up-to-date for everyone moving abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/support" },
+      { name: "twitter:title", content: "Support Crosspath.move — Fund Free Visa Guides" },
+      { name: "twitter:description", content: "Donate to keep relocation checklists and visa guides free for everyone." },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/support" }],
   }),

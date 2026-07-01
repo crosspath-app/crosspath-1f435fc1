@@ -7,11 +7,13 @@ import { COMPARE_COUNTRIES, type CompareCountry } from "@/lib/borderless-data";
 export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
-      { title: "Compare countries — Crosspath.move" },
-      { name: "description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
-      { property: "og:title", content: "Compare countries — Crosspath.move" },
-      { property: "og:description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
+      { title: "Compare Visas & Countries — Crosspath.move" },
+      { name: "description", content: "Compare visa difficulty, work rights, student permits and immigration processing times side-by-side across countries." },
+      { property: "og:title", content: "Compare Visas & Countries — Crosspath.move" },
+      { property: "og:description", content: "Compare visa difficulty, work rights, student permits and immigration processing times side-by-side across countries." },
       { property: "og:url", content: "https://crosspath.lovable.app/compare" },
+      { name: "twitter:title", content: "Compare Visas & Countries — Crosspath.move" },
+      { name: "twitter:description", content: "Compare visa difficulty, work rights and processing times across relocation destinations." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/compare" },

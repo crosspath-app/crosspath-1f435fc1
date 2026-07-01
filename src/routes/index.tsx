@@ -10,11 +10,13 @@ import { useLocalized } from "@/lib/borderless-i18n";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Crosspath.move — Move abroad without the bureaucracy" },
-      { name: "description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
-      { property: "og:title", content: "Crosspath.move — Move abroad without the bureaucracy" },
-      { property: "og:description", content: "Tell us where you're going. We'll generate the documents, deadlines and steps." },
+      { title: "Crosspath.move — Relocation Checklists & Visa Guides" },
+      { name: "description", content: "Pick your home country, destination and visa purpose — get a personalized relocation checklist with documents, deadlines and official links." },
+      { property: "og:title", content: "Crosspath.move — Relocation Checklists & Visa Guides" },
+      { property: "og:description", content: "Pick your home country, destination and visa purpose — get a personalized relocation checklist with documents, deadlines and official links." },
       { property: "og:url", content: "https://crosspath.lovable.app/" },
+      { name: "twitter:title", content: "Crosspath.move — Relocation Checklists & Visa Guides" },
+      { name: "twitter:description", content: "Personalized visa checklists, relocation deadlines and plain-language immigration guides for anywhere in the world." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/" },

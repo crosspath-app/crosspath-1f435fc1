@@ -12,8 +12,8 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
-      { title: "Welcome — Crosspath.move" },
-      { name: "description", content: "Tell us about your move so we can build your first checklist." },
+      { title: "Get Started — Build Your Relocation Plan" },
+      { name: "description", content: "Tell us your home country, destination and visa purpose so Crosspath.move can build your personalized relocation checklist." },
     ],
   }),
   component: OnboardingPage,

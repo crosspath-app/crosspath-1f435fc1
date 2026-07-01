@@ -8,11 +8,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Bureaucratic terms translator — Crosspath.move" },
-      { name: "description", content: "Plain-language meaning for confusing immigration and visa phrases." },
-      { property: "og:title", content: "Bureaucratic terms translator — Crosspath.move" },
-      { property: "og:description", content: "Plain-language meaning for confusing immigration and visa phrases." },
+      { title: "Visa & Immigration Terms Translator — Crosspath.move" },
+      { name: "description", content: "Plain-language definitions for confusing visa, residence permit and immigration terminology used on official forms and government portals." },
+      { property: "og:title", content: "Visa & Immigration Terms Translator — Crosspath.move" },
+      { property: "og:description", content: "Plain-language definitions for confusing visa, residence permit and immigration terminology." },
       { property: "og:url", content: "https://crosspath.lovable.app/terms" },
+      { name: "twitter:title", content: "Visa & Immigration Terms Translator — Crosspath.move" },
+      { name: "twitter:description", content: "Plain-language meanings for confusing visa and immigration phrases." },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/terms" }],
   }),

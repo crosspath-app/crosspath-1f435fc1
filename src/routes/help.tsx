@@ -7,11 +7,13 @@ import { COUNTRIES } from "@/lib/borderless-data";
 export const Route = createFileRoute("/help")({
   head: () => ({
     meta: [
-      { title: "Emergency help — Crosspath.move" },
-      { name: "description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
-      { property: "og:title", content: "Emergency help — Crosspath.move" },
-      { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
+      { title: "Emergency Help Abroad — Embassies & Lost Passport" },
+      { name: "description", content: "Embassy contacts, lost passport procedure, emergency numbers and official immigration portals for travelers and expats abroad." },
+      { property: "og:title", content: "Emergency Help Abroad — Embassies & Lost Passport" },
+      { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official immigration portals for travelers abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/help" },
+      { name: "twitter:title", content: "Emergency Help Abroad — Crosspath.move" },
+      { name: "twitter:description", content: "Embassy contacts, lost passport steps and emergency numbers for travelers abroad." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/help" },

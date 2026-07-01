@@ -6,11 +6,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/tools")({
   head: () => ({
     meta: [
-      { title: "Tools — Crosspath.move" },
-      { name: "description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
-      { property: "og:title", content: "Tools — Crosspath.move" },
-      { property: "og:description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
+      { title: "Relocation Tools — Visa Terms, Costs & Legal Checks" },
+      { name: "description", content: "Translate immigration and visa jargon, estimate relocation costs and check what you can legally do on your visa abroad." },
+      { property: "og:title", content: "Relocation Tools — Visa Terms, Costs & Legal Checks" },
+      { property: "og:description", content: "Translate immigration and visa jargon, estimate relocation costs and check what you can legally do on your visa abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/tools" },
+      { name: "twitter:title", content: "Relocation Tools — Crosspath.move" },
+      { name: "twitter:description", content: "Visa jargon translator, relocation cost calculator and legal rights checker for people moving abroad." },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/tools" }],
   }),
