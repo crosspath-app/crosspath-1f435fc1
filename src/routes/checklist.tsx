@@ -10,11 +10,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/checklist")({
   head: () => ({
     meta: [
-      { title: "Your move plan — Crosspath.move" },
-      { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
-      { property: "og:title", content: "Your move plan — Crosspath.move" },
-      { property: "og:description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
+      { title: "Visa & Relocation Checklist — Crosspath.move" },
+      { name: "description", content: "Your personalized visa checklist: required documents, residence permit deadlines and a Move Score rating your relocation difficulty." },
+      { property: "og:title", content: "Visa & Relocation Checklist — Crosspath.move" },
+      { property: "og:description", content: "Your personalized visa checklist: required documents, residence permit deadlines and a Move Score rating your relocation difficulty." },
       { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
+      { name: "twitter:title", content: "Visa & Relocation Checklist — Crosspath.move" },
+      { name: "twitter:description", content: "Personalized visa checklist, document deadlines and Move Score for relocating to any country." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/checklist" },
