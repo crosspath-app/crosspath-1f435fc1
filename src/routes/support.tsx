@@ -6,10 +6,10 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/support")({
   head: () => ({
     meta: [
-      { title: "Support Crosspath — Donate" },
-      { name: "description", content: "Keep Crosspath free and ad-free. Tip the project to fund new countries, languages and updates." },
-      { property: "og:title", content: "Support Crosspath — Donate" },
-      { property: "og:description", content: "Keep Crosspath free and ad-free." },
+      { title: "Support Crosspath.move — Donate" },
+      { name: "description", content: "Keep Crosspath.move free and ad-free. Tip the project to fund new countries, languages and updates." },
+      { property: "og:title", content: "Support Crosspath.move — Donate" },
+      { property: "og:description", content: "Keep Crosspath.move free and ad-free." },
       { property: "og:url", content: "https://crosspath.lovable.app/support" },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/support" }],

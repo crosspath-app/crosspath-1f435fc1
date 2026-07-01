@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "Can I legally…? — Crosspath" },
+      { title: "Can I legally…? — Crosspath.move" },
       { name: "description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
-      { property: "og:title", content: "Can I legally…? — Crosspath" },
+      { property: "og:title", content: "Can I legally…? — Crosspath.move" },
       { property: "og:description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/legal" },
     ],

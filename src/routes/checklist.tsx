@@ -10,9 +10,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/checklist")({
   head: () => ({
     meta: [
-      { title: "Your move plan — Crosspath" },
+      { title: "Your move plan — Crosspath.move" },
       { name: "description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
-      { property: "og:title", content: "Your move plan — Crosspath" },
+      { property: "og:title", content: "Your move plan — Crosspath.move" },
       { property: "og:description", content: "Personalized checklist, deadlines, and Move Score for your relocation." },
       { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
     ],

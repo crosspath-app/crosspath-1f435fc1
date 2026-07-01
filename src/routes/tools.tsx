@@ -6,9 +6,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/tools")({
   head: () => ({
     meta: [
-      { title: "Tools — Crosspath" },
+      { title: "Tools — Crosspath.move" },
       { name: "description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
-      { property: "og:title", content: "Tools — Crosspath" },
+      { property: "og:title", content: "Tools — Crosspath.move" },
       { property: "og:description", content: "Translate bureaucratic terms, estimate relocation costs, and check what you can legally do abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/tools" },
     ],

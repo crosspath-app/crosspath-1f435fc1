@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/cost")({
   head: () => ({
     meta: [
-      { title: "Relocation cost calculator — Crosspath" },
+      { title: "Relocation cost calculator — Crosspath.move" },
       { name: "description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
-      { property: "og:title", content: "Relocation cost calculator — Crosspath" },
+      { property: "og:title", content: "Relocation cost calculator — Crosspath.move" },
       { property: "og:description", content: "Estimate visa fees, housing deposit, insurance, transport, translations and emergency savings." },
       { property: "og:url", content: "https://crosspath.lovable.app/cost" },
     ],

@@ -19,7 +19,7 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Desktop side panel */}
       <aside className="hidden lg:flex lg:w-[420px] lg:flex-col lg:justify-between lg:py-8">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Crosspath</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Crosspath.move</p>
           <h2 className="mt-4 text-4xl font-semibold leading-tight tracking-tight text-foreground">
             Move abroad,<br />skip the paperwork.
           </h2>

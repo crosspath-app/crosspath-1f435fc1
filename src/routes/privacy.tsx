@@ -5,10 +5,10 @@ import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Crosspath" },
-      { name: "description", content: "How Crosspath collects, uses and protects your personal data. GDPR and RODO compliant." },
-      { property: "og:title", content: "Privacy Policy — Crosspath" },
-      { property: "og:description", content: "How Crosspath collects, uses and protects your personal data. GDPR and RODO compliant." },
+      { title: "Privacy Policy — Crosspath.move" },
+      { name: "description", content: "How Crosspath.move collects, uses and protects your personal data. GDPR and RODO compliant." },
+      { property: "og:title", content: "Privacy Policy — Crosspath.move" },
+      { property: "og:description", content: "How Crosspath.move collects, uses and protects your personal data. GDPR and RODO compliant." },
       { property: "og:url", content: "https://crosspath.lovable.app/privacy" },
     ],
     links: [
@@ -39,7 +39,7 @@ function PrivacyPage() {
         {/* Controller */}
         <PolicySection icon={<Globe className="h-4 w-4 text-primary" strokeWidth={1.8} />} title="1. Who we are">
           <p className="text-sm text-foreground leading-relaxed">
-            <strong className="text-foreground">Crosspath</strong> is an independent project built to help people move abroad without getting lost in bureaucracy. The service is operated as a personal project. For any privacy questions, contact us at the email listed in this policy.
+            <strong className="text-foreground">Crosspath.move</strong> is an independent project built to help people move abroad without getting lost in bureaucracy. The service is operated as a personal project. For any privacy questions, contact us at the email listed in this policy.
           </p>
         </PolicySection>
 
@@ -143,7 +143,7 @@ function PrivacyPage() {
         {/* Children */}
         <PolicySection icon={<ShieldCheck className="h-4 w-4 text-primary" strokeWidth={1.8} />} title="10. Children's privacy">
           <p className="text-sm text-foreground leading-relaxed">
-            Crosspath is not intended for users under 16. We do not knowingly collect data from children. If you believe a child has provided us with personal data, contact us and we will delete it immediately.
+            Crosspath.move is not intended for users under 16. We do not knowingly collect data from children. If you believe a child has provided us with personal data, contact us and we will delete it immediately.
           </p>
         </PolicySection>
 
@@ -160,7 +160,7 @@ function PrivacyPage() {
             For privacy questions, data requests, or complaints:
           </p>
           <div className="mt-3 rounded-2xl border border-border bg-card/60 p-4">
-            <p className="text-sm text-foreground font-medium">Crosspath Privacy</p>
+            <p className="text-sm text-foreground font-medium">Crosspath.move Privacy</p>
             <p className="mt-1 text-sm text-muted-foreground">Email: crosspath.support@gmail.com</p>
             <p className="text-sm text-muted-foreground">Response time: within 30 days</p>
           </div>

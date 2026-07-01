@@ -9,8 +9,8 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Crosspath" },
-      { name: "description", content: "Sign in or create a Crosspath account to save your move plans across devices." },
+      { title: "Sign in — Crosspath.move" },
+      { name: "description", content: "Sign in or create a Crosspath.move account to save your move plans across devices." },
     ],
   }),
   component: AuthPage,
@@ -89,7 +89,7 @@ function AuthPage() {
           <ArrowLeft className="h-3.5 w-3.5" /> Back
         </Link>
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Crosspath account</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">Crosspath.move account</p>
           <h1 className="mt-2 text-2xl font-semibold tracking-tight text-foreground">
             {mode === "signin" ? "Welcome back" : "Create your account"}
           </h1>
@@ -146,7 +146,7 @@ function AuthPage() {
                 <Link to="/privacy" className="text-primary underline underline-offset-2 hover:text-foreground">
                   Privacy Policy
                 </Link>
-                . I understand Crosspath will store my email, display name, and move preferences to generate personalized checklists (GDPR/RODO compliant).
+                . I understand Crosspath.move will store my email, display name, and move preferences to generate personalized checklists (GDPR/RODO compliant).
               </span>
             </label>
           )}

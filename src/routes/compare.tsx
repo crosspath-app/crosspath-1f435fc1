@@ -7,9 +7,9 @@ import { COMPARE_COUNTRIES, type CompareCountry } from "@/lib/borderless-data";
 export const Route = createFileRoute("/compare")({
   head: () => ({
     meta: [
-      { title: "Compare countries — Crosspath" },
+      { title: "Compare countries — Crosspath.move" },
       { name: "description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
-      { property: "og:title", content: "Compare countries — Crosspath" },
+      { property: "og:title", content: "Compare countries — Crosspath.move" },
       { property: "og:description", content: "Side-by-side comparison of visa difficulty, work rights, and processing times." },
       { property: "og:url", content: "https://crosspath.lovable.app/compare" },
     ],
