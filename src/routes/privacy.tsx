@@ -5,11 +5,13 @@ import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 export const Route = createFileRoute("/privacy")({
   head: () => ({
     meta: [
-      { title: "Privacy Policy — Crosspath.move" },
-      { name: "description", content: "How Crosspath.move collects, uses and protects your personal data. GDPR and RODO compliant." },
-      { property: "og:title", content: "Privacy Policy — Crosspath.move" },
-      { property: "og:description", content: "How Crosspath.move collects, uses and protects your personal data. GDPR and RODO compliant." },
+      { title: "Privacy Policy — Crosspath.move Relocation App" },
+      { name: "description", content: "How Crosspath.move collects, uses and protects your relocation data. GDPR/RODO-compliant privacy for visa checklists and account information." },
+      { property: "og:title", content: "Privacy Policy — Crosspath.move Relocation App" },
+      { property: "og:description", content: "GDPR/RODO-compliant privacy for visa checklists, relocation plans and account data on Crosspath.move." },
       { property: "og:url", content: "https://crosspath.lovable.app/privacy" },
+      { name: "twitter:title", content: "Privacy Policy — Crosspath.move" },
+      { name: "twitter:description", content: "GDPR/RODO-compliant privacy for your relocation and visa data." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/privacy" },
