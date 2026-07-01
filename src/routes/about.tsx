@@ -5,12 +5,14 @@ import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About the Founder — Crosspath.move" },
-      { name: "description", content: "Meet the person behind Crosspath.move — a mission-driven project to simplify global relocation for students, workers, and nomads." },
-      { property: "og:title", content: "About the Founder — Crosspath.move" },
-      { property: "og:description", content: "Meet the person behind Crosspath.move — a mission-driven project to simplify global relocation for students, workers, and nomads." },
+      { title: "About the Founder — Crosspath.move Relocation App" },
+      { name: "description", content: "Meet Maria Banyś, founder of Crosspath.move — a free relocation and visa planning app for international students, remote workers and digital nomads." },
+      { property: "og:title", content: "About the Founder — Crosspath.move Relocation App" },
+      { property: "og:description", content: "Meet Maria Banyś, founder of Crosspath.move — a free relocation and visa planning app for students, workers and nomads." },
       { property: "og:url", content: "https://crosspath.lovable.app/about" },
       { property: "og:type", content: "profile" },
+      { name: "twitter:title", content: "About the Founder — Crosspath.move" },
+      { name: "twitter:description", content: "Meet Maria Banyś, founder of the free relocation and visa planning app Crosspath.move." },
     ],
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/about" },
