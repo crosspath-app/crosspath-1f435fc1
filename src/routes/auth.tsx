@@ -9,8 +9,8 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
-      { title: "Sign in — Crosspath.move" },
-      { name: "description", content: "Sign in or create a Crosspath.move account to save your move plans across devices." },
+      { title: "Sign In — Save Your Visa & Relocation Plans" },
+      { name: "description", content: "Sign in or create a free Crosspath.move account to save your visa checklists, relocation deadlines and move plans across devices." },
     ],
   }),
   component: AuthPage,
