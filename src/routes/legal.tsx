@@ -8,11 +8,13 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/legal")({
   head: () => ({
     meta: [
-      { title: "Can I legally…? — Crosspath.move" },
-      { name: "description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
-      { property: "og:title", content: "Can I legally…? — Crosspath.move" },
-      { property: "og:description", content: "Quick legal answers about visas, work, freelancing, family and travel rights abroad." },
+      { title: "Visa Rights: Can I Legally…? — Crosspath.move" },
+      { name: "description", content: "Quick answers on visa work rights, freelancing, family reunification and travel rules for expats, students and digital nomads abroad." },
+      { property: "og:title", content: "Visa Rights: Can I Legally…? — Crosspath.move" },
+      { property: "og:description", content: "Quick answers on visa work rights, freelancing, family reunification and travel rules for expats and students abroad." },
       { property: "og:url", content: "https://crosspath.lovable.app/legal" },
+      { name: "twitter:title", content: "Visa Rights: Can I Legally…? — Crosspath.move" },
+      { name: "twitter:description", content: "Quick visa answers on work, freelancing, family and travel rights abroad." },
     ],
     links: [{ rel: "canonical", href: "https://crosspath.lovable.app/legal" }],
     scripts: [
