@@ -5,10 +5,10 @@ import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "About the Founder — Crosspath" },
-      { name: "description", content: "Meet the person behind Crosspath — a mission-driven project to simplify global relocation for students, workers, and nomads." },
-      { property: "og:title", content: "About the Founder — Crosspath" },
-      { property: "og:description", content: "Meet the person behind Crosspath — a mission-driven project to simplify global relocation for students, workers, and nomads." },
+      { title: "About the Founder — Crosspath.move" },
+      { name: "description", content: "Meet the person behind Crosspath.move — a mission-driven project to simplify global relocation for students, workers, and nomads." },
+      { property: "og:title", content: "About the Founder — Crosspath.move" },
+      { property: "og:description", content: "Meet the person behind Crosspath.move — a mission-driven project to simplify global relocation for students, workers, and nomads." },
       { property: "og:url", content: "https://crosspath.lovable.app/about" },
       { property: "og:type", content: "profile" },
     ],
@@ -24,11 +24,11 @@ export const Route = createFileRoute("/about")({
           mainEntity: {
             "@type": "Person",
             name: "Maria Banyś",
-            jobTitle: "Founder, Crosspath",
+            jobTitle: "Founder, Crosspath.move",
             url: "https://crosspath.lovable.app/about",
             worksFor: {
               "@type": "Organization",
-              name: "Crosspath",
+              name: "Crosspath.move",
               url: "https://crosspath.lovable.app",
             },
           },
@@ -61,12 +61,12 @@ function AboutPage() {
         <div className="rounded-2xl border border-border bg-card p-5">
           <div>
             <h2 className="text-lg font-semibold text-foreground">Maria Banyś</h2>
-            <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-[0.2em] font-mono">Founder & Builder, Crosspath.move</p>
           </div>
 
           <div className="mt-4 space-y-3 text-sm leading-relaxed text-foreground">
             <p>
-              I built Crosspath because I have seen too many smart, ambitious people get stuck in immigration paperwork instead of starting their new life. Whether it is a student moving for a semester abroad, a developer taking a remote job in Portugal, or a family reuniting across borders — the process should not feel like a full-time job.
+              I built Crosspath.move because I have seen too many smart, ambitious people get stuck in immigration paperwork instead of starting their new life. Whether it is a student moving for a semester abroad, a developer taking a remote job in Portugal, or a family reuniting across borders — the process should not feel like a full-time job.
             </p>
             <p>
               This project is independent, ad-free, and built with care. Every checklist, every deadline calculator, every plain-language explanation comes from real research into embassy requirements, immigration portals, and the actual experiences of people who have been through it.
@@ -83,14 +83,14 @@ function AboutPage() {
           </div>
         </div>
 
-        {/* Why Crosspath */}
+        {/* Why Crosspath.move */}
         <div className="rounded-2xl border border-border bg-card p-5">
           <div className="flex items-center gap-2">
             <Globe2 className="h-4 w-4 text-primary" strokeWidth={1.8} />
-            <h2 className="text-sm font-semibold text-foreground">Why Crosspath exists</h2>
+            <h2 className="text-sm font-semibold text-foreground">Why Crosspath.move exists</h2>
           </div>
           <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
-            Most relocation advice is scattered across forums, outdated blogs, and dense government PDFs. Crosspath brings it all into one place: country-specific checklists, real deadlines, plain-language explanations, and tools that actually save you time.
+            Most relocation advice is scattered across forums, outdated blogs, and dense government PDFs. Crosspath.move brings it all into one place: country-specific checklists, real deadlines, plain-language explanations, and tools that actually save you time.
           </p>
           <ul className="mt-3 space-y-2">
             {[

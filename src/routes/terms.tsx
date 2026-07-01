@@ -8,9 +8,9 @@ import { useT } from "@/lib/i18n";
 export const Route = createFileRoute("/terms")({
   head: () => ({
     meta: [
-      { title: "Bureaucratic terms translator — Crosspath" },
+      { title: "Bureaucratic terms translator — Crosspath.move" },
       { name: "description", content: "Plain-language meaning for confusing immigration and visa phrases." },
-      { property: "og:title", content: "Bureaucratic terms translator — Crosspath" },
+      { property: "og:title", content: "Bureaucratic terms translator — Crosspath.move" },
       { property: "og:description", content: "Plain-language meaning for confusing immigration and visa phrases." },
       { property: "og:url", content: "https://crosspath.lovable.app/terms" },
     ],

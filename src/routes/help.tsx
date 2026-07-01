@@ -7,9 +7,9 @@ import { COUNTRIES } from "@/lib/borderless-data";
 export const Route = createFileRoute("/help")({
   head: () => ({
     meta: [
-      { title: "Emergency help — Crosspath" },
+      { title: "Emergency help — Crosspath.move" },
       { name: "description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
-      { property: "og:title", content: "Emergency help — Crosspath" },
+      { property: "og:title", content: "Emergency help — Crosspath.move" },
       { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official portals." },
       { property: "og:url", content: "https://crosspath.lovable.app/help" },
     ],
@@ -114,7 +114,7 @@ function HelpPage() {
         <div className="rounded-2xl border border-border p-5" style={{ background: "var(--gradient-card)" }}>
           <p className="text-[10px] uppercase tracking-[0.3em] text-primary font-mono">Tip</p>
           <p className="mt-2 text-sm leading-relaxed text-foreground">
-            Keep a digital copy of your passport, visa, and insurance card in your phone — Crosspath will soon let you store them encrypted.
+            Keep a digital copy of your passport, visa, and insurance card in your phone — Crosspath.move will soon let you store them encrypted.
           </p>
         </div>
       </div>

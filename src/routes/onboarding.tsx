@@ -12,7 +12,7 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/onboarding")({
   head: () => ({
     meta: [
-      { title: "Welcome — Crosspath" },
+      { title: "Welcome — Crosspath.move" },
       { name: "description", content: "Tell us about your move so we can build your first checklist." },
     ],
   }),

@@ -9,8 +9,8 @@ import { toast } from "sonner";
 export const Route = createFileRoute("/account")({
   head: () => ({
     meta: [
-      { title: "Account — Crosspath" },
-      { name: "description", content: "Manage your Crosspath account, profile and saved move plans." },
+      { title: "Account — Crosspath.move" },
+      { name: "description", content: "Manage your Crosspath.move account, profile and saved move plans." },
     ],
   }),
   component: AccountPage,
