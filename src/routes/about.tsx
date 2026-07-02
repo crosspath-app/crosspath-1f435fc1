@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Globe2, MapPin, Briefcase, GraduationCap, Heart, Mail, Instagram } from "lucide-react";
+import { ArrowLeft, Globe2, MapPin, Briefcase, Heart, Mail, Instagram, GraduationCap, Scale, BookMarked, Gavel } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 
 export const Route = createFileRoute("/about")({
@@ -114,6 +114,40 @@ function AboutPage() {
           <StatCard number="8" label="Languages supported" />
           <StatCard number="6" label="Move purposes" />
           <StatCard number="0€" label="Cost to use" />
+        </div>
+
+        {/* Academic / portfolio section */}
+        <div className="rounded-2xl border border-border bg-card p-5">
+          <div className="flex items-center gap-2">
+            <GraduationCap className="h-4 w-4 text-primary" strokeWidth={1.8} />
+            <h2 className="text-sm font-semibold text-foreground">Academic focus</h2>
+          </div>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Crosspath.move is also a research project on how international and EU migration law is experienced by the people it governs. Country requirements are traced back to primary sources — EU directives, national statutes, and treaty instruments — and translated into plain language without losing the underlying rule.
+          </p>
+          <div className="mt-4 grid grid-cols-1 gap-2">
+            <Link to="/methodology" className="group flex items-center gap-3 rounded-xl border border-border bg-background p-3 hover:border-primary">
+              <BookMarked className="h-4 w-4 text-primary" strokeWidth={1.8} />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-foreground">Methodology &amp; Sources</p>
+                <p className="text-xs text-muted-foreground">Primary and secondary sources, update cadence, limitations.</p>
+              </div>
+            </Link>
+            <Link to="/rights" className="group flex items-center gap-3 rounded-xl border border-border bg-background p-3 hover:border-primary">
+              <Scale className="h-4 w-4 text-primary" strokeWidth={1.8} />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-foreground">Know Your Rights</p>
+                <p className="text-xs text-muted-foreground">Border and in-country protections with legal basis.</p>
+              </div>
+            </Link>
+            <Link to="/case-law" className="group flex items-center gap-3 rounded-xl border border-border bg-background p-3 hover:border-primary">
+              <Gavel className="h-4 w-4 text-primary" strokeWidth={1.8} />
+              <div className="min-w-0 flex-1">
+                <p className="text-sm font-medium text-foreground">Landmark Case Law</p>
+                <p className="text-xs text-muted-foreground">Leading ECtHR and CJEU judgments in plain language.</p>
+              </div>
+            </Link>
+          </div>
         </div>
 
         {/* Contact / CTA */}

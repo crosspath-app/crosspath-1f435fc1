@@ -12,13 +12,16 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as RightsRouteImport } from './routes/rights'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as CostRouteImport } from './routes/cost'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ChecklistRouteImport } from './routes/checklist'
+import { Route as CaseLawRouteImport } from './routes/case-law'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
@@ -39,6 +42,11 @@ const SupportRoute = SupportRouteImport.update({
   path: '/support',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RightsRoute = RightsRouteImport.update({
+  id: '/rights',
+  path: '/rights',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
@@ -47,6 +55,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -72,6 +85,11 @@ const CompareRoute = CompareRouteImport.update({
 const ChecklistRoute = ChecklistRouteImport.update({
   id: '/checklist',
   path: '/checklist',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseLawRoute = CaseLawRouteImport.update({
+  id: '/case-law',
+  path: '/case-law',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -100,13 +118,16 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
+  '/rights': typeof RightsRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -116,13 +137,16 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
+  '/rights': typeof RightsRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -133,13 +157,16 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
+  '/rights': typeof RightsRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -151,13 +178,16 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
+    | '/rights'
     | '/support'
     | '/terms'
     | '/tools'
@@ -167,13 +197,16 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
+    | '/rights'
     | '/support'
     | '/terms'
     | '/tools'
@@ -183,13 +216,16 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
+    | '/rights'
     | '/support'
     | '/terms'
     | '/tools'
@@ -200,13 +236,16 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
+  CaseLawRoute: typeof CaseLawRoute
   ChecklistRoute: typeof ChecklistRoute
   CompareRoute: typeof CompareRoute
   CostRoute: typeof CostRoute
   HelpRoute: typeof HelpRoute
   LegalRoute: typeof LegalRoute
+  MethodologyRoute: typeof MethodologyRoute
   OnboardingRoute: typeof OnboardingRoute
   PrivacyRoute: typeof PrivacyRoute
+  RightsRoute: typeof RightsRoute
   SupportRoute: typeof SupportRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
@@ -235,6 +274,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/rights': {
+      id: '/rights'
+      path: '/rights'
+      fullPath: '/rights'
+      preLoaderRoute: typeof RightsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/privacy': {
       id: '/privacy'
       path: '/privacy'
@@ -247,6 +293,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -282,6 +335,13 @@ declare module '@tanstack/react-router' {
       path: '/checklist'
       fullPath: '/checklist'
       preLoaderRoute: typeof ChecklistRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-law': {
+      id: '/case-law'
+      path: '/case-law'
+      fullPath: '/case-law'
+      preLoaderRoute: typeof CaseLawRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -320,13 +380,16 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
+  CaseLawRoute: CaseLawRoute,
   ChecklistRoute: ChecklistRoute,
   CompareRoute: CompareRoute,
   CostRoute: CostRoute,
   HelpRoute: HelpRoute,
   LegalRoute: LegalRoute,
+  MethodologyRoute: MethodologyRoute,
   OnboardingRoute: OnboardingRoute,
   PrivacyRoute: PrivacyRoute,
+  RightsRoute: RightsRoute,
   SupportRoute: SupportRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,
