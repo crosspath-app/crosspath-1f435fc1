@@ -21,6 +21,7 @@ import { Route as HelpRouteImport } from './routes/help'
 import { Route as CostRouteImport } from './routes/cost'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ChecklistRouteImport } from './routes/checklist'
+import { Route as CaseLawRouteImport } from './routes/case-law'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
@@ -86,6 +87,11 @@ const ChecklistRoute = ChecklistRouteImport.update({
   path: '/checklist',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaseLawRoute = CaseLawRouteImport.update({
+  id: '/case-law',
+  path: '/case-law',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -112,6 +118,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
@@ -130,6 +137,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
@@ -149,6 +157,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/case-law': typeof CaseLawRoute
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
@@ -169,6 +178,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
@@ -187,6 +197,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
@@ -205,6 +216,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/account'
     | '/auth'
+    | '/case-law'
     | '/checklist'
     | '/compare'
     | '/cost'
@@ -224,6 +236,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
+  CaseLawRoute: typeof CaseLawRoute
   ChecklistRoute: typeof ChecklistRoute
   CompareRoute: typeof CompareRoute
   CostRoute: typeof CostRoute
@@ -324,6 +337,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ChecklistRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case-law': {
+      id: '/case-law'
+      path: '/case-law'
+      fullPath: '/case-law'
+      preLoaderRoute: typeof CaseLawRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -360,6 +380,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
+  CaseLawRoute: CaseLawRoute,
   ChecklistRoute: ChecklistRoute,
   CompareRoute: CompareRoute,
   CostRoute: CostRoute,
