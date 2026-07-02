@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpenText, Calculator, Scale, ArrowRight } from "lucide-react";
+import { BookOpenText, Calculator, Scale, ArrowRight, Shield, Gavel, BookMarked } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { useT } from "@/lib/i18n";
 
@@ -25,6 +25,9 @@ function ToolsPage() {
     { to: "/terms", icon: BookOpenText, title: t("tools.terms.title"), desc: t("tools.terms.desc") },
     { to: "/cost", icon: Calculator, title: t("tools.cost.title"), desc: t("tools.cost.desc") },
     { to: "/legal", icon: Scale, title: t("tools.legal.title"), desc: t("tools.legal.desc") },
+    { to: "/rights", icon: Shield, title: "Know Your Rights", desc: "Border and in-country protections with the legal basis for each." },
+    { to: "/case-law", icon: Gavel, title: "Landmark Case Law", desc: "Leading ECtHR and CJEU judgments on migration and asylum." },
+    { to: "/methodology", icon: BookMarked, title: "Methodology & Sources", desc: "The primary sources and editorial policy behind every guide." },
   ] as const;
   return (
     <AppShell>
