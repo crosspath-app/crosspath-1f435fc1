@@ -14,6 +14,7 @@ import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SupportRouteImport } from './routes/support'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
+import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HelpRouteImport } from './routes/help'
 import { Route as CostRouteImport } from './routes/cost'
@@ -47,6 +48,11 @@ const PrivacyRoute = PrivacyRouteImport.update({
 const OnboardingRoute = OnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MethodologyRoute = MethodologyRouteImport.update({
+  id: '/methodology',
+  path: '/methodology',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LegalRoute = LegalRouteImport.update({
@@ -105,6 +111,7 @@ export interface FileRoutesByFullPath {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -121,6 +128,7 @@ export interface FileRoutesByTo {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -138,6 +146,7 @@ export interface FileRoutesById {
   '/cost': typeof CostRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
+  '/methodology': typeof MethodologyRoute
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/support': typeof SupportRoute
@@ -156,6 +165,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
     | '/support'
@@ -172,6 +182,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
     | '/support'
@@ -188,6 +199,7 @@ export interface FileRouteTypes {
     | '/cost'
     | '/help'
     | '/legal'
+    | '/methodology'
     | '/onboarding'
     | '/privacy'
     | '/support'
@@ -205,6 +217,7 @@ export interface RootRouteChildren {
   CostRoute: typeof CostRoute
   HelpRoute: typeof HelpRoute
   LegalRoute: typeof LegalRoute
+  MethodologyRoute: typeof MethodologyRoute
   OnboardingRoute: typeof OnboardingRoute
   PrivacyRoute: typeof PrivacyRoute
   SupportRoute: typeof SupportRoute
@@ -247,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/onboarding'
       fullPath: '/onboarding'
       preLoaderRoute: typeof OnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/methodology': {
+      id: '/methodology'
+      path: '/methodology'
+      fullPath: '/methodology'
+      preLoaderRoute: typeof MethodologyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/legal': {
@@ -325,6 +345,7 @@ const rootRouteChildren: RootRouteChildren = {
   CostRoute: CostRoute,
   HelpRoute: HelpRoute,
   LegalRoute: LegalRoute,
+  MethodologyRoute: MethodologyRoute,
   OnboardingRoute: OnboardingRoute,
   PrivacyRoute: PrivacyRoute,
   SupportRoute: SupportRoute,
