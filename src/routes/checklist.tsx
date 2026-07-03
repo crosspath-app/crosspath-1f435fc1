@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins } from "lucide-react";
+import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins, Scale } from "lucide-react";
 import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
 import { useTrip, useChecked } from "@/lib/trip-store";
 import { useLocalized } from "@/lib/borderless-i18n";
 import { useT } from "@/lib/i18n";
+import { getLegalBasis } from "@/lib/borderless-legal-basis";
 
 export const Route = createFileRoute("/checklist")({
   head: () => ({
@@ -78,6 +79,36 @@ function ChecklistPage() {
         <Calendar className="h-4 w-4 text-primary" strokeWidth={1.6} />
         <span className="text-xs text-muted-foreground">Estimated timeline</span>
         <span className="ml-auto text-sm font-medium text-foreground">~{trip.timelineWeeks} weeks</span>
+      </div>
+
+      {/* Legal basis */}
+      <div className="mt-6 px-6">
+        <div className="flex items-center gap-2">
+          <Scale className="h-4 w-4 text-primary" strokeWidth={1.6} />
+          <h2 className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">Legal basis</h2>
+        </div>
+        <p className="mt-2 text-[11px] leading-relaxed text-muted-foreground">
+          The instruments these requirements ultimately trace back to.
+        </p>
+        <ul className="mt-3 space-y-2">
+          {getLegalBasis(trip.reason).map((ref) => (
+            <li key={ref.cite} className="rounded-xl border border-border bg-card p-3">
+              <div className="flex items-start justify-between gap-2">
+                <p className="text-sm font-semibold text-foreground">{ref.label}</p>
+                <a
+                  href={ref.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex shrink-0 items-center gap-1 text-[11px] text-primary hover:underline"
+                >
+                  Source <ExternalLink className="h-3 w-3" />
+                </a>
+              </div>
+              <p className="mt-1 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground">{ref.cite}</p>
+              <p className="mt-1.5 text-xs leading-relaxed text-muted-foreground">{ref.note}</p>
+            </li>
+          ))}
+        </ul>
       </div>
 
       {/* Checklist */}
