@@ -438,6 +438,11 @@ export type CompareCountry = {
   // Narrative
   goodFor: string;
   watchOut: string;
+  // Legal pathway (comparative-law dimensions)
+  prYears?: number;                 // years of continuous residence to permanent residency
+  citizenshipYears?: number;        // years of residence to citizenship (standard route)
+  dualCitizenship?: "Yes" | "No" | "Conditional";
+  postStudyWork?: string;           // length of post-study job-search / graduate permit
 };
 
 // Indicative data compiled from public sources (embassies, OECD, Numbeo, EF EPI).
