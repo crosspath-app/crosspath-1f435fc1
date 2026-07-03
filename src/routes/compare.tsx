@@ -196,6 +196,38 @@ function CountryCard({ country: c, score, open, onToggle }: {
               <span className="text-foreground font-medium">Watch out · </span>{c.watchOut}
             </p>
           </div>
+
+          {(c.prYears || c.citizenshipYears || c.dualCitizenship || c.postStudyWork) && (
+            <div className="rounded-xl border border-border bg-background/40 p-3">
+              <p className="text-[9px] uppercase tracking-[0.22em] text-muted-foreground font-mono">Legal pathway</p>
+              <dl className="mt-2 grid grid-cols-2 gap-x-3 gap-y-1.5 text-[11px]">
+                {c.prYears !== undefined && (
+                  <>
+                    <dt className="text-muted-foreground">Permanent residency</dt>
+                    <dd className="text-foreground font-medium text-right">{c.prYears} yrs</dd>
+                  </>
+                )}
+                {c.citizenshipYears !== undefined && (
+                  <>
+                    <dt className="text-muted-foreground">Citizenship</dt>
+                    <dd className="text-foreground font-medium text-right">{c.citizenshipYears} yrs</dd>
+                  </>
+                )}
+                {c.dualCitizenship && (
+                  <>
+                    <dt className="text-muted-foreground">Dual citizenship</dt>
+                    <dd className="text-foreground font-medium text-right">{c.dualCitizenship}</dd>
+                  </>
+                )}
+                {c.postStudyWork && (
+                  <>
+                    <dt className="text-muted-foreground">Post-study work</dt>
+                    <dd className="text-foreground font-medium text-right">{c.postStudyWork}</dd>
+                  </>
+                )}
+              </dl>
+            </div>
+          )}
         </div>
       )}
     </div>
