@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Globe2, MapPin, Briefcase, Heart, Mail, Instagram, GraduationCap, Scale, BookMarked, Gavel } from "lucide-react";
+import { ArrowLeft, Globe2, MapPin, Briefcase, Heart, Mail, Instagram, GraduationCap, Scale, BookMarked, Gavel, FileDown } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
+import { downloadPortfolioPdf } from "@/lib/portfolio-pdf";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -148,6 +149,18 @@ function AboutPage() {
               </div>
             </Link>
           </div>
+          <button
+            type="button"
+            onClick={() => downloadPortfolioPdf()}
+            className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"
+            style={{ background: "var(--gradient-primary)" }}
+          >
+            <FileDown className="h-4 w-4" strokeWidth={1.8} />
+            Download PDF report
+          </button>
+          <p className="mt-2 text-[11px] text-muted-foreground text-center">
+            One-page portfolio summary — methodology, sample outputs, sources.
+          </p>
         </div>
 
         {/* Contact / CTA */}
