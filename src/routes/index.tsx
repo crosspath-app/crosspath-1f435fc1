@@ -21,6 +21,41 @@ export const Route = createFileRoute("/")({
     links: [
       { rel: "canonical", href: "https://crosspath.lovable.app/" },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: [
+            {
+              "@type": "Question",
+              name: "How does Crosspath.move build my relocation checklist?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Pick your nationality, destination country and reason for moving. Crosspath.move generates the required documents, visa steps, deadlines and official government links for that combination.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Is Crosspath.move free to use?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Yes. The visa checklists, cost calculator, country comparison and legal-terms glossary are all free.",
+              },
+            },
+            {
+              "@type": "Question",
+              name: "Which countries and visa types are supported?",
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: "Crosspath.move covers major student, work, family and digital-nomad visa routes across the EU, UK, US, Canada, Australia and more, with plain-language guides and links to official portals.",
+              },
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: Index,
 });

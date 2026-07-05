@@ -99,6 +99,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
               "@type": "WebSite",
               name: "Crosspath.move",
               url: "https://crosspath.lovable.app",
+              potentialAction: {
+                "@type": "SearchAction",
+                target: "https://crosspath.lovable.app/checklist?from={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            },
+            {
+              "@type": "WebApplication",
+              name: "Crosspath.move",
+              url: "https://crosspath.lovable.app",
+              applicationCategory: "TravelApplication",
+              operatingSystem: "Any",
+              description:
+                "Free relocation planner with country-specific visa checklists, deadlines, cost calculators and plain-language immigration guides.",
+              offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
             },
           ],
         }),
