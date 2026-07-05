@@ -5,6 +5,13 @@ import { useAuth } from "@/hooks/use-auth";
 import { AppShell } from "@/components/borderless/AppShell";
 import { Loader2, Mail, ArrowLeft } from "lucide-react";
 import { toast } from "sonner";
+import { z } from "zod";
+
+const credentialsSchema = z.object({
+  email: z.string().trim().email("Enter a valid email").max(255),
+  password: z.string().min(8, "Password must be at least 8 characters").max(72, "Password is too long"),
+  displayName: z.string().trim().max(80, "Display name is too long").optional(),
+});
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -44,6 +51,11 @@ function AuthPage() {
     e.preventDefault();
     if (mode === "signup" && !privacyConsent) {
       toast.error("You must agree to the Privacy Policy to create an account.");
+      return;
+    }
+    const parsed = credentialsSchema.safeParse({ email, password, displayName });
+    if (!parsed.success) {
+      toast.error(parsed.error.issues[0]?.message ?? "Invalid input");
       return;
     }
     setBusy(true);
