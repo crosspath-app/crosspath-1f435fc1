@@ -1,7 +1,8 @@
 User-agent: *
 Allow: /
+
 Disallow: /auth
 Disallow: /account
 Disallow: /onboarding
 
-Sitemap: https://crosspath.lovable.app/sitemap.xml
+Sitemap: https://crosspath.site/sitemap.xml
