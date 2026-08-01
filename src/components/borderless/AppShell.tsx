@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, UserCircle2, Globe2 } from "lucide-react";
+import { Home, ListChecks, BarChart3, LifeBuoy, Wrench, UserCircle2, Globe2, Map } from "lucide-react";
 import type { ReactNode } from "react";
 import { LANGS, useLang, useT, type Lang } from "@/lib/i18n";
 import { useAuth } from "@/hooks/use-auth";
@@ -7,6 +7,7 @@ import { useAuth } from "@/hooks/use-auth";
 const tabs = [
   { to: "/", key: "nav.home", icon: Home },
   { to: "/checklist", key: "nav.checklist", icon: ListChecks },
+  { to: "/guides", key: "nav.guides", icon: Map },
   { to: "/compare", key: "nav.compare", icon: BarChart3 },
   { to: "/tools", key: "nav.tools", icon: Wrench },
   { to: "/help", key: "nav.help", icon: LifeBuoy },
