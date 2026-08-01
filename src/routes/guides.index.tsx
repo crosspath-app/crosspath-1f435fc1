@@ -57,11 +57,16 @@ function GuidesIndex() {
             <h2 className="text-sm font-semibold text-foreground">Need a different route?</h2>
           </div>
           <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            Build a personalised checklist for any nationality, destination and reason for moving.
+            Browse popular country-to-country routes, or build a personalised checklist for any nationality, destination and reason for moving.
           </p>
-          <Link to="/" className="mt-3 inline-flex items-center gap-2 rounded-xl border border-primary px-4 py-2 text-xs uppercase tracking-[0.2em] text-primary font-mono">
-            Start my plan <ArrowRight className="h-3 w-3" />
-          </Link>
+          <div className="mt-3 flex flex-wrap gap-2">
+            <Link to="/move" className="inline-flex items-center gap-2 rounded-xl border border-primary px-4 py-2 text-xs uppercase tracking-[0.2em] text-primary font-mono">
+              Popular routes <ArrowRight className="h-3 w-3" />
+            </Link>
+            <Link to="/" className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
+              Start my plan <ArrowRight className="h-3 w-3" />
+            </Link>
+          </div>
         </div>
       </div>
     </AppShell>
