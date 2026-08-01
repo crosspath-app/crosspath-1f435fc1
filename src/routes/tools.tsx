@@ -10,11 +10,11 @@ export const Route = createFileRoute("/tools")({
       { name: "description", content: "Translate immigration and visa jargon, estimate relocation costs and check what you can legally do on your visa abroad." },
       { property: "og:title", content: "Relocation Tools — Visa Terms, Costs & Legal Checks" },
       { property: "og:description", content: "Translate immigration and visa jargon, estimate relocation costs and check what you can legally do on your visa abroad." },
-      { property: "og:url", content: "https://crosspath.lovable.app/tools" },
+      { property: "og:url", content: "https://crosspath.site/tools" },
       { name: "twitter:title", content: "Relocation Tools — Crosspath.move" },
       { name: "twitter:description", content: "Visa jargon translator, relocation cost calculator and legal rights checker for people moving abroad." },
     ],
-    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/tools" }],
+    links: [{ rel: "canonical", href: "https://crosspath.site/tools" }],
   }),
   component: ToolsPage,
 });

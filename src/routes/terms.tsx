@@ -12,11 +12,11 @@ export const Route = createFileRoute("/terms")({
       { name: "description", content: "Plain-language definitions for confusing visa, residence permit and immigration terminology used on official forms and government portals." },
       { property: "og:title", content: "Visa & Immigration Terms Translator — Crosspath.move" },
       { property: "og:description", content: "Plain-language definitions for confusing visa, residence permit and immigration terminology." },
-      { property: "og:url", content: "https://crosspath.lovable.app/terms" },
+      { property: "og:url", content: "https://crosspath.site/terms" },
       { name: "twitter:title", content: "Visa & Immigration Terms Translator — Crosspath.move" },
       { name: "twitter:description", content: "Plain-language meanings for confusing visa and immigration phrases." },
     ],
-    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/terms" }],
+    links: [{ rel: "canonical", href: "https://crosspath.site/terms" }],
   }),
   component: TermsPage,
 });

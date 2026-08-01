@@ -14,12 +14,12 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Pick your home country, destination and visa purpose — get a personalized relocation checklist with documents, deadlines and official links." },
       { property: "og:title", content: "Crosspath.move — Relocation Checklists & Visa Guides" },
       { property: "og:description", content: "Pick your home country, destination and visa purpose — get a personalized relocation checklist with documents, deadlines and official links." },
-      { property: "og:url", content: "https://crosspath.lovable.app/" },
+      { property: "og:url", content: "https://crosspath.site/" },
       { name: "twitter:title", content: "Crosspath.move — Relocation Checklists & Visa Guides" },
       { name: "twitter:description", content: "Personalized visa checklists, relocation deadlines and plain-language immigration guides for anywhere in the world." },
     ],
     links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/" },
+      { rel: "canonical", href: "https://crosspath.site/" },
     ],
     scripts: [
       {
