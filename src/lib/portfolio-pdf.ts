@@ -79,7 +79,7 @@ export function downloadPortfolioPdf() {
   doc.setFontSize(8);
   doc.setTextColor(180, 200, 220);
   doc.text(
-    `crosspath.lovable.app  ·  Maria Banys  ·  ${new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })}`,
+    `crosspath.site  ·  Maria Banys  ·  ${new Date().toLocaleDateString("en-GB", { year: "numeric", month: "long" })}`,
     margin,
     76,
   );
@@ -143,7 +143,7 @@ export function downloadPortfolioPdf() {
   doc.setFontSize(8);
   doc.setTextColor(100, 116, 139);
   doc.text("Information, not legal advice.  ·  Sources: EUR-Lex, EUAA, UNHCR, HCCH, IOM.", margin, pageH - 24);
-  doc.text("crosspath.lovable.app", pageW - margin, pageH - 24, { align: "right" });
+  doc.text("crosspath.site", pageW - margin, pageH - 24, { align: "right" });
 
   doc.save("crosspath-move-portfolio.pdf");
 }

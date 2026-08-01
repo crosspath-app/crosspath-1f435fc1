@@ -15,12 +15,12 @@ export const Route = createFileRoute("/checklist")({
       { name: "description", content: "Your personalized visa checklist: required documents, residence permit deadlines and a Move Score rating your relocation difficulty." },
       { property: "og:title", content: "Visa & Relocation Checklist — Crosspath.move" },
       { property: "og:description", content: "Your personalized visa checklist: required documents, residence permit deadlines and a Move Score rating your relocation difficulty." },
-      { property: "og:url", content: "https://crosspath.lovable.app/checklist" },
+      { property: "og:url", content: "https://crosspath.site/checklist" },
       { name: "twitter:title", content: "Visa & Relocation Checklist — Crosspath.move" },
       { name: "twitter:description", content: "Personalized visa checklist, document deadlines and Move Score for relocating to any country." },
     ],
     links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/checklist" },
+      { rel: "canonical", href: "https://crosspath.site/checklist" },
     ],
   }),
   component: ChecklistPage,
@@ -33,7 +33,7 @@ function ChecklistPage() {
 function SharePlanButton({ from, to, reason, readiness, moveScore }: { from: string; to: string; reason: string; readiness: number; moveScore: number }) {
   const [copied, setCopied] = useState(false);
   const text = `My relocation plan: ${from} → ${to} (${reason}). Move Score ${moveScore}/100, ${readiness}% document-ready. Built with Crosspath.move`;
-  const url = "https://crosspath.lovable.app/";
+  const url = "https://crosspath.site/";
 
   async function share() {
     if (typeof navigator !== "undefined" && navigator.share) {

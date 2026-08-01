@@ -12,11 +12,11 @@ export const Route = createFileRoute("/cost")({
       { name: "description", content: "Estimate the true cost of moving abroad: visa fees, housing deposit, health insurance, transport, document translations and emergency savings." },
       { property: "og:title", content: "Relocation Cost Calculator — Visa, Rent & Insurance" },
       { property: "og:description", content: "Estimate the true cost of moving abroad: visa fees, housing deposit, health insurance, transport, translations and emergency savings." },
-      { property: "og:url", content: "https://crosspath.lovable.app/cost" },
+      { property: "og:url", content: "https://crosspath.site/cost" },
       { name: "twitter:title", content: "Relocation Cost Calculator — Crosspath.move" },
       { name: "twitter:description", content: "Estimate visa fees, housing deposit, health insurance and moving costs before you relocate abroad." },
     ],
-    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/cost" }],
+    links: [{ rel: "canonical", href: "https://crosspath.site/cost" }],
   }),
   component: CostPage,
 });

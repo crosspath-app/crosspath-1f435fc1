@@ -10,13 +10,13 @@ export const Route = createFileRoute("/about")({
       { name: "description", content: "Meet Maria Banyś, founder of Crosspath.move — a free relocation and visa planning app for international students, remote workers and digital nomads." },
       { property: "og:title", content: "About the Founder — Crosspath.move Relocation App" },
       { property: "og:description", content: "Meet Maria Banyś, founder of Crosspath.move — a free relocation and visa planning app for students, workers and nomads." },
-      { property: "og:url", content: "https://crosspath.lovable.app/about" },
+      { property: "og:url", content: "https://crosspath.site/about" },
       { property: "og:type", content: "profile" },
       { name: "twitter:title", content: "About the Founder — Crosspath.move" },
       { name: "twitter:description", content: "Meet Maria Banyś, founder of the free relocation and visa planning app Crosspath.move." },
     ],
     links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/about" },
+      { rel: "canonical", href: "https://crosspath.site/about" },
     ],
     scripts: [
       {
@@ -28,11 +28,11 @@ export const Route = createFileRoute("/about")({
             "@type": "Person",
             name: "Maria Banyś",
             jobTitle: "Founder, Crosspath.move",
-            url: "https://crosspath.lovable.app/about",
+            url: "https://crosspath.site/about",
             worksFor: {
               "@type": "Organization",
               name: "Crosspath.move",
-              url: "https://crosspath.lovable.app",
+              url: "https://crosspath.site",
             },
           },
         }),

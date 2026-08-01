@@ -12,11 +12,11 @@ export const Route = createFileRoute("/legal")({
       { name: "description", content: "Quick answers on visa work rights, freelancing, family reunification and travel rules for expats, students and digital nomads abroad." },
       { property: "og:title", content: "Visa Rights: Can I Legally…? — Crosspath.move" },
       { property: "og:description", content: "Quick answers on visa work rights, freelancing, family reunification and travel rules for expats and students abroad." },
-      { property: "og:url", content: "https://crosspath.lovable.app/legal" },
+      { property: "og:url", content: "https://crosspath.site/legal" },
       { name: "twitter:title", content: "Visa Rights: Can I Legally…? — Crosspath.move" },
       { name: "twitter:description", content: "Quick visa answers on work, freelancing, family and travel rights abroad." },
     ],
-    links: [{ rel: "canonical", href: "https://crosspath.lovable.app/legal" }],
+    links: [{ rel: "canonical", href: "https://crosspath.site/legal" }],
     scripts: [
       {
         type: "application/ld+json",

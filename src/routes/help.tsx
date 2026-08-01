@@ -11,12 +11,12 @@ export const Route = createFileRoute("/help")({
       { name: "description", content: "Embassy contacts, lost passport procedure, emergency numbers and official immigration portals for travelers and expats abroad." },
       { property: "og:title", content: "Emergency Help Abroad — Embassies & Lost Passport" },
       { property: "og:description", content: "Embassy contacts, lost passport steps, emergency numbers and official immigration portals for travelers abroad." },
-      { property: "og:url", content: "https://crosspath.lovable.app/help" },
+      { property: "og:url", content: "https://crosspath.site/help" },
       { name: "twitter:title", content: "Emergency Help Abroad — Crosspath.move" },
       { name: "twitter:description", content: "Embassy contacts, lost passport steps and emergency numbers for travelers abroad." },
     ],
     links: [
-      { rel: "canonical", href: "https://crosspath.lovable.app/help" },
+      { rel: "canonical", href: "https://crosspath.site/help" },
     ],
     scripts: [
       {

@@ -80,10 +80,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:site", content: "@crosspathapp" },
       { name: "twitter:title", content: "Crosspath.move — Relocation Checklists & Visa Guides" },
       { name: "twitter:description", content: "Free relocation planner with country-specific visa checklists, deadlines, cost calculators and plain-language immigration guides." },
-      { property: "og:image", content: "https://crosspath.lovable.app/og-crosspath.jpg" },
+      { property: "og:image", content: "https://crosspath.site/og-crosspath.jpg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { name: "twitter:image", content: "https://crosspath.lovable.app/og-crosspath.jpg" },
+      { name: "twitter:image", content: "https://crosspath.site/og-crosspath.jpg" },
     ],
     links: [],
     scripts: [
@@ -95,22 +95,22 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
             {
               "@type": "Organization",
               name: "Crosspath.move",
-              url: "https://crosspath.lovable.app",
+              url: "https://crosspath.site",
             },
             {
               "@type": "WebSite",
               name: "Crosspath.move",
-              url: "https://crosspath.lovable.app",
+              url: "https://crosspath.site",
               potentialAction: {
                 "@type": "SearchAction",
-                target: "https://crosspath.lovable.app/checklist?from={search_term_string}",
+                target: "https://crosspath.site/checklist?from={search_term_string}",
                 "query-input": "required name=search_term_string",
               },
             },
             {
               "@type": "WebApplication",
               name: "Crosspath.move",
-              url: "https://crosspath.lovable.app",
+              url: "https://crosspath.site",
               applicationCategory: "TravelApplication",
               operatingSystem: "Any",
               description:
