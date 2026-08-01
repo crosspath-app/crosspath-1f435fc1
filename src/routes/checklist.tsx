@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins, Scale } from "lucide-react";
+import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins, Scale, Share2 } from "lucide-react";
 import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
@@ -27,6 +27,45 @@ export const Route = createFileRoute("/checklist")({
 });
 
 function ChecklistPage() {
+  return <ChecklistPageInner />;
+}
+
+function SharePlanButton({ from, to, reason, readiness, moveScore }: { from: string; to: string; reason: string; readiness: number; moveScore: number }) {
+  const [copied, setCopied] = useState(false);
+  const text = `My relocation plan: ${from} → ${to} (${reason}). Move Score ${moveScore}/100, ${readiness}% document-ready. Built with Crosspath.move`;
+  const url = "https://crosspath.lovable.app/";
+
+  async function share() {
+    if (typeof navigator !== "undefined" && navigator.share) {
+      try {
+        await navigator.share({ title: "My Crosspath.move plan", text, url });
+        return;
+      } catch {
+        /* user cancelled — fall through to copy */
+      }
+    }
+    try {
+      await navigator.clipboard.writeText(`${text} ${url}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  }
+
+  return (
+    <button
+      type="button"
+      onClick={share}
+      className="mt-4 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-xs font-medium text-foreground transition-colors hover:border-primary hover:text-primary"
+    >
+      <Share2 className="h-3.5 w-3.5" strokeWidth={1.8} />
+      {copied ? "Link copied" : "Share my plan"}
+    </button>
+  );
+}
+
+function ChecklistPageInner() {
   const [trip] = useTrip();
   const { checked, toggle } = useChecked();
   const [openId, setOpenId] = useState<string | null>(null);
@@ -67,6 +106,13 @@ function ChecklistPage() {
         <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Your move plan
         </h1>
+        <SharePlanButton
+          from={`${fromC.flag} ${fromC.name}`}
+          to={`${toC.flag} ${toC.name}`}
+          reason={reason.label}
+          readiness={readiness}
+          moveScore={trip.moveScore}
+        />
       </div>
 
       {/* Score cards */}
