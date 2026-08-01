@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins, Scale } from "lucide-react";
+import { ArrowLeft, Calendar, Check, ChevronDown, ExternalLink, Sparkles, MapPin, AlertCircle, Lightbulb, Coins, Scale, Share2 } from "lucide-react";
 import { useState } from "react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { COUNTRIES } from "@/lib/borderless-data";
@@ -67,6 +67,13 @@ function ChecklistPage() {
         <h1 className="mt-2 text-3xl font-semibold leading-tight tracking-tight text-foreground">
           Your move plan
         </h1>
+        <SharePlanButton
+          from={`${fromC.flag} ${fromC.name}`}
+          to={`${toC.flag} ${toC.name}`}
+          reason={reason.label}
+          readiness={readiness}
+          moveScore={trip.moveScore}
+        />
       </div>
 
       {/* Score cards */}
