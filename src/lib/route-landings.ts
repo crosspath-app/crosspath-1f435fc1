@@ -227,7 +227,7 @@ export const ROUTE_LANDINGS: RouteLanding[] = [
       { title: "Register for PESEL UKR", note: "At any city or municipal office (urząd gminy). Bring any ID document; a biometric photo is taken on site.", when: "As soon as possible" },
       { title: "Set up a trusted profile", local: "Profil Zaufany", note: "Digital signature used for benefits, healthcare and the diia.pl document.", when: "Same appointment" },
       { title: "Healthcare registration", note: "Temporary protection gives access to NFZ-funded care on the same terms as insured residents.", when: "Immediately" },
-      { title: "Work or register as unemployed", note: "No work permit is required; the employer notifies the labour office within 7 days." },
+      { title: "Work or register as unemployed", note: "No work permit is required; the employer notifies the labour office within 7 days.", when: "Any time" },
       { title: "Enrol children in school", note: "Free and compulsory; preparatory classes are available for Ukrainian-speaking pupils.", when: "Within weeks of arrival" },
       { title: "Free legal aid", note: "Contact UNHCR Poland or the Helsinki Foundation for Human Rights for status and family questions.", when: "Any time" },
     ],
