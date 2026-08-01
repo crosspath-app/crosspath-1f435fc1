@@ -27,6 +27,7 @@ import { Route as AsylumRouteImport } from './routes/asylum'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as MoveIndexRouteImport } from './routes/move.index'
 import { Route as GuidesIndexRouteImport } from './routes/guides.index'
 import { Route as MoveSlugRouteImport } from './routes/move.$slug'
 import { Route as GuidesSlugRouteImport } from './routes/guides.$slug'
@@ -121,6 +122,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MoveIndexRoute = MoveIndexRouteImport.update({
+  id: '/move/',
+  path: '/move/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GuidesIndexRoute = GuidesIndexRouteImport.update({
   id: '/guides/',
   path: '/guides/',
@@ -159,6 +165,7 @@ export interface FileRoutesByFullPath {
   '/guides/$slug': typeof GuidesSlugRoute
   '/move/$slug': typeof MoveSlugRoute
   '/guides/': typeof GuidesIndexRoute
+  '/move/': typeof MoveIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -182,6 +189,7 @@ export interface FileRoutesByTo {
   '/guides/$slug': typeof GuidesSlugRoute
   '/move/$slug': typeof MoveSlugRoute
   '/guides': typeof GuidesIndexRoute
+  '/move': typeof MoveIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -206,6 +214,7 @@ export interface FileRoutesById {
   '/guides/$slug': typeof GuidesSlugRoute
   '/move/$slug': typeof MoveSlugRoute
   '/guides/': typeof GuidesIndexRoute
+  '/move/': typeof MoveIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/move/$slug'
     | '/guides/'
+    | '/move/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -254,6 +264,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/move/$slug'
     | '/guides'
+    | '/move'
   id:
     | '__root__'
     | '/'
@@ -277,6 +288,7 @@ export interface FileRouteTypes {
     | '/guides/$slug'
     | '/move/$slug'
     | '/guides/'
+    | '/move/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   GuidesSlugRoute: typeof GuidesSlugRoute
   MoveSlugRoute: typeof MoveSlugRoute
   GuidesIndexRoute: typeof GuidesIndexRoute
+  MoveIndexRoute: typeof MoveIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -431,6 +444,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/move/': {
+      id: '/move/'
+      path: '/move'
+      fullPath: '/move/'
+      preLoaderRoute: typeof MoveIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/guides/': {
       id: '/guides/'
       path: '/guides'
@@ -477,6 +497,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesSlugRoute: GuidesSlugRoute,
   MoveSlugRoute: MoveSlugRoute,
   GuidesIndexRoute: GuidesIndexRoute,
+  MoveIndexRoute: MoveIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
