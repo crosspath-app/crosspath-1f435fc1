@@ -30,23 +30,42 @@ export const Route = createFileRoute("/move/$slug")({
             "@graph": [
               {
                 "@type": "HowTo",
+                "@id": `${url}#howto`,
                 name: `${r.fromName} to ${r.toName} for ${r.reasonLabel.toLowerCase()}`,
                 description: r.metaDescription,
                 url,
+                mainEntityOfPage: { "@type": "WebPage", "@id": url },
+                inLanguage: "en",
+                publisher: { "@type": "Organization", name: "Crosspath.move", url: "https://crosspath.site" },
                 step: r.preview.map((s, i) => ({
                   "@type": "HowToStep",
                   position: i + 1,
                   name: s.title,
                   text: s.note,
+                  url: `${url}#step-${i + 1}`,
                 })),
               },
               {
                 "@type": "FAQPage",
+                "@id": `${url}#faq`,
+                name: `${r.fromName} to ${r.toName} — frequently asked questions`,
+                url,
+                mainEntityOfPage: { "@type": "WebPage", "@id": url },
+                inLanguage: "en",
                 mainEntity: r.faq.map((f) => ({
                   "@type": "Question",
                   name: f.q,
                   acceptedAnswer: { "@type": "Answer", text: f.a },
                 })),
+              },
+              {
+                "@type": "BreadcrumbList",
+                "@id": `${url}#breadcrumb`,
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "Home", item: "https://crosspath.site/" },
+                  { "@type": "ListItem", position: 2, name: "Routes", item: "https://crosspath.site/move" },
+                  { "@type": "ListItem", position: 3, name: `${r.fromName} to ${r.toName}`, item: url },
+                ],
               },
             ],
           }),
