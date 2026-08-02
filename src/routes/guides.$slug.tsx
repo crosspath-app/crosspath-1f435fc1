@@ -110,7 +110,7 @@ function GuidePage() {
           <h2 className="text-sm font-semibold text-foreground">Step-by-step checklist</h2>
           <ol className="mt-4 space-y-3">
             {guide.steps.map((s, i) => (
-              <li key={s.title} className="rounded-xl border border-border bg-background p-4">
+              <li key={s.title} id={`step-${i + 1}`} className="rounded-xl border border-border bg-background p-4">
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-primary text-[10px] text-primary font-mono">
                     {i + 1}
