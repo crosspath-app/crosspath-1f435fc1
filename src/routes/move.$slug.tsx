@@ -140,7 +140,7 @@ function RouteLandingPage() {
           </div>
           <ol className="mt-3 space-y-2">
             {r.preview.map((s, i) => (
-              <li key={s.title} className="rounded-xl border border-border bg-background p-3">
+              <li key={s.title} id={`step-${i + 1}`} className="rounded-xl border border-border bg-background p-3">
                 <div className="flex items-start gap-3">
                   <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-primary text-[9px] text-primary font-mono">
                     {i + 1}
