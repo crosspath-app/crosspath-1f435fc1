@@ -18,6 +18,7 @@ import { Route as OnboardingRouteImport } from './routes/onboarding'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as HelpRouteImport } from './routes/help'
+import { Route as DeadlinesRouteImport } from './routes/deadlines'
 import { Route as CostRouteImport } from './routes/cost'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as ChecklistRouteImport } from './routes/checklist'
@@ -75,6 +76,11 @@ const LegalRoute = LegalRouteImport.update({
 const HelpRoute = HelpRouteImport.update({
   id: '/help',
   path: '/help',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DeadlinesRoute = DeadlinesRouteImport.update({
+  id: '/deadlines',
+  path: '/deadlines',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CostRoute = CostRouteImport.update({
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
+  '/deadlines': typeof DeadlinesRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
   '/methodology': typeof MethodologyRoute
@@ -177,6 +184,7 @@ export interface FileRoutesByTo {
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
+  '/deadlines': typeof DeadlinesRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
   '/methodology': typeof MethodologyRoute
@@ -202,6 +210,7 @@ export interface FileRoutesById {
   '/checklist': typeof ChecklistRoute
   '/compare': typeof CompareRoute
   '/cost': typeof CostRoute
+  '/deadlines': typeof DeadlinesRoute
   '/help': typeof HelpRoute
   '/legal': typeof LegalRoute
   '/methodology': typeof MethodologyRoute
@@ -228,6 +237,7 @@ export interface FileRouteTypes {
     | '/checklist'
     | '/compare'
     | '/cost'
+    | '/deadlines'
     | '/help'
     | '/legal'
     | '/methodology'
@@ -252,6 +262,7 @@ export interface FileRouteTypes {
     | '/checklist'
     | '/compare'
     | '/cost'
+    | '/deadlines'
     | '/help'
     | '/legal'
     | '/methodology'
@@ -276,6 +287,7 @@ export interface FileRouteTypes {
     | '/checklist'
     | '/compare'
     | '/cost'
+    | '/deadlines'
     | '/help'
     | '/legal'
     | '/methodology'
@@ -301,6 +313,7 @@ export interface RootRouteChildren {
   ChecklistRoute: typeof ChecklistRoute
   CompareRoute: typeof CompareRoute
   CostRoute: typeof CostRoute
+  DeadlinesRoute: typeof DeadlinesRoute
   HelpRoute: typeof HelpRoute
   LegalRoute: typeof LegalRoute
   MethodologyRoute: typeof MethodologyRoute
@@ -379,6 +392,13 @@ declare module '@tanstack/react-router' {
       path: '/help'
       fullPath: '/help'
       preLoaderRoute: typeof HelpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/deadlines': {
+      id: '/deadlines'
+      path: '/deadlines'
+      fullPath: '/deadlines'
+      preLoaderRoute: typeof DeadlinesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cost': {
@@ -485,6 +505,7 @@ const rootRouteChildren: RootRouteChildren = {
   ChecklistRoute: ChecklistRoute,
   CompareRoute: CompareRoute,
   CostRoute: CostRoute,
+  DeadlinesRoute: DeadlinesRoute,
   HelpRoute: HelpRoute,
   LegalRoute: LegalRoute,
   MethodologyRoute: MethodologyRoute,

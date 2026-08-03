@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpenText, Calculator, Scale, ArrowRight, Shield, Gavel, BookMarked, LifeBuoy } from "lucide-react";
+import { BookOpenText, Calculator, Scale, ArrowRight, Shield, Gavel, BookMarked, LifeBuoy, BellRing } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
 import { useT } from "@/lib/i18n";
 
@@ -22,6 +22,7 @@ export const Route = createFileRoute("/tools")({
 function ToolsPage() {
   const t = useT();
   const tiles = [
+    { to: "/deadlines", icon: BellRing, title: "Deadline Reminders", desc: "Track document expiry dates and get an email before each one runs out." },
     { to: "/terms", icon: BookOpenText, title: t("tools.terms.title"), desc: t("tools.terms.desc") },
     { to: "/cost", icon: Calculator, title: t("tools.cost.title"), desc: t("tools.cost.desc") },
     { to: "/legal", icon: Scale, title: t("tools.legal.title"), desc: t("tools.legal.desc") },
