@@ -14,6 +14,45 @@ export type Database = {
   }
   public: {
     Tables: {
+      document_deadlines: {
+        Row: {
+          created_at: string
+          deadline_date: string
+          email_enabled: boolean
+          id: string
+          last_reminded_at: string | null
+          notes: string | null
+          remind_days_before: number
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          deadline_date: string
+          email_enabled?: boolean
+          id?: string
+          last_reminded_at?: string | null
+          notes?: string | null
+          remind_days_before?: number
+          title: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          deadline_date?: string
+          email_enabled?: boolean
+          id?: string
+          last_reminded_at?: string | null
+          notes?: string | null
+          remind_days_before?: number
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
