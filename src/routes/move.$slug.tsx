@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, CalendarClock, CheckCircle2, ListChecks, MoveRight, HelpCircle } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { ROUTE_LANDINGS, getRouteLanding } from "@/lib/route-landings";
+import { getRouteLanding } from "@/lib/route-landings";
 import { getGuide } from "@/lib/guides-data";
 import { relatedForRoute } from "@/lib/related-links";
 import { RelatedLinks } from "@/components/borderless/RelatedLinks";
