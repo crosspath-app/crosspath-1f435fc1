@@ -1,8 +1,10 @@
 import { createFileRoute, Link, notFound, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, CalendarClock, CheckCircle2, ListChecks, MoveRight, HelpCircle } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { ROUTE_LANDINGS, getRouteLanding } from "@/lib/route-landings";
+import { getRouteLanding } from "@/lib/route-landings";
 import { getGuide } from "@/lib/guides-data";
+import { relatedForRoute } from "@/lib/related-links";
+import { RelatedLinks } from "@/components/borderless/RelatedLinks";
 import { saveTrip } from "@/lib/trip-store";
 
 export const Route = createFileRoute("/move/$slug")({
@@ -86,7 +88,7 @@ function RouteLandingPage() {
   const r = getRouteLanding(slug);
   if (!r) return null;
   const guide = r.guideSlug ? getGuide(r.guideSlug) : undefined;
-  const others = ROUTE_LANDINGS.filter((x) => x.slug !== r.slug).slice(0, 3);
+  const related = relatedForRoute(r.slug);
 
   function startPlan() {
     if (!r) return;
@@ -206,20 +208,13 @@ function RouteLandingPage() {
           </Link>
         )}
 
-        <div className="space-y-2">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">Other popular routes</p>
-          {others.map((o) => (
-            <Link
-              key={o.slug}
-              to="/move/$slug"
-              params={{ slug: o.slug }}
-              className="flex items-center justify-between rounded-xl border border-border bg-card p-3 text-sm text-foreground hover:border-primary"
-            >
-              <span>{o.fromFlag} {o.fromName} → {o.toFlag} {o.toName} · {o.reasonLabel}</span>
-              <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
-            </Link>
-          ))}
-        </div>
+        <RelatedLinks
+          groups={[
+            { heading: "Similar routes", links: related.routes },
+            { heading: "In-depth guides", links: related.guides },
+            { heading: "Tools for this move", links: related.tools },
+          ]}
+        />
 
         <p className="text-[11px] leading-relaxed text-muted-foreground">
           Information, not legal advice. Rules change — confirm with the relevant embassy or an accredited lawyer. See our{" "}

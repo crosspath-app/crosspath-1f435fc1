@@ -1,7 +1,9 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, AlertTriangle, Scale, CalendarClock, Coins, ExternalLink, HelpCircle } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { GUIDES, getGuide } from "@/lib/guides-data";
+import { getGuide } from "@/lib/guides-data";
+import { relatedForGuide } from "@/lib/related-links";
+import { RelatedLinks } from "@/components/borderless/RelatedLinks";
 
 export const Route = createFileRoute("/guides/$slug")({
   head: ({ params }) => {
@@ -83,7 +85,7 @@ function GuidePage() {
   const { slug } = Route.useParams();
   const guide = getGuide(slug);
   if (!guide) return null;
-  const others = GUIDES.filter((g) => g.slug !== guide.slug);
+  const related = relatedForGuide(guide.slug);
 
   return (
     <AppShell>
@@ -187,20 +189,13 @@ function GuidePage() {
           <ArrowRight className="h-4 w-4 text-primary" />
         </Link>
 
-        <div className="space-y-2">
-          <p className="text-[10px] uppercase tracking-[0.25em] text-muted-foreground font-mono">Other guides</p>
-          {others.map((g) => (
-            <Link
-              key={g.slug}
-              to="/guides/$slug"
-              params={{ slug: g.slug }}
-              className="flex items-center justify-between rounded-xl border border-border bg-card p-3 text-sm text-foreground hover:border-primary"
-            >
-              <span>{g.flag} {g.title}</span>
-              <ArrowRight className="h-3.5 w-3.5 text-muted-foreground" />
-            </Link>
-          ))}
-        </div>
+        <RelatedLinks
+          groups={[
+            { heading: "Country routes covered in detail", links: related.routes },
+            { heading: "Related guides", links: related.guides },
+            { heading: "Tools for this move", links: related.tools },
+          ]}
+        />
 
         <p className="text-[11px] leading-relaxed text-muted-foreground">
           Information, not legal advice. Requirements change — always confirm with the relevant embassy or an accredited lawyer. See our{" "}
