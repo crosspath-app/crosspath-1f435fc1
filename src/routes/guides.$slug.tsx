@@ -1,7 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, AlertTriangle, Scale, CalendarClock, Coins, ExternalLink, HelpCircle } from "lucide-react";
 import { AppShell, PageHeader } from "@/components/borderless/AppShell";
-import { GUIDES, getGuide } from "@/lib/guides-data";
+import { getGuide } from "@/lib/guides-data";
 import { relatedForGuide } from "@/lib/related-links";
 import { RelatedLinks } from "@/components/borderless/RelatedLinks";
 
@@ -85,7 +85,7 @@ function GuidePage() {
   const { slug } = Route.useParams();
   const guide = getGuide(slug);
   if (!guide) return null;
-  const others = GUIDES.filter((g) => g.slug !== guide.slug);
+  const related = relatedForGuide(guide.slug);
 
   return (
     <AppShell>

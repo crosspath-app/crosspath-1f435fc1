@@ -88,7 +88,7 @@ function RouteLandingPage() {
   const r = getRouteLanding(slug);
   if (!r) return null;
   const guide = r.guideSlug ? getGuide(r.guideSlug) : undefined;
-  const others = ROUTE_LANDINGS.filter((x) => x.slug !== r.slug).slice(0, 3);
+  const related = relatedForRoute(r.slug);
 
   function startPlan() {
     if (!r) return;
