@@ -133,6 +133,14 @@ function AccountPage() {
           >
             About the Founder
           </Link>
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center justify-center rounded-xl border border-primary bg-card px-4 py-2.5 text-sm font-medium text-primary hover:bg-accent"
+            >
+              Admin dashboard
+            </Link>
+          )}
           <button
             onClick={async () => {
               await signOut();
