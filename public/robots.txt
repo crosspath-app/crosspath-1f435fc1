@@ -4,5 +4,7 @@ Allow: /
 Disallow: /auth
 Disallow: /account
 Disallow: /onboarding
+Disallow: /deadlines
+Disallow: /admin
 
 Sitemap: https://crosspath.site/sitemap.xml

@@ -25,6 +25,7 @@ import { Route as ChecklistRouteImport } from './routes/checklist'
 import { Route as CaseLawRouteImport } from './routes/case-law'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AsylumRouteImport } from './routes/asylum'
+import { Route as AdminRouteImport } from './routes/admin'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -113,6 +114,11 @@ const AsylumRoute = AsylumRouteImport.update({
   path: '/asylum',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AccountRoute = AccountRouteImport.update({
   id: '/account',
   path: '/account',
@@ -153,6 +159,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/asylum': typeof AsylumRoute
   '/auth': typeof AuthRoute
   '/case-law': typeof CaseLawRoute
@@ -178,6 +185,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/asylum': typeof AsylumRoute
   '/auth': typeof AuthRoute
   '/case-law': typeof CaseLawRoute
@@ -204,6 +212,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/account': typeof AccountRoute
+  '/admin': typeof AdminRoute
   '/asylum': typeof AsylumRoute
   '/auth': typeof AuthRoute
   '/case-law': typeof CaseLawRoute
@@ -231,6 +240,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/asylum'
     | '/auth'
     | '/case-law'
@@ -256,6 +266,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/asylum'
     | '/auth'
     | '/case-law'
@@ -281,6 +292,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/account'
+    | '/admin'
     | '/asylum'
     | '/auth'
     | '/case-law'
@@ -307,6 +319,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   AccountRoute: typeof AccountRoute
+  AdminRoute: typeof AdminRoute
   AsylumRoute: typeof AsylumRoute
   AuthRoute: typeof AuthRoute
   CaseLawRoute: typeof CaseLawRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AsylumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/account': {
       id: '/account'
       path: '/account'
@@ -499,6 +519,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   AccountRoute: AccountRoute,
+  AdminRoute: AdminRoute,
   AsylumRoute: AsylumRoute,
   AuthRoute: AuthRoute,
   CaseLawRoute: CaseLawRoute,
