@@ -1,83 +1,41 @@
-## Goal
-Level up Crosspath.move so it reads as a serious international-law-student portfolio piece, not just a nice UI. The additions below add legal depth, citations, and academic framing that professors and admissions committees look for.
+# Private admin dashboard at /admin
 
-## Additions
+A stats page only you can see. Everyone else — signed out or signed in — gets a "not found / no access" state, and the database itself refuses to hand them the data.
 
-### 1. "Legal Basis" section on each country guide
-For every destination, show the actual legal instruments the requirements come from:
-- EU directives (e.g. Directive 2016/801 on students/researchers, Directive 2003/86 on family reunification, Long-Term Residents Directive 2003/109)
-- National laws (e.g. Germany AufenthG §16b for students, France CESEDA L.422-1)
-- International conventions (1951 Refugee Convention, 1961 Hague Apostille, Vienna Convention on Consular Relations Art. 36)
+## How access is controlled
 
-Each item cites the article + a link to EUR-Lex or the national gazette. This is the single biggest credibility upgrade.
+Two layers, because the first one alone is never enough:
 
-### 2. New route `/rights` — "Know Your Rights at the Border"
-Plain-language summary of core protections every traveler/migrant has, with citations:
-- Right to consular notification (VCCR Art. 36)
-- Non-refoulement (1951 Convention Art. 33)
-- Right to an interpreter, right to silence, right to legal counsel
-- Schengen Borders Code refusal-of-entry appeal rights
-- EU Charter of Fundamental Rights Art. 18 (asylum), Art. 19 (collective expulsion)
+1. **UI layer** — `/admin` checks your role and renders nothing but an access-denied card if you are not an admin. The route is excluded from `sitemap.xml` and marked `noindex`, so Google never lists it.
+2. **Database layer (the real protection)** — roles live in their own `user_roles` table, never on `profiles`, and every admin read is gated by a `has_role()` security-definer check. Even if someone typed the URL, guessed the query, or edited the JavaScript in their browser, the database returns zero rows.
 
-### 3. New route `/case-law` — "Landmark Cases"
-Short digestible summaries (200–300 words each) of 8–10 cases that shaped modern mobility law:
-- *Hirsi Jamaa v. Italy* (ECtHR 2012) — non-refoulement at sea
-- *N.D. and N.T. v. Spain* (ECtHR 2020) — pushbacks
-- *Chakroun* (CJEU C-578/08) — family reunification income thresholds
-- *Zambrano* (CJEU C-34/09) — derivative EU rights
-- *Metock* (CJEU C-127/08) — third-country spouses
-- *M.S.S. v. Belgium and Greece* (ECtHR 2011) — Dublin transfers
-- *Trump v. Hawaii* (US 2018) — travel ban
-- *Plyler v. Doe* (US 1982) — education rights for undocumented children
+Your own account gets the `admin` role seeded once. Nobody can grant themselves a role from the app: there is no UI or policy that allows inserting into `user_roles`.
 
-### 4. Refugee/asylum mode (already teased in the brief)
-A separate simplified flow at `/asylum` that:
-- Explains the difference between asylum, subsidiary protection, and temporary protection
-- Lists rights during the procedure (right to stay, work access timelines by country)
-- Points to UNHCR, EASO/EUAA, and national asylum authorities
-- Emphasises this is information, not legal advice, with a "find a lawyer" directory link (ELENA network, national bar associations)
+## What the dashboard shows
 
-### 5. Methodology & Sources page `/methodology`
-Explains how the app is built — this is what turns it from "app" into "research project":
-- Primary sources used (EUR-Lex, national immigration portals, embassy sites)
-- Update cadence and last-verified dates per country
-- Editorial policy: no legal advice, information only
-- Limitations and disclaimers
-- Bibliography of secondary sources (IOM, UNHCR, MPI, EMN reports)
+- Total registered users, plus new sign-ups in the last 7 and 30 days
+- How many users completed onboarding vs dropped off
+- Top nationalities, top destination countries, and split by move reason (study / work / nomad / travel / protection)
+- Deadline tracker usage: total deadlines saved, how many have email reminders on, how many expire in the next 30 days
+- A simple sign-ups-over-time list for the last 8 weeks
 
-### 6. Country legal-system tags
-On each destination card, small tags for:
-- Legal family (civil law / common law / mixed)
-- Schengen / EU / EEA / third country
-- Party to 1961 Apostille Convention (yes/no — determines whether legalisation is needed)
-- Dual citizenship allowed (yes/no/conditional)
+All of it is aggregate counts. No email addresses, no individual user rows — that keeps the page useful for a portfolio screenshot without turning it into a personal-data export, which also keeps the GDPR/RODO statement on `/privacy` accurate.
 
-### 7. "Compare" upgrade — legal dimensions
-Add rows to the compare table:
-- Path to permanent residency (years)
-- Path to citizenship (years, language requirement, dual allowed)
-- Post-study work permit length
-- Family reunification income threshold
-- Statelessness Convention signatory
+## Technical detail
 
-### 8. Portfolio-facing `/about` additions
-- "Academic context" paragraph: which course/module this project supports, what legal question it explores
-- "What I learned" section: 4–5 bullets on legal research, comparative analysis, EU vs. national competence, plain-language drafting
-- Downloadable one-page PDF summary for print portfolios
+**Migration**
+- `create type public.app_role as enum ('admin','user')`
+- `public.user_roles (id, user_id -> auth.users, role, unique(user_id, role))`, GRANT select to `authenticated`, GRANT all to `service_role`, RLS on, policy: users may read their own role rows only. No insert/update/delete policy — role changes happen only through a migration.
+- `public.has_role(_user_id uuid, _role app_role)` — `stable security definer set search_path = public`.
+- Add admin-read policies to `profiles` and `document_deadlines`: `using (public.has_role(auth.uid(),'admin'))` alongside the existing owner-only policies.
+- `public.admin_stats()` — a `security definer` function that returns a single JSON object of the aggregate counts above and starts with `if not public.has_role(auth.uid(),'admin') then raise exception 'forbidden'; end if;`. GRANT execute to `authenticated` only.
+- Seed your user id into `user_roles` as `admin` (separate data insert once the account is identified).
 
-### 9. Citations component
-Reusable footnote-style citations (`[1]`, `[2]`) rendered at the bottom of each guide, matching OSCOLA or Bluebook style — pick one and be consistent. OSCOLA is the standard for European law students.
+**Frontend**
+- `src/hooks/use-role.ts` — reads the caller's own row from `user_roles`.
+- `src/routes/admin.tsx` — uses `AppShell`, calls `supabase.rpc('admin_stats')`, renders stat cards and simple bar rows in the existing navy/muted-blue design tokens. Loading, denied, and error states. `head()` sets `robots: noindex, nofollow` and no canonical.
+- Link to `/admin` shown in `/account` only when the role check passes; not added to the public nav, footer, `sitemap.xml`, or the PDF report.
 
-### 10. Multilingual legal glossary expansion
-Expand `TERMS` in `borderless-extras.ts` to include the original-language legal term next to the English one (e.g. *Aufenthaltstitel*, *titre de séjour*, *permesso di soggiorno*) — already partially done, extend to all entries. Shows comparative-law awareness.
-
-## Suggested build order
-1. Methodology page + citation component + OSCOLA style (foundation)
-2. Legal Basis section on existing checklist route (highest ROI)
-3. `/case-law` and `/rights` routes
-4. Compare-table legal dimensions
-5. `/asylum` simplified mode
-6. About-page academic framing + PDF export
-
-## Scope note
-All additions are frontend + static data files under `src/lib/`. No backend changes required. Everything stays in the current design system (semantic tokens, AppShell, PageHeader).
+**Not included**
+- No user-management actions (no editing or deleting other users) — read-only stats.
+- No exposure of individual emails or profile rows in the dashboard.
