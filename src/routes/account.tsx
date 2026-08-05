@@ -2,6 +2,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
+import { useIsAdmin } from "@/hooks/use-role";
 import { AppShell } from "@/components/borderless/AppShell";
 import { Loader2, LogOut, User as UserIcon } from "lucide-react";
 import { toast } from "sonner";
@@ -19,6 +20,7 @@ export const Route = createFileRoute("/account")({
 function AccountPage() {
   const navigate = useNavigate();
   const { user, loading, signOut } = useAuth();
+  const { isAdmin } = useIsAdmin();
   const [displayName, setDisplayName] = useState("");
   const [homeCountry, setHomeCountry] = useState("");
   const [saving, setSaving] = useState(false);
