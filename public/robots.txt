@@ -6,5 +6,6 @@ Disallow: /account
 Disallow: /onboarding
 Disallow: /deadlines
 Disallow: /admin
+Disallow: /seo
 
 Sitemap: https://crosspath.site/sitemap.xml
