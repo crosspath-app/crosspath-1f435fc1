@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as ToolsRouteImport } from './routes/tools'
 import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SupportRouteImport } from './routes/support'
+import { Route as SeoRouteImport } from './routes/seo'
 import { Route as RightsRouteImport } from './routes/rights'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as OnboardingRouteImport } from './routes/onboarding'
@@ -47,6 +48,11 @@ const TermsRoute = TermsRouteImport.update({
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SeoRoute = SeoRouteImport.update({
+  id: '/seo',
+  path: '/seo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RightsRoute = RightsRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/rights': typeof RightsRoute
+  '/seo': typeof SeoRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByTo {
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/rights': typeof RightsRoute
+  '/seo': typeof SeoRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/onboarding': typeof OnboardingRoute
   '/privacy': typeof PrivacyRoute
   '/rights': typeof RightsRoute
+  '/seo': typeof SeoRoute
   '/support': typeof SupportRoute
   '/terms': typeof TermsRoute
   '/tools': typeof ToolsRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/privacy'
     | '/rights'
+    | '/seo'
     | '/support'
     | '/terms'
     | '/tools'
@@ -280,6 +290,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/privacy'
     | '/rights'
+    | '/seo'
     | '/support'
     | '/terms'
     | '/tools'
@@ -306,6 +317,7 @@ export interface FileRouteTypes {
     | '/onboarding'
     | '/privacy'
     | '/rights'
+    | '/seo'
     | '/support'
     | '/terms'
     | '/tools'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   OnboardingRoute: typeof OnboardingRoute
   PrivacyRoute: typeof PrivacyRoute
   RightsRoute: typeof RightsRoute
+  SeoRoute: typeof SeoRoute
   SupportRoute: typeof SupportRoute
   TermsRoute: typeof TermsRoute
   ToolsRoute: typeof ToolsRoute
@@ -363,6 +376,13 @@ declare module '@tanstack/react-router' {
       path: '/support'
       fullPath: '/support'
       preLoaderRoute: typeof SupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seo': {
+      id: '/seo'
+      path: '/seo'
+      fullPath: '/seo'
+      preLoaderRoute: typeof SeoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rights': {
@@ -533,6 +553,7 @@ const rootRouteChildren: RootRouteChildren = {
   OnboardingRoute: OnboardingRoute,
   PrivacyRoute: PrivacyRoute,
   RightsRoute: RightsRoute,
+  SeoRoute: SeoRoute,
   SupportRoute: SupportRoute,
   TermsRoute: TermsRoute,
   ToolsRoute: ToolsRoute,

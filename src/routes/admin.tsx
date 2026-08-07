@@ -139,6 +139,12 @@ function AdminPage() {
         subtitle="Aggregate, anonymous usage statistics. No individual accounts or email addresses are shown."
       />
       <div className="space-y-6 px-6 pb-16">
+        <Link
+          to="/seo"
+          className="inline-flex items-center gap-2 rounded-xl border border-primary bg-card px-3 py-2 text-xs font-medium text-primary hover:bg-accent"
+        >
+          <BarChart3 className="h-3.5 w-3.5" /> Search visibility dashboard
+        </Link>
         {error && (
           <p className="rounded-xl border border-destructive/40 bg-destructive/10 p-3 text-xs text-destructive">{error}</p>
         )}

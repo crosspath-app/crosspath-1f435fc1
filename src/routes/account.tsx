@@ -143,6 +143,14 @@ function AccountPage() {
               Admin dashboard
             </Link>
           )}
+          {isAdmin && (
+            <Link
+              to="/seo"
+              className="inline-flex items-center justify-center rounded-xl border border-primary bg-card px-4 py-2.5 text-sm font-medium text-primary hover:bg-accent"
+            >
+              Search visibility
+            </Link>
+          )}
           <button
             onClick={async () => {
               await signOut();
