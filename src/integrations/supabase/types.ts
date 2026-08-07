@@ -95,6 +95,54 @@ export type Database = {
         }
         Relationships: []
       }
+      seo_url_snapshots: {
+        Row: {
+          captured_on: string
+          clicks: number
+          coverage_state: string | null
+          created_at: string
+          ctr: number
+          google_canonical: string | null
+          id: string
+          impressions: number
+          indexing_state: string | null
+          last_crawl_time: string | null
+          position: number | null
+          url: string
+          verdict: string | null
+        }
+        Insert: {
+          captured_on?: string
+          clicks?: number
+          coverage_state?: string | null
+          created_at?: string
+          ctr?: number
+          google_canonical?: string | null
+          id?: string
+          impressions?: number
+          indexing_state?: string | null
+          last_crawl_time?: string | null
+          position?: number | null
+          url: string
+          verdict?: string | null
+        }
+        Update: {
+          captured_on?: string
+          clicks?: number
+          coverage_state?: string | null
+          created_at?: string
+          ctr?: number
+          google_canonical?: string | null
+          id?: string
+          impressions?: number
+          indexing_state?: string | null
+          last_crawl_time?: string | null
+          position?: number | null
+          url?: string
+          verdict?: string | null
+        }
+        Relationships: []
+      }
       user_roles: {
         Row: {
           created_at: string
