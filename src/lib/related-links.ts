@@ -1,5 +1,6 @@
 import { GUIDES } from "@/lib/guides-data";
 import { ROUTE_LANDINGS } from "@/lib/route-landings";
+import { GUIDE_TAGS, hubForGuide, hubForRoute, type Hub } from "@/lib/hubs";
 
 export type RelatedLink = {
   key: string;
@@ -7,13 +8,6 @@ export type RelatedLink = {
   label: string;
   note: string;
   prefix?: string;
-};
-
-/** Country + purpose tags for each editorial guide, used to score relevance. */
-const GUIDE_TAGS: Record<string, { country: string; reason: string }> = {
-  "erasmus-germany": { country: "DE", reason: "study" },
-  "work-visa-germany": { country: "DE", reason: "work" },
-  "digital-nomad-spain": { country: "ES", reason: "nomad" },
 };
 
 const REASON_NEIGHBOURS: Record<string, string[]> = {
@@ -40,6 +34,17 @@ function guideLink(slug: string): RelatedLink | null {
     label: `${g.flag} ${g.title}`,
     note: g.eyebrow,
     prefix: "Guide",
+  };
+}
+
+function hubLink(hub?: Hub): RelatedLink | null {
+  if (!hub) return null;
+  return {
+    key: `hub-${hub.slug}`,
+    href: `/destinations/${hub.slug}`,
+    label: `${hub.flag} ${hub.h1}`,
+    note: `${hub.routes.length} routes and ${hub.guides.length} guides in one hub`,
+    prefix: "Hub",
   };
 }
 
@@ -87,7 +92,7 @@ function rank<T extends { slug: string }>(
 }
 
 /** Contextual links shown on a /guides/$slug page. */
-export function relatedForGuide(slug: string): { routes: RelatedLink[]; guides: RelatedLink[]; tools: RelatedLink[] } {
+export function relatedForGuide(slug: string): { routes: RelatedLink[]; guides: RelatedLink[]; tools: RelatedLink[]; hub: RelatedLink | null } {
   const self = GUIDE_TAGS[slug] ?? { country: "", reason: "study" };
   const routes = rank(ROUTE_LANDINGS, (r) => ({ country: r.to, reason: r.reason }), self, "", 3)
     .map(moveLink)
@@ -95,11 +100,12 @@ export function relatedForGuide(slug: string): { routes: RelatedLink[]; guides: 
   const guides = rank(GUIDES, (g) => GUIDE_TAGS[g.slug] ?? { country: "", reason: "" }, self, slug, 2)
     .map(guideLink)
     .filter(Boolean) as RelatedLink[];
-  return { routes, guides, tools: toolsFor(self.reason) };
+  const hub = hubLink(hubForGuide(slug));
+  return { routes, guides, tools: toolsFor(self.reason), hub };
 }
 
 /** Contextual links shown on a /move/$slug page. */
-export function relatedForRoute(slug: string): { guides: RelatedLink[]; routes: RelatedLink[]; tools: RelatedLink[] } {
+export function relatedForRoute(slug: string): { guides: RelatedLink[]; routes: RelatedLink[]; tools: RelatedLink[]; hub: RelatedLink | null } {
   const r = ROUTE_LANDINGS.find((x) => x.slug === slug);
   const self = { country: r?.to ?? "", reason: r?.reason ?? "study" };
   const guides = rank(GUIDES, (g) => GUIDE_TAGS[g.slug] ?? { country: "", reason: "" }, self, "", 2)
@@ -108,5 +114,11 @@ export function relatedForRoute(slug: string): { guides: RelatedLink[]; routes: 
   const routes = rank(ROUTE_LANDINGS, (x) => ({ country: x.to, reason: x.reason }), self, slug, 3)
     .map(moveLink)
     .filter(Boolean) as RelatedLink[];
-  return { guides, routes, tools: toolsFor(self.reason) };
+  const hub = hubLink(hubForRoute(slug));
+  return { guides, routes, tools: toolsFor(self.reason), hub };
+}
+
+/** Contextual links shown on a /destinations/$slug hub page. */
+export function relatedForHub(_country: string, reason: string): { tools: RelatedLink[] } {
+  return { tools: toolsFor(reason) };
 }

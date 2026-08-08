@@ -210,6 +210,7 @@ function RouteLandingPage() {
 
         <RelatedLinks
           groups={[
+            { heading: "Destination hub", links: related.hub ? [related.hub] : [] },
             { heading: "Similar routes", links: related.routes },
             { heading: "In-depth guides", links: related.guides },
             { heading: "Tools for this move", links: related.tools },

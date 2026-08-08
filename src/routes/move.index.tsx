@@ -49,6 +49,10 @@ function MoveIndex() {
             <ArrowRight className="mt-1 h-4 w-4 text-muted-foreground transition-transform group-hover:translate-x-1" />
           </Link>
         ))}
+        <Link to="/destinations" className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 hover:border-primary">
+          <span className="text-sm font-medium text-foreground">Browse destination hubs by country and purpose</span>
+          <ArrowRight className="h-4 w-4 text-primary" />
+        </Link>
         <Link to="/guides" className="flex items-center justify-between rounded-2xl border border-border bg-card p-4 hover:border-primary">
           <span className="text-sm font-medium text-foreground">Browse in-depth relocation guides</span>
           <ArrowRight className="h-4 w-4 text-primary" />

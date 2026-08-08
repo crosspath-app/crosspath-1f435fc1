@@ -191,6 +191,7 @@ function GuidePage() {
 
         <RelatedLinks
           groups={[
+            { heading: "Destination hub", links: related.hub ? [related.hub] : [] },
             { heading: "Country routes covered in detail", links: related.routes },
             { heading: "Related guides", links: related.guides },
             { heading: "Tools for this move", links: related.tools },
