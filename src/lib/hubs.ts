@@ -110,7 +110,7 @@ function build(): Hub[] {
       for (const f of r.facts) {
         if (seen.has(f.label)) continue;
         seen.add(f.label);
-        hub.facts.push({ label: `${f.label} · ${r.fromName}`, value: f.value });
+        hub.facts.push({ label: hub.routes.length > 1 ? `${f.label} · ${r.fromName}` : f.label, value: f.value });
       }
     }
     hub.facts = hub.facts.slice(0, 6);
