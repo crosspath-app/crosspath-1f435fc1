@@ -63,6 +63,9 @@ function GuidesIndex() {
             <Link to="/move" className="inline-flex items-center gap-2 rounded-xl border border-primary px-4 py-2 text-xs uppercase tracking-[0.2em] text-primary font-mono">
               Popular routes <ArrowRight className="h-3 w-3" />
             </Link>
+            <Link to="/destinations" className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
+              Destination hubs <ArrowRight className="h-3 w-3" />
+            </Link>
             <Link to="/" className="inline-flex items-center gap-2 rounded-xl border border-border px-4 py-2 text-xs uppercase tracking-[0.2em] text-muted-foreground font-mono">
               Start my plan <ArrowRight className="h-3 w-3" />
             </Link>
